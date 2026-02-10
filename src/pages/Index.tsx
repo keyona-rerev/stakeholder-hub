@@ -46,7 +46,7 @@ const Index = () => (
               <Link to="/catalyst-fund">Explore Catalyst Fund <ArrowRight className="ml-1 h-4 w-4" /></Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="border-background/40 bg-background/10 text-background hover:bg-background/20">
-              <Link to="/fund-i">Learn About Fund I</Link>
+              <Link to="/contact">Contact Us</Link>
             </Button>
           </div>
         </SectionReveal>
