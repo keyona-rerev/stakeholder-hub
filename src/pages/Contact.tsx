@@ -74,13 +74,6 @@ const Contact = () => (
               <h3 className="mt-3 font-display text-lg font-semibold">Data Room Access</h3>
               <p className="mt-1 text-sm text-muted-foreground">Request access to our investment materials</p>
               <p className="mt-4 text-sm text-muted-foreground">Catalyst Fund Data Room available upon request for qualified investors.</p>
-              <div className="mt-auto pt-4">
-                <Button asChild variant="outline" size="sm" className="w-full justify-start">
-                  <a href="https://blacktechcapital.decilehub.com/data_room/folders/1NAgeYV8" target="_blank" rel="noopener noreferrer">
-                    Visit Data Room Portal
-                  </a>
-                </Button>
-              </div>
             </div>
           </SectionReveal>
         </div>
@@ -109,28 +102,6 @@ const Contact = () => (
             </div>
           </SectionReveal>
 
-          <SectionReveal>
-            <div className="rounded-xl border bg-card p-8">
-              <h3 className="font-display text-xl font-semibold">Founder Office Hours</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Regular opportunities to connect with our team</p>
-              <div className="mt-4 space-y-4">
-                {[
-                  { icon: Clock, label: "Weekly Sessions", desc: "Every Thursday 2-4 PM ET, 30-minute slots" },
-                  { icon: Video, label: "Virtual Format", desc: "Video conference via Zoom, screen sharing enabled" },
-                  { icon: FileText, label: "Preparation", desc: "Send deck in advance, 10-min pitch + 20-min Q&A" },
-                  { icon: MessageSquare, label: "Response Time", desc: "Initial feedback within 48 hours, full decision in 2-3 weeks" },
-                ].map((item) => (
-                  <div key={item.label} className="flex items-start gap-3">
-                    <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    <div>
-                      <p className="text-sm font-medium text-foreground">{item.label}</p>
-                      <p className="text-sm text-muted-foreground">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </SectionReveal>
         </div>
       </div>
     </section>
