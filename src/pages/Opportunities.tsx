@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, FileText } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 import StatBar from "@/components/StatBar";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +23,7 @@ const pipeline = [
     traction: "20+ industry conversations (Chevron, Shell, Cenovus), Plug and Play accelerator, LOIs secured",
     funding: "Raising $1.12M pre-seed ($4M pre-money cap)",
     website: "https://serenitypower.ca/",
+    docs: [{ label: "Pitch Deck", href: "/pdfs/serenity-power-deck.pdf" }],
   },
   {
     name: "Kiwi Charge",
@@ -34,6 +35,7 @@ const pipeline = [
     traction: "$1.7M pilot with GM & Pfaff, 140 building waitlist, patents filed, live deployments",
     funding: "Raising $2M USD Seed round ($8M pre-money valuation)",
     website: "https://www.kiwicharge.ca/",
+    docs: [{ label: "Pitch Deck", href: "/pdfs/kiwi-charge-deck.pdf" }, { label: "One-Pager", href: "/pdfs/kiwi-charge-one-pager.pdf" }],
   },
   {
     name: "Mars Materials",
@@ -44,6 +46,7 @@ const pipeline = [
     solution: "Carbon-negative pathway to acrylonitrile, drop-in replacement for incumbent products",
     traction: "Backed by Shell, Breakthrough Energy, Pachamama; Navy grant for carbon fiber applications",
     funding: "$500K pre-seed extension via SAFE ($10M post-money cap), $320K remaining",
+    docs: [],
   },
   {
     name: "Resiliõ (Resiliocs)",
@@ -55,6 +58,7 @@ const pipeline = [
     traction: "Validated Calgary pilot ($500M loss scenario), 6 strategic partnerships, $250K grants",
     funding: "$1M SAFE round ($4M pre-money cap), 50% committed",
     website: "https://resiliocs.com/",
+    docs: [{ label: "Pitch Deck", href: "/pdfs/resiliocs-deck.pdf" }, { label: "FAQ", href: "/pdfs/resiliocs-faq.pdf" }],
   },
 ];
 
@@ -111,13 +115,18 @@ const Opportunities = () => (
                   <p><span className="font-medium text-foreground">Traction: </span>{co.traction}</p>
                   <p><span className="font-medium text-foreground">Funding: </span>{co.funding}</p>
                 </div>
-                {co.website && (
-                  <div className="mt-auto pt-4">
+                <div className="mt-auto flex flex-wrap items-center gap-4 pt-4">
+                  {co.website && (
                     <a href={co.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline">
                       Website <ExternalLink className="h-3 w-3" />
                     </a>
-                  </div>
-                )}
+                  )}
+                  {co.docs?.map((doc) => (
+                    <a key={doc.label} href={doc.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground">
+                      <FileText className="h-3 w-3" /> {doc.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </SectionReveal>
           ))}

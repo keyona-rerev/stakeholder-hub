@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, DollarSign, Lock, Users, Zap, Settings } from "lucide-react";
+import { ArrowRight, Shield, DollarSign, Lock, Users, Zap, Settings, TrendingUp, Download } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 import StatBar from "@/components/StatBar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -28,11 +28,14 @@ const terms = [
   ["Stage", "Pre-Seed exclusively"],
   ["Geography", "Canada for all new investments"],
   ["LP Minimum", "$10K"],
+  ["LP Investment Options", "$10K | $100K | $300K"],
   ["Max Investment", "25% of fund"],
   ["Follow-on Reserves", "No (except warehoused company Mars Materials)"],
-  ["Management Fee", "2% avg over fund life (4% Y1, 2% Y2-8, 1% Y9-10)"],
+  ["Management Fee", "~2% avg over fund life (4% Y1, 2% Y2-8, 1% Y9-10)"],
   ["Carried Interest", "20%"],
+  ["Hurdle Rate", "7%"],
   ["GP Commitment", "1%"],
+  ["Fund Life", "10 years + 2 extensions"],
   ["Setup Cost Cap", "$25K + 2.5% of funds raised"],
 ];
 
@@ -167,15 +170,75 @@ const CatalystFund = () => (
       </div>
     </section>
 
+    {/* Market Opportunity */}
+    <section className="py-20">
+      <div className="container">
+        <SectionReveal>
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Market Opportunity</h2>
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            ClimateTech represents the largest capital reallocation in human history, and we're positioned at the inflection point.
+          </p>
+        </SectionReveal>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { value: "$150B", label: "ClimateTech VC market expected by 2032" },
+            { value: "10%", label: "Climate tech's share of total VC funding in 2023, up from 7% in 2018" },
+            { value: "$7.6B", label: "VC invested in US clean energy in 2024" },
+            { value: "$6B", label: "AI-powered climate solutions raised in 9 months of 2024" },
+          ].map((s) => (
+            <SectionReveal key={s.label}>
+              <div className="rounded-xl border bg-card p-6">
+                <TrendingUp className="h-5 w-5 text-accent" />
+                <p className="mt-3 font-display text-2xl font-semibold">{s.value}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
+              </div>
+            </SectionReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Track Record */}
+    <section className="bg-secondary/50 py-20">
+      <div className="container">
+        <SectionReveal>
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Track Record</h2>
+          <p className="mt-3 text-muted-foreground">Proven experience in ClimateTech and venture investing</p>
+        </SectionReveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <SectionReveal>
+            <div className="rounded-xl border bg-card p-6">
+              <p className="font-medium text-foreground">Bryan Duarte</p>
+              <p className="mt-2 text-sm text-muted-foreground">5x Entrepreneur with 3 Exits (8x and 10x EBITDA). 30+ years energy industry. CleanTech EIR at multiple accelerators, Techstars advisor, Founder of Enliten.</p>
+            </div>
+          </SectionReveal>
+          <SectionReveal>
+            <div className="rounded-xl border bg-card p-6">
+              <p className="font-medium text-foreground">Keyona Meeks</p>
+              <p className="mt-2 text-sm text-muted-foreground">10 deal attributions at Bronze Valley including wildwonder (Inc. 5000 #109, 400% post-Shark Tank growth), Brevity ($2M AI pitch platform), and Grovara ($8.75M B2B marketplace). g8 + Village Capital Mentor, SXSW Judge.</p>
+            </div>
+          </SectionReveal>
+        </div>
+        <SectionReveal className="mt-6">
+          <p className="text-sm text-muted-foreground">🏆 WEF (UpLink) Top Innovative Fund selection 2022 · Pro-rata co-investment opportunities available to LPs</p>
+        </SectionReveal>
+      </div>
+    </section>
+
     {/* CTA */}
     <section className="py-20">
       <div className="container text-center">
         <SectionReveal>
           <h2 className="text-3xl font-semibold tracking-tight">Get in touch to learn more</h2>
           <p className="mt-3 text-muted-foreground">Interested in the Catalyst Fund? We'd love to hear from you.</p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
               <Link to="/contact">Contact Us <ArrowRight className="ml-1 h-4 w-4" /></Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <a href="/pdfs/catalyst-fund-one-pager.pdf" target="_blank" rel="noopener noreferrer">
+                <Download className="mr-1 h-4 w-4" /> Fund One-Pager
+              </a>
             </Button>
           </div>
         </SectionReveal>
