@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
+import FloatingOrbs from "@/components/FloatingOrbs";
 import bryanDuarte from "@/assets/team/bryan-duarte.jpg";
 import keyonaMeeks from "@/assets/team/keyona-meeks.jpg";
 
@@ -13,11 +14,8 @@ const leaders = [
 const Index = () => (
   <main>
     {/* Hero */}
-    <section className="relative overflow-hidden py-28 md:py-40">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute -top-1/2 -right-1/4 h-[800px] w-[800px] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute -bottom-1/2 -left-1/4 h-[600px] w-[600px] rounded-full bg-accent/5 blur-3xl" />
-      </div>
+    <section className="relative overflow-hidden py-16 md:py-24">
+      <FloatingOrbs />
       <div className="container max-w-3xl text-center">
         <SectionReveal>
           <div className="accent-line mx-auto mb-6" />
