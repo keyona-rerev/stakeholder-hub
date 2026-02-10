@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ExternalLink, FileText } from "lucide-react";
+import { ArrowRight, ExternalLink, Globe } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 import StatBar from "@/components/StatBar";
 import { Badge } from "@/components/ui/badge";
@@ -128,7 +128,7 @@ const Opportunities = () => (
                   )}
                   {co.docs?.map((doc) => (
                     <a key={doc.label} href={doc.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground">
-                      <FileText className="h-3 w-3" /> {doc.label}
+                      <Globe className="h-3 w-3" /> {doc.label}
                     </a>
                   ))}
                 </div>
