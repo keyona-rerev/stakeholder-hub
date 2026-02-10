@@ -14,27 +14,38 @@ const leaders = [
 const Index = () => (
   <main>
     {/* Hero */}
-    <section className="relative overflow-hidden py-16 md:py-24">
+    <section className="relative overflow-hidden bg-foreground py-16 md:py-24">
       <FloatingOrbs />
-      <div className="container max-w-3xl text-center">
+      {/* Mesh gradient background layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/15" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-accent/10 to-primary/10" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+      <div className="container relative max-w-3xl text-center">
         <SectionReveal>
-          <div className="accent-line mx-auto mb-6" />
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
+          <div className="mx-auto mb-6 h-1 w-12 rounded-full bg-gradient-to-r from-accent to-primary" />
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
             ClimateTech Venture Capital
           </p>
-          <h1 className="text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl">
-            Good for <span className="gradient-text">People</span>,
-            <br />
-            Good for <span className="gradient-text">Planet</span>.
+          <h1 className="text-4xl font-bold leading-tight tracking-tight text-background md:text-6xl lg:text-7xl">
+            Good for{" "}
+            <span className="bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent">
+              People
+            </span>
+            ,<br />
+            Good for{" "}
+            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              Planet
+            </span>
+            .
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
+          <p className="mx-auto mt-6 max-w-xl text-lg text-background/60">
             Investing in underrepresented founders building ClimateTech solutions for a sustainable future.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Button asChild size="lg" className="hero-gradient text-primary-foreground hover:opacity-90 shadow-lg shadow-primary/20">
+            <Button asChild size="lg" className="bg-accent text-accent-foreground shadow-lg shadow-accent/30 hover:bg-accent/90 hover:shadow-accent/40">
               <Link to="/catalyst-fund">Explore Catalyst Fund <ArrowRight className="ml-1 h-4 w-4" /></Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-primary/20 hover:bg-primary/5">
+            <Button asChild variant="outline" size="lg" className="border-background/20 text-background hover:bg-background/10">
               <Link to="/fund-i">Learn About Fund I</Link>
             </Button>
           </div>
