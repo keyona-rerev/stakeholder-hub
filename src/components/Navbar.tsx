@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const links = [
   { to: "/", label: "Overview" },
@@ -18,8 +19,8 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-lg">
       <nav className="container flex h-16 items-center justify-between">
-        <Link to="/" className="font-display text-xl font-semibold tracking-tight text-foreground">
-          BlackTech Capital
+        <Link to="/" className="flex items-center gap-2">
+          <img src={logo} alt="BlackTech Capital" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop */}
@@ -36,7 +37,7 @@ const Navbar = () => {
               {l.label}
             </Link>
           ))}
-          <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90">
+          <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
             <Link to="/contact">Contact</Link>
           </Button>
         </div>
@@ -64,7 +65,7 @@ const Navbar = () => {
                 {l.label}
               </Link>
             ))}
-            <Button asChild size="sm" className="w-fit bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button asChild size="sm" className="w-fit bg-primary text-primary-foreground hover:bg-primary/90">
               <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
             </Button>
           </div>

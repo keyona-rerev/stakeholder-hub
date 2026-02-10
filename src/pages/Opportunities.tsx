@@ -71,12 +71,16 @@ const process = [
 
 const Opportunities = () => (
   <main>
-    <section className="py-20">
+    <section className="relative overflow-hidden py-20">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute -top-1/3 -right-1/4 h-[600px] w-[600px] rounded-full bg-accent/5 blur-3xl" />
+      </div>
       <div className="container">
         <SectionReveal>
-          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-accent">Pipeline</p>
-          <h1 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-            Investment Opportunities
+          <div className="accent-line mb-4" />
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-accent">Pipeline</p>
+          <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+            Investment <span className="gradient-text">Opportunities</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Our current pipeline of ClimateTech innovators. These companies represent the exceptional founders we're evaluating for investment through our Catalyst Fund.
@@ -98,7 +102,7 @@ const Opportunities = () => (
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {pipeline.map((co) => (
             <SectionReveal key={co.name}>
-              <div className="flex h-full flex-col rounded-xl border bg-card p-6">
+              <div className="flex h-full flex-col rounded-xl border bg-card p-6 card-hover">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <h3 className="font-display text-xl font-semibold">{co.name}</h3>
@@ -144,9 +148,10 @@ const Opportunities = () => (
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {process.map((p) => (
             <SectionReveal key={p.step}>
-              <div className="rounded-xl border bg-card p-6">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-sm font-semibold text-accent-foreground">{p.step}</span>
-                <h3 className="mt-3 font-display text-lg font-semibold">{p.title}</h3>
+              <div className="relative overflow-hidden rounded-xl border bg-card p-6 card-hover">
+                <div className="absolute inset-x-0 top-0 h-1 hero-gradient opacity-60" />
+                <span className="flex h-8 w-8 items-center justify-center rounded-full hero-gradient text-sm font-bold text-primary-foreground shadow-md">{p.step}</span>
+                <h3 className="mt-3 font-display text-lg font-bold">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
               </div>
             </SectionReveal>

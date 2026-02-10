@@ -4,12 +4,16 @@ import SectionReveal from "@/components/SectionReveal";
 
 const Contact = () => (
   <main>
-    <section className="py-20">
+    <section className="relative overflow-hidden py-20">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute -top-1/3 -left-1/4 h-[600px] w-[600px] rounded-full bg-primary/5 blur-3xl" />
+      </div>
       <div className="container">
         <SectionReveal>
-          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-accent">Get In Touch</p>
-          <h1 className="max-w-2xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-            Contact BlackTech Capital
+          <div className="accent-line mb-4" />
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-accent">Get In Touch</p>
+          <h1 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+            Contact <span className="gradient-text">BlackTech Capital</span>
           </h1>
           <p className="mt-4 max-w-xl text-lg text-muted-foreground">
             Get in touch with our team to discuss investment opportunities, partnership inquiries, or learn more about our funds.
