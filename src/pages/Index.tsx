@@ -2,12 +2,18 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
+import bryanDuarte from "@/assets/team/bryan-duarte.jpg";
+import keyonaMeeks from "@/assets/team/keyona-meeks.jpg";
+
+const leaders = [
+  { name: "Bryan Duarte", role: "Managing Partner", desc: "Executive leader overseeing partnership strategy and organizational direction.", img: bryanDuarte },
+  { name: "Keyona Meeks", role: "General Partner", desc: "Strategic leader responsible for partnership development and investment oversight.", img: keyonaMeeks },
+];
 
 const Index = () => (
   <main>
     {/* Hero */}
     <section className="relative overflow-hidden py-28 md:py-40">
-      {/* Background decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute -top-1/2 -right-1/4 h-[800px] w-[800px] rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute -bottom-1/2 -left-1/4 h-[600px] w-[600px] rounded-full bg-accent/5 blur-3xl" />
@@ -109,15 +115,10 @@ const Index = () => (
           <p className="mt-3 text-center text-muted-foreground">Meet the team driving our investment strategy</p>
         </SectionReveal>
         <div className="mx-auto mt-12 grid max-w-2xl gap-8 md:grid-cols-2">
-          {[
-            { name: "Bryan Duarte", role: "Managing Partner", desc: "Executive leader overseeing partnership strategy and organizational direction." },
-            { name: "Keyona Meeks", role: "General Partner", desc: "Strategic leader responsible for partnership development and investment oversight." },
-          ].map((p) => (
+          {leaders.map((p) => (
             <SectionReveal key={p.name}>
               <div className="rounded-xl border bg-card p-8 text-center card-hover">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full hero-gradient text-xl font-bold text-primary-foreground shadow-lg shadow-primary/20">
-                  {p.name.split(" ").map(w => w[0]).join("")}
-                </div>
+                <img src={p.img} alt={p.name} className="mx-auto h-24 w-24 rounded-full object-cover shadow-lg shadow-primary/10 ring-2 ring-accent/20" />
                 <h3 className="mt-4 font-display text-xl font-bold">{p.name}</h3>
                 <p className="text-sm font-semibold text-accent">{p.role}</p>
                 <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>

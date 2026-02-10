@@ -40,12 +40,13 @@ const pipeline = [
   {
     name: "Mars Materials",
     sector: "Carbon Tech / Chemicals",
-    status: "Investment Completed",
+    status: "Follow-On Investment",
     tagline: "Transforming carbon into products that purify dirty water",
     problem: "Acrylonitrile is a $14B chemical produced from coal/oil; water purification faces cost barriers",
     solution: "Carbon-negative pathway to acrylonitrile, drop-in replacement for incumbent products",
     traction: "Backed by Shell, Breakthrough Energy, Pachamama; Navy grant for carbon fiber applications",
     funding: "$500K pre-seed extension via SAFE ($10M post-money cap), $320K remaining",
+    website: "https://marsmaterials.tech/",
     docs: [],
   },
   {
