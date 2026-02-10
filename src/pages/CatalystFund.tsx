@@ -5,6 +5,17 @@ import SectionReveal from "@/components/SectionReveal";
 import StatBar from "@/components/StatBar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
+import bryanDuarte from "@/assets/team/bryan-duarte.jpg";
+import keyonaMeeks from "@/assets/team/keyona-meeks.jpg";
+import allisonGibson from "@/assets/team/allison-gibson.jpg";
+import bryanWatson from "@/assets/team/bryan-watson.jpg";
+import johnNicholson from "@/assets/team/john-nicholson.jpg";
+import melissaAllen from "@/assets/team/melissa-allen.jpg";
+import lindseyMotlow from "@/assets/team/lindsey-motlow.jpg";
+import marlonThompson from "@/assets/team/marlon-thompson.jpg";
+import nicholasParker from "@/assets/team/nicholas-parker.jpg";
+import jadeLockard from "@/assets/team/jade-lockard.jpg";
+
 const stats = [
   { value: "$500K–$2M", label: "Flexible Fund Size" },
   { value: "Pre-Seed", label: "Investment Stage" },
@@ -37,6 +48,42 @@ const terms = [
   ["GP Commitment", "1%"],
   ["Fund Life", "10 years + 2 extensions"],
   ["Setup Cost Cap", "$25K + 2.5% of funds raised"],
+];
+
+const teamGroups = [
+  {
+    label: "Executive Leadership",
+    members: [
+      { name: "Bryan Duarte", role: "Managing Partner", desc: "Executive leader overseeing partnership strategy and organizational direction.", img: bryanDuarte },
+      { name: "Keyona Meeks", role: "General Partner", desc: "Strategic leader responsible for partnership development and investment oversight.", img: keyonaMeeks },
+    ],
+  },
+  {
+    label: "Investment Committee",
+    members: [
+      { name: "Allison Gibson", role: "Executive Leadership | Investment Readiness Advisory", desc: "Builds programs that uplift overlooked entrepreneurs and champions food ventures that feed culture and community.", img: allisonGibson },
+      { name: "Bryan Watson", role: "Angel Investment & Venture Capital, CleanTech, Finance", desc: "CleanTech specialist. 2021 and 2024 Clean50 Awardee.", img: bryanWatson },
+      { name: "John Nicholson", role: "Cleantech and Environmental Expert", desc: "Over 30 years of experience in environmental engineering consulting and cleantech startups.", img: johnNicholson },
+      { name: "Melissa Allen", role: "Ubuntu International Laureate 2025 | Finance Leader", desc: "Award-winning emerging finance leader recognized by The Peak, Globe & Mail, and Bay Street Bull.", img: melissaAllen },
+    ],
+  },
+  {
+    label: "Advisory Committee",
+    members: [
+      { name: "Lindsey Motlow", role: "Physicist | VP, Research Group Director", desc: "Investigates emerging technologies in Energy Industry with focus on Hydrogen and Advanced Nuclear.", img: lindseyMotlow },
+      { name: "Marlon Thompson", role: "Founder, Investor, Fractional Exec", desc: "Founder of Opening Round and Future Capital (acquired 2023). Venture Scout at Zeal Capital Partners.", img: marlonThompson },
+      { name: "Nicholas Parker", role: "Exponential Impact Entrepreneur", desc: "Known as the father of 'cleantech.' Over 40 years of global experience creating sustainable ventures.", img: nicholasParker },
+      { name: "Jade Lockard", role: "Investment & Fundraising Strategist", desc: "Specializing in fundraising strategy, investor relations, and capital formation for emerging fund managers.", img: jadeLockard },
+    ],
+  },
+  {
+    label: "Fund Administration & Partners",
+    members: [
+      { name: "Equivesto", role: "Fund Administrator", desc: "OSC-licensed Exempt Market Dealer enabling compliant advertised fundraising." },
+      { name: "Osler", role: "Legal Counsel", desc: "Legal representation for fund structure and compliance." },
+      { name: "Sonar Accounting Group", role: "Accounting", desc: "Accounting services for the Special Limited Partnership and Management Company." },
+    ],
+  },
 ];
 
 const CatalystFund = () => (
@@ -125,49 +172,24 @@ const CatalystFund = () => (
           <p className="mt-3 text-muted-foreground">Our leadership and advisory structure</p>
         </SectionReveal>
 
-        {[
-          {
-            label: "Executive Leadership",
-            members: [
-              { name: "Bryan Duarte", role: "Managing Partner", desc: "Executive leader overseeing partnership strategy and organizational direction." },
-              { name: "Keyona Meeks", role: "General Partner", desc: "Strategic leader responsible for partnership development and investment oversight." },
-            ],
-          },
-          {
-            label: "Investment Committee",
-            members: [
-              { name: "Allison Gibson", role: "Executive Leadership | Investment Readiness Advisory", desc: "Builds programs that uplift overlooked entrepreneurs and champions food ventures that feed culture and community." },
-              { name: "Bryan Watson", role: "Angel Investment & Venture Capital, CleanTech, Finance", desc: "CleanTech specialist. 2021 and 2024 Clean50 Awardee." },
-              { name: "John Nicholson", role: "Cleantech and Environmental Expert", desc: "Over 30 years of experience in environmental engineering consulting and cleantech startups." },
-              { name: "Melissa Allen", role: "Ubuntu International Laureate 2025 | Finance Leader", desc: "Award-winning emerging finance leader recognized by The Peak, Globe & Mail, and Bay Street Bull." },
-            ],
-          },
-          {
-            label: "Advisory Committee",
-            members: [
-              { name: "Lindsey Motlow", role: "Physicist | VP, Research Group Director", desc: "Investigates emerging technologies in Energy Industry with focus on Hydrogen and Advanced Nuclear." },
-              { name: "Marlon Thompson", role: "Founder, Investor, Fractional Exec", desc: "Founder of Opening Round and Future Capital (acquired 2023). Venture Scout at Zeal Capital Partners." },
-              { name: "Nicholas Parker", role: "Exponential Impact Entrepreneur", desc: "Known as the father of 'cleantech.' Over 40 years of global experience creating sustainable ventures." },
-              { name: "Jade Lockard", role: "Investment & Fundraising Strategist", desc: "Specializing in fundraising strategy, investor relations, and capital formation for emerging fund managers." },
-            ],
-          },
-          {
-            label: "Fund Administration & Partners",
-            members: [
-              { name: "Equivesto", role: "Fund Administrator", desc: "OSC-licensed Exempt Market Dealer enabling compliant advertised fundraising." },
-              { name: "Osler", role: "Legal Counsel", desc: "Legal representation for fund structure and compliance." },
-              { name: "Sonar Accounting Group", role: "Accounting", desc: "Accounting services for the Special Limited Partnership and Management Company." },
-            ],
-          },
-        ].map((group) => (
+        {teamGroups.map((group) => (
           <SectionReveal key={group.label} className="mt-10">
             <h3 className="mb-4 font-display text-xl font-semibold text-foreground">{group.label}</h3>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {group.members.map((m) => (
-                <div key={m.name} className="rounded-lg border bg-card p-5">
-                  <p className="font-medium text-foreground">{m.name}</p>
-                  <p className="text-xs font-medium text-accent">{m.role}</p>
-                  <p className="mt-2 text-sm text-muted-foreground">{m.desc}</p>
+                <div key={m.name} className="flex items-start gap-4 rounded-lg border bg-card p-5 card-hover">
+                  {m.img ? (
+                    <img src={m.img} alt={m.name} className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-accent/20" />
+                  ) : (
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent/10 text-sm font-bold text-accent">
+                      {m.name.split(" ").map(w => w[0]).join("")}
+                    </div>
+                  )}
+                  <div>
+                    <p className="font-medium text-foreground">{m.name}</p>
+                    <p className="text-xs font-medium text-accent">{m.role}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{m.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -214,15 +236,21 @@ const CatalystFund = () => (
         </SectionReveal>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           <SectionReveal>
-            <div className="rounded-xl border bg-card p-6">
-              <p className="font-medium text-foreground">Bryan Duarte</p>
-              <p className="mt-2 text-sm text-muted-foreground">5x Entrepreneur with 3 Exits (8x and 10x EBITDA). 30+ years energy industry. CleanTech EIR at multiple accelerators, Techstars advisor, Founder of Enliten.</p>
+            <div className="flex items-start gap-4 rounded-xl border bg-card p-6 card-hover">
+              <img src={bryanDuarte} alt="Bryan Duarte" className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-accent/20" />
+              <div>
+                <p className="font-medium text-foreground">Bryan Duarte</p>
+                <p className="mt-2 text-sm text-muted-foreground">5x Entrepreneur with 3 Exits (8x and 10x EBITDA). 30+ years energy industry. CleanTech EIR at multiple accelerators, Techstars advisor, Founder of Enliten.</p>
+              </div>
             </div>
           </SectionReveal>
           <SectionReveal>
-            <div className="rounded-xl border bg-card p-6">
-              <p className="font-medium text-foreground">Keyona Meeks</p>
-              <p className="mt-2 text-sm text-muted-foreground">10 deal attributions at Bronze Valley including wildwonder (Inc. 5000 #109, 400% post-Shark Tank growth), Brevity ($2M AI pitch platform), and Grovara ($8.75M B2B marketplace). g8 + Village Capital Mentor, SXSW Judge.</p>
+            <div className="flex items-start gap-4 rounded-xl border bg-card p-6 card-hover">
+              <img src={keyonaMeeks} alt="Keyona Meeks" className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-accent/20" />
+              <div>
+                <p className="font-medium text-foreground">Keyona Meeks</p>
+                <p className="mt-2 text-sm text-muted-foreground">10 deal attributions at Bronze Valley including wildwonder (Inc. 5000 #109, 400% post-Shark Tank growth), Brevity ($2M AI pitch platform), and Grovara ($8.75M B2B marketplace). g8 + Village Capital Mentor, SXSW Judge.</p>
+              </div>
             </div>
           </SectionReveal>
         </div>
@@ -239,7 +267,7 @@ const CatalystFund = () => (
           <h2 className="text-3xl font-semibold tracking-tight">Get in touch to learn more</h2>
           <p className="mt-3 text-muted-foreground">Interested in the Catalyst Fund? We'd love to hear from you.</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button asChild size="lg" className="hero-gradient text-primary-foreground hover:opacity-90">
               <Link to="/contact">Contact Us <ArrowRight className="ml-1 h-4 w-4" /></Link>
             </Button>
             <Button asChild variant="outline" size="lg">
