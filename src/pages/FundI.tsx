@@ -33,12 +33,16 @@ const learnings = [
 
 const FundI = () => (
   <main>
-    <section className="py-20">
+    <section className="relative overflow-hidden py-20">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute -top-1/3 -left-1/4 h-[600px] w-[600px] rounded-full bg-primary/5 blur-3xl" />
+      </div>
       <div className="container">
         <SectionReveal>
-          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-muted-foreground">Strategic Pause</p>
-          <h1 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-            Fund I: Our Institutional Blueprint
+          <div className="accent-line mb-4" />
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-muted-foreground">Strategic Pause</p>
+          <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+            Fund I: Our <span className="gradient-text">Institutional</span> Blueprint
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Our original $15M fund design remains the foundational model for scaling our ClimateTech thesis. While current market conditions led us to focus on the nimble Catalyst Fund, Fund I's structure continues to inform our long-term strategy.
@@ -123,9 +127,11 @@ const FundI = () => (
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {learnings.map((l) => (
             <SectionReveal key={l.title}>
-              <div className="rounded-xl border bg-card p-6">
-                <l.icon className="h-5 w-5 text-accent" />
-                <h3 className="mt-3 font-display text-lg font-semibold">{l.title}</h3>
+              <div className="rounded-xl border bg-card p-6 card-hover">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+                  <l.icon className="h-5 w-5 text-accent" />
+                </div>
+                <h3 className="mt-3 font-display text-lg font-bold">{l.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{l.desc}</p>
               </div>
             </SectionReveal>

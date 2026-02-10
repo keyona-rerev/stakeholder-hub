@@ -41,12 +41,16 @@ const terms = [
 
 const CatalystFund = () => (
   <main>
-    <section className="py-20">
+    <section className="relative overflow-hidden py-20">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute -top-1/3 -right-1/4 h-[600px] w-[600px] rounded-full bg-accent/5 blur-3xl" />
+      </div>
       <div className="container">
         <SectionReveal>
-          <p className="mb-2 text-sm font-medium uppercase tracking-widest text-accent">Active Fund</p>
-          <h1 className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-            The Catalyst Fund: Proving the Thesis, Building the Track Record
+          <div className="accent-line mb-4" />
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-accent">Active Fund</p>
+          <h1 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+            The Catalyst Fund: Proving the <span className="gradient-text">Thesis</span>, Building the Track Record
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             We've adapted our institutional vision into an agile, deployable fund focused on Pre-Seed ClimateTech innovators. Through a strategic partnership with Equivesto, we deploy capital directly to founders.
@@ -70,9 +74,11 @@ const CatalystFund = () => (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {equivesto.map((item) => (
             <SectionReveal key={item.title}>
-              <div className="rounded-xl border bg-card p-6">
-                <item.icon className="h-5 w-5 text-accent" />
-                <h3 className="mt-3 font-display text-lg font-semibold">{item.title}</h3>
+              <div className="rounded-xl border bg-card p-6 card-hover">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+                  <item.icon className="h-5 w-5 text-accent" />
+                </div>
+                <h3 className="mt-3 font-display text-lg font-bold">{item.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{item.desc}</p>
               </div>
             </SectionReveal>
@@ -187,9 +193,10 @@ const CatalystFund = () => (
             { value: "$6B", label: "AI-powered climate solutions raised in 9 months of 2024" },
           ].map((s) => (
             <SectionReveal key={s.label}>
-              <div className="rounded-xl border bg-card p-6">
+              <div className="relative overflow-hidden rounded-xl border bg-card p-6 card-hover">
+                <div className="absolute inset-x-0 top-0 h-1 hero-gradient opacity-60" />
                 <TrendingUp className="h-5 w-5 text-accent" />
-                <p className="mt-3 font-display text-2xl font-semibold">{s.value}</p>
+                <p className="mt-3 font-display text-2xl font-bold text-primary">{s.value}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{s.label}</p>
               </div>
             </SectionReveal>
