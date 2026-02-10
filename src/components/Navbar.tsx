@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-lg">
-      <nav className="container flex h-16 items-center justify-between">
+      <nav className="container flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="BlackTech Capital" className="h-10 w-auto" />
         </Link>
