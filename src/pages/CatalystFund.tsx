@@ -27,7 +27,7 @@ const stats = [
 
 const terms = [
   ["Fund Size", "$500K–$2M (flexible, minimum first close $500K)"],
-  ["Number of Investments", "6 companies (at $500K fund size)"],
+  ["Number of Investments", "6 companies"],
   ["Investment Range", "$50K to $250K per company"],
   ["Stage", "Pre-Seed exclusively"],
   ["Geography", "Canada for all new investments"],
