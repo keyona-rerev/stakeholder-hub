@@ -34,7 +34,8 @@
     --input: 210 18% 90%;
     --ring: 195 85% 35%;
 
-    --radius: 0.75rem;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -79,6 +80,9 @@
     --border: 210 25% 18%;
     --input: 210 25% 18%;
     --ring: 195 85% 45%;
+
+    --warning: 38 80% 55%;
+    --warning-foreground: 0 0% 100%;
 
     --accent-soft: 195 40% 15%;
   }

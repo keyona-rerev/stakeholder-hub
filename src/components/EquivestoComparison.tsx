@@ -1,99 +1,101 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, XCircle, ChevronDown, DollarSign, Shield, Users, FileText, BarChart3, Scale } from "lucide-react";
+import { CheckCircle2, XCircle, ChevronDown, DollarSign, Shield, Users, FileText, BarChart3, Scale, MinusCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+type Availability = "full" | "partial" | "none";
 
 interface ComparisonRow {
   service: string;
   equivesto: string;
   tradAdmin: string;
   advantage: string;
-  equivesoAvailable: boolean;
-  tradAvailable: boolean;
+  equivesoAvailable: Availability;
+  tradAvailable: Availability;
 }
 
 const services: ComparisonRow[] = [
   {
-    service: "KYP Due Diligence",
-    equivesto: "Full scope verification: Management Team, Legal & Compliance, Product, Financial projections.",
+    service: "Know Your Product (KYP) Due Diligence",
+    equivesto: "Know Your Product (KYP) — Full scope verification of BTC: Management Team, Legal & Compliance, Product viability, and Financial projections.",
     tradAdmin: "Not typically offered by Fund Admin.",
     advantage: "Full compliance review handled — BTC never faces gaps in product due diligence.",
-    equivesoAvailable: true,
-    tradAvailable: false,
+    equivesoAvailable: "full",
+    tradAvailable: "none",
   },
   {
     service: "Marketing Support & Compliance",
     equivesto: "Fundraising strategy support + regulatory compliance review enabled by EMD status.",
     tradAdmin: "Service NOT available.",
     advantage: "Compliant advertised fundraising — impossible without an EMD partner.",
-    equivesoAvailable: true,
-    tradAvailable: false,
+    equivesoAvailable: "full",
+    tradAvailable: "none",
   },
   {
-    service: "KYC Investor Onboarding",
-    equivesto: "Full KYC including suitability assessment, accredited investor verification, and document collection.",
-    tradAdmin: "Would be handled by BTC's management team — not their area of expertise.",
+    service: "Know Your Client (KYC) Investor Onboarding",
+    equivesto: "Full Know Your Client (KYC) including investor suitability assessment, accredited investor verification, and document collection.",
+    tradAdmin: "Fund Admin would only handle onboarding and portal without KYC. KYC suitability assessments would remain BTC's responsibility.",
     advantage: "Compliance risk removed from BTC. No liability if errors occur in investor onboarding.",
-    equivesoAvailable: true,
-    tradAvailable: false,
+    equivesoAvailable: "full",
+    tradAvailable: "partial",
   },
   {
     service: "GP & LP Legal Formation",
     equivesto: "GP formed by and owned by Equivesto. LP and LPA template created by Equivesto's legal team.",
     tradAdmin: "Would require BTC's external legal team — part of $100K+ org expenses.",
     advantage: "One fewer entity to manage; lower organizational costs.",
-    equivesoAvailable: true,
-    tradAvailable: false,
+    equivesoAvailable: "full",
+    tradAvailable: "none",
   },
   {
     service: "LP Fund Holding & Escrow",
     equivesto: "Funds held in EMD's segregated trust account. Released only per LPA terms.",
     tradAdmin: "Not available — BTC would manage its own bank accounts.",
     advantage: "LPs benefit from third-party fund security. Management fees guaranteed annually.",
-    equivesoAvailable: true,
-    tradAvailable: false,
+    equivesoAvailable: "full",
+    tradAvailable: "none",
   },
   {
     service: "Annual Financial Statements",
     equivesto: "Unaudited annual statements for both GP and LP prepared internally.",
-    tradAdmin: "Typically requires a separate fund accountant fee.",
+    tradAdmin: "Provided and would typically require a separate fund accountant fee.",
     advantage: "Lower annual costs. BTC commits to audits on exits if externally covered.",
-    equivesoAvailable: true,
-    tradAvailable: false,
+    equivesoAvailable: "full",
+    tradAvailable: "full",
   },
   {
     service: "Tax Filings (T5013, Corp Taxes)",
     equivesto: "T5013 LP tax forms and GP corporation annual taxes filed and distributed.",
     tradAdmin: "Typically a separate fee from the fund accountant.",
     advantage: "Included in Equivesto's fee structure — no additional annual line item.",
-    equivesoAvailable: true,
-    tradAvailable: false,
+    equivesoAvailable: "full",
+    tradAvailable: "none",
   },
   {
     service: "Annual Investor Communications",
     equivesto: "Annual LP meeting + quarterly updates from BTC.",
     tradAdmin: "Similar service available.",
     advantage: "Quarterly communications from BTC give LPs superior transparency.",
-    equivesoAvailable: true,
-    tradAvailable: true,
+    equivesoAvailable: "full",
+    tradAvailable: "full",
   },
   {
     service: "Fund Dissolution",
     equivesto: "Final disbursements, official LP and GP dissolution handled by Equivesto.",
     tradAdmin: "Requires separate accountant and legal fees.",
     advantage: "Lower end-of-fund costs; streamlined closure.",
-    equivesoAvailable: true,
-    tradAvailable: false,
+    equivesoAvailable: "full",
+    tradAvailable: "none",
   },
 ];
 
 const costRows = [
   { label: "GP/LP Formation & KYP", equivesto: "$11K (one-time)", trad: "Part of $100K+ org. expenses" },
-  { label: "EMD, KYC & Portal Fees", equivesto: "2.5% of funds (max $50K)", trad: "Not available" },
-  { label: "Annual Fund Admin", equivesto: "No annual fee", trad: "$20K–$35K/yr ($200K–$350K over 10 yrs)" },
+  { label: "EMD, KYC & Portal Fees", equivesto: "2.5% of funds (max $50K)", trad: "Portal only — KYC not available" },
+  { label: "Annual Fund Admin", equivesto: "No annual fee + 1% of fund profits", trad: "$20K–$35K/yr ($200K–$350K over 10 yrs)" },
   { label: "Annual Tax Filings", equivesto: "Included", trad: "$6K–$15K/yr ($60K–$150K over 10 yrs)" },
   { label: "Fund Dissolution", equivesto: "Included", trad: "$15K–$40K" },
-  { label: "Total Estimated Cost", equivesto: "~$130K (medium scenario)", trad: "$475K–$640K", highlight: true },
+  { label: "Total Estimated Cost", equivesto: "~$190K (medium scenario)", trad: "$375K–$650K", highlight: true },
 ];
 
 const categories = [
@@ -221,15 +223,19 @@ const EquivestoComparison = () => {
                         <span className="font-medium text-foreground">{row.service}</span>
                       </div>
                       <div className="flex justify-start">
-                        {row.equivesoAvailable ? (
+                        {row.equivesoAvailable === "full" ? (
                           <CheckCircle2 className="h-5 w-5 text-accent" />
+                        ) : row.equivesoAvailable === "partial" ? (
+                          <MinusCircle className="h-5 w-5 text-warning" />
                         ) : (
                           <XCircle className="h-5 w-5 text-muted-foreground/30" />
                         )}
                       </div>
                       <div className="flex justify-start">
-                        {row.tradAvailable ? (
+                        {row.tradAvailable === "full" ? (
                           <CheckCircle2 className="h-5 w-5 text-muted-foreground" />
+                        ) : row.tradAvailable === "partial" ? (
+                          <MinusCircle className="h-5 w-5 text-warning" />
                         ) : (
                           <XCircle className="h-5 w-5 text-destructive/40" />
                         )}
@@ -279,7 +285,11 @@ const EquivestoComparison = () => {
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <XCircle className="h-4 w-4 text-destructive/50" />
-                <span className="text-muted-foreground"><span className="font-semibold text-foreground">7/9</span> services NOT available from Trad. Admin</span>
+                <span className="text-muted-foreground"><span className="font-semibold text-foreground">6/9</span> services NOT available from Trad. Admin</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <MinusCircle className="h-4 w-4 text-warning" />
+                <span className="text-muted-foreground"><span className="font-semibold text-foreground">1 partial</span> service from Trad. Admin</span>
               </div>
             </div>
           </motion.div>
@@ -299,9 +309,9 @@ const EquivestoComparison = () => {
                   <DollarSign className="h-5 w-5" />
                   <span className="text-xs font-semibold uppercase tracking-widest">Equivesto</span>
                 </div>
-                <p className="mt-3 font-display text-4xl font-bold text-foreground">~$130K</p>
+                <p className="mt-3 font-display text-4xl font-bold text-foreground">~$190K</p>
                 <p className="mt-1 text-sm text-muted-foreground">Estimated 10-year total (medium scenario)</p>
-                <p className="mt-3 text-xs text-muted-foreground">$11K upfront + 2.5% of funds raised (max $50K) + 1% of profits</p>
+                <p className="mt-3 text-xs text-muted-foreground">$11K upfront + 2.5% of funds raised (max $50K) + 1% of fund profits (est. $130K)</p>
               </div>
               <div className="relative overflow-hidden rounded-xl border bg-card p-6 opacity-70">
                 <div className="absolute inset-x-0 top-0 h-1 bg-muted-foreground/20" />
@@ -309,7 +319,7 @@ const EquivestoComparison = () => {
                   <DollarSign className="h-5 w-5" />
                   <span className="text-xs font-semibold uppercase tracking-widest">Traditional Fund Admin</span>
                 </div>
-                <p className="mt-3 font-display text-4xl font-bold text-foreground">$475K–$640K</p>
+                <p className="mt-3 font-display text-4xl font-bold text-foreground">$375K–$650K</p>
                 <p className="mt-1 text-sm text-muted-foreground">Estimated 10-year total cost</p>
                 <p className="mt-3 text-xs text-muted-foreground">$100K+ org expenses + $20K–$35K/yr admin + $6K–$15K/yr tax</p>
               </div>
@@ -321,7 +331,7 @@ const EquivestoComparison = () => {
                 <DollarSign className="h-5 w-5 text-accent" />
               </div>
               <div>
-                <p className="font-semibold text-foreground">Estimated savings of $345K–$510K over the fund life</p>
+                <p className="font-semibold text-foreground">Estimated savings of $185K–$460K over the fund life</p>
                 <p className="text-sm text-muted-foreground">Capital that goes directly to founders and LP returns instead of administration.</p>
               </div>
             </div>
