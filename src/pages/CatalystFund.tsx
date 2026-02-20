@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, DollarSign, Lock, Users, Zap, Settings, TrendingUp, Download } from "lucide-react";
+import { ArrowRight, TrendingUp, Download } from "lucide-react";
 import SectionReveal from "@/components/SectionReveal";
 import StatBar from "@/components/StatBar";
+import EquivestoComparison from "@/components/EquivestoComparison";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 import bryanDuarte from "@/assets/team/bryan-duarte.jpg";
@@ -23,14 +24,6 @@ const stats = [
   { value: "$10K", label: "LP Minimum" },
 ];
 
-const equivesto = [
-  { icon: Shield, title: "Compliant Advertised Fundraising", desc: "OSC-licensed administrator enables legitimate advertising of the Catalyst Fund while maintaining full regulatory compliance." },
-  { icon: DollarSign, title: "Lower Setup Costs", desc: "Setup capped at $25K + 2.5% of funds raised (vs. $100K+ traditionally), meaning more capital deployed to founders." },
-  { icon: Lock, title: "3rd-Party Escrow", desc: "Investor funds held in third-party escrow, providing additional security and transparency for limited partners." },
-  { icon: Users, title: "Opportunity Access", desc: "$10K LP minimum (vs. $100K in Fund I) opens the door to a broader base of impact-focused investors." },
-  { icon: Zap, title: "Higher Deployable Capital", desc: "Leaner cost structure means a higher percentage of capital goes directly to portfolio companies." },
-  { icon: Settings, title: "Operational Efficiency", desc: "Streamlined fund administration allows us to focus on what matters: finding and supporting exceptional founders." },
-];
 
 const terms = [
   ["Fund Size", "$500K–$2M (flexible, minimum first close $500K)"],
@@ -118,19 +111,9 @@ const CatalystFund = () => (
             A structural advantage that changes the game for smaller funds. Our partnership with Equivesto, an OSC-licensed Exempt Market Dealer, is a core structural advantage.
           </p>
         </SectionReveal>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {equivesto.map((item) => (
-            <SectionReveal key={item.title}>
-              <div className="rounded-xl border bg-card p-6 card-hover">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
-                  <item.icon className="h-5 w-5 text-accent" />
-                </div>
-                <h3 className="mt-3 font-display text-lg font-bold">{item.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.desc}</p>
-              </div>
-            </SectionReveal>
-          ))}
-        </div>
+        <SectionReveal>
+          <EquivestoComparison />
+        </SectionReveal>
       </div>
     </section>
 
