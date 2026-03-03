@@ -1,60 +1,34 @@
 
 
-# BlackTech Capital — Site Redesign
+# Catalyst Fund Pitch Deck — Presentation Mode
 
-A modern, minimal redesign of your fund's stakeholder site with clean typography, generous white space, and a professional feel inspired by sites like Stripe and Linear.
+## Approach
 
----
+Build a standalone presentation page at `/catalyst-deck` that renders a fullscreen, slide-based pitch deck using the existing Catalyst Fund content. It lives as a separate route — not embedded in the main site nav — so you can share the URL directly or present it in meetings.
 
-## Pages & Structure
+## Slide Structure (approx. 8–10 slides)
 
-### 1. Homepage (Overview)
-- **Hero section** with bold headline, tagline, and two CTAs (Catalyst Fund / Fund I) on a clean white or very light background — no heavy gradient overlay
-- **"Two Funds, One Mission"** section with a brief narrative and two side-by-side comparison cards (Fund I vs Catalyst Fund) showing key stats (target size, stage, LP minimum, status)
-- **Leadership section** with clean avatar cards for Bryan and Keyona with titles and one-liner descriptions
-- Smooth scroll animations as sections come into view
+1. **Title Slide** — BlackTech Capital logo, "Catalyst Fund", tagline, date
+2. **The Problem** — Market gap: underrepresented founders in ClimateTech lack early-stage capital
+3. **Our Thesis** — ClimateTech focus areas, Pre-Seed stage, Canada geography
+4. **Fund Strategy: Two Funds, One Mission** — The one comparison slide: Fund I ($15M blueprint, paused) vs Catalyst Fund ($500K–$2M, active now), framing Catalyst as the tactical execution of the institutional thesis
+5. **Fund Overview** — Key terms: size, check size, 6 companies, LP minimum, management fee, carry
+6. **Equivesto Advantage** — Structural partnership, cost savings ($190K vs $375K–$650K), services comparison highlights
+7. **Market Opportunity** — $150B ClimateTech VC by 2032, growth stats
+8. **Team** — Leadership + Investment Committee + Advisory highlights (photos where available)
+9. **Track Record** — Bryan and Keyona's deal history, WEF recognition
+10. **Contact / CTA** — How to get involved, contact info
 
-### 2. Catalyst Fund
-- Clean stat bar at the top ($500K–$2M, Pre-Seed, Through 2026, $10K min)
-- **Equivesto Partnership** section with icon-driven feature cards (compliant fundraising, lower costs, escrow, access)
-- **Investment strategy** details: thesis areas, check sizes, portfolio construction
-- **Fund terms** comparison table (management fee, carry, deployment timeline)
-- Clear CTA to contact / express interest
+## Technical Implementation
 
-### 3. Fund I
-- Stat bar (same style as Catalyst page) — $15M, 4 years, Pre-Seed to Seed, On Pause
-- **Original Vision** narrative section
-- **"From Blueprint to Build"** callout explaining the strategic pause
-- Bullet points on shared thesis, team, and values
-- Fund structure details and terms table
+- **New page**: `src/pages/CatalystDeck.tsx` — fullscreen slide presentation
+- **Scaling**: Fixed 1920×1080 slide canvas, scaled via CSS `transform: scale()` to fit viewport
+- **Navigation**: Arrow keys, click, swipe. Slide counter in bottom corner. ESC to exit back to site
+- **Route**: `/catalyst-deck` added to App.tsx, rendered WITHOUT the Navbar/Footer wrapper
+- **Design**: Dark background (matching hero aesthetic), clean typography, accent color highlights, team photos
+- **No external dependencies** — built with existing Framer Motion + Tailwind + Lucide icons
 
-### 4. Opportunities (Pipeline / Thesis)
-- Visual overview of ClimateTech focus areas
-- Target founder profile and investment criteria
-- Any pipeline or portfolio highlights
+## Where It Lives
 
-### 5. Contact
-- Simple, clean contact section with key contact info and/or a mailto link
-- No backend needed — just static contact details or a mailto button
-
----
-
-## Design System
-- **Color palette**: Primarily white/light gray backgrounds, dark navy text, with a single accent color (teal or gold) for highlights and CTAs
-- **Typography**: Large, confident headings with a modern sans-serif font feel
-- **Cards & sections**: Subtle borders or light shadows, rounded corners, plenty of padding
-- **Navigation**: Clean top navbar with the BlackTech Capital wordmark on the left, page links on the right, and a highlighted "Contact" button
-
----
-
-## What stays the same
-- All existing content and copy from the current site
-- The 5-page structure (Overview, Catalyst Fund, Fund I, Opportunities, Contact)
-- Static, read-only — no login or backend required
-
-## What changes
-- Completely redesigned visual look — modern, minimal, and polished
-- Better visual hierarchy and spacing
-- Responsive mobile-friendly layout
-- Subtle entrance animations for a premium feel
+A hidden route (`/catalyst-deck`) not in the navbar. You'd navigate to it directly or link from an internal page. Optionally, a small "View Deck" button could be added to the Catalyst Fund page.
 
