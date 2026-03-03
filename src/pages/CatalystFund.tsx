@@ -258,6 +258,11 @@ const CatalystFund = () => (
                 <Download className="mr-1 h-4 w-4" /> Fund One-Pager
               </a>
             </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link to="/catalyst-deck">
+                View Pitch Deck <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </SectionReveal>
       </div>
