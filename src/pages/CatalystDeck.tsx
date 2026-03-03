@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, X, ChevronRight, CheckCircle2, XCircle, TrendingUp, Mail } from "lucide-react";
+import { ArrowLeft, ArrowRight, X, ChevronRight, CheckCircle2, XCircle, TrendingUp, Mail, Download } from "lucide-react";
 
 import logo from "@/assets/logo.png";
 import bryanDuarte from "@/assets/team/bryan-duarte.jpg";
@@ -61,7 +61,10 @@ function TitleSlide() {
           <div className="absolute -top-1/3 -right-1/4 h-[800px] w-[800px] rounded-full bg-[hsl(195,85%,35%)] blur-[200px]" />
           <div className="absolute -bottom-1/4 -left-1/4 h-[600px] w-[600px] rounded-full bg-[hsl(200,75%,30%)] blur-[180px]" />
         </div>
-        <img src={logo} alt="BlackTech Capital" className="relative z-10 mb-12 h-20" />
+        {/* Light logo container */}
+        <div className="relative z-10 mb-12 rounded-2xl bg-white/95 px-10 py-6 shadow-[0_8px_40px_-8px_hsl(195,85%,35%/0.25)]">
+          <img src={logo} alt="BlackTech Capital" className="h-16" />
+        </div>
         <h1 className="relative z-10 text-[72px] font-bold leading-tight tracking-tight text-white">
           The <span className="bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)] bg-clip-text text-transparent">Catalyst Fund</span>
         </h1>
@@ -85,13 +88,40 @@ function ProblemSlide() {
         </h2>
         <div className="mt-16 grid max-w-[1400px] grid-cols-3 gap-12">
           {[
-            { stat: "<2%", desc: "of VC funding goes to Black founders in clean energy" },
+            { stat: "<1%", desc: "of VC funding goes to Black founders across all industries" },
             { stat: "$150B", desc: "ClimateTech VC market projected by 2032" },
             { stat: "Pre-Seed", desc: "is the most underserved stage — where impact begins" },
           ].map((item) => (
             <div key={item.stat} className="border-l-2 border-[hsl(195,85%,35%)/30] pl-8">
               <p className="text-[48px] font-bold text-[hsl(195,85%,50%)]">{item.stat}</p>
               <p className="mt-3 text-[22px] leading-relaxed text-white/60">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+function MarketSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Market Opportunity</p>
+        <h2 className="max-w-[1000px] text-[52px] font-bold leading-[1.15] text-white">
+          The largest capital reallocation in <span className="text-[hsl(195,85%,50%)]">human history</span>
+        </h2>
+        <div className="mt-16 grid max-w-[1400px] grid-cols-4 gap-8">
+          {[
+            { value: "$150B", label: "ClimateTech VC market by 2032" },
+            { value: "10%", label: "Climate tech's share of total VC (up from 7%)" },
+            { value: "$7.6B", label: "VC in US clean energy in 2024" },
+            { value: "$6B", label: "AI-climate solutions raised in 9 months" },
+          ].map((s) => (
+            <div key={s.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <TrendingUp className="h-6 w-6 text-[hsl(195,85%,50%)]" />
+              <p className="mt-4 text-[44px] font-bold text-white">{s.value}</p>
+              <p className="mt-2 text-[18px] leading-relaxed text-white/50">{s.label}</p>
             </div>
           ))}
         </div>
@@ -186,7 +216,7 @@ function FundOverviewSlide() {
     ["LP Minimum", "$10K"],
     ["Mgmt Fee", "~2% avg (4%→2%→1%)"],
     ["Carry", "20%"],
-    ["Hurdle", "7%"],
+    ["Hurdle Rate", "7%"],
     ["Fund Life", "10 years + 2 ext."],
   ];
   return (
@@ -257,33 +287,6 @@ function EquivestoSlide() {
               <p className="text-[14px] text-white/50">Goes to founders & LP returns</p>
             </div>
           </div>
-        </div>
-      </div>
-    </ScaledSlide>
-  );
-}
-
-function MarketSlide() {
-  return (
-    <ScaledSlide>
-      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
-        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Market Opportunity</p>
-        <h2 className="max-w-[1000px] text-[52px] font-bold leading-[1.15] text-white">
-          The largest capital reallocation in <span className="text-[hsl(195,85%,50%)]">human history</span>
-        </h2>
-        <div className="mt-16 grid max-w-[1400px] grid-cols-4 gap-8">
-          {[
-            { value: "$150B", label: "ClimateTech VC market by 2032" },
-            { value: "10%", label: "Climate tech's share of total VC (up from 7%)" },
-            { value: "$7.6B", label: "VC in US clean energy in 2024" },
-            { value: "$6B", label: "AI-climate solutions raised in 9 months" },
-          ].map((s) => (
-            <div key={s.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-              <TrendingUp className="h-6 w-6 text-[hsl(195,85%,50%)]" />
-              <p className="mt-4 text-[44px] font-bold text-white">{s.value}</p>
-              <p className="mt-2 text-[18px] leading-relaxed text-white/50">{s.label}</p>
-            </div>
-          ))}
         </div>
       </div>
     </ScaledSlide>
@@ -383,7 +386,10 @@ function ContactSlide() {
         <div className="absolute inset-0 opacity-15">
           <div className="absolute -bottom-1/3 -right-1/4 h-[700px] w-[700px] rounded-full bg-[hsl(195,85%,35%)] blur-[200px]" />
         </div>
-        <img src={logo} alt="BlackTech Capital" className="relative z-10 mb-10 h-16" />
+        {/* Light logo container */}
+        <div className="relative z-10 mb-10 rounded-2xl bg-white/95 px-8 py-5 shadow-[0_8px_40px_-8px_hsl(195,85%,35%/0.25)]">
+          <img src={logo} alt="BlackTech Capital" className="h-12" />
+        </div>
         <h2 className="relative z-10 text-[56px] font-bold text-white">Let's Build the Future Together</h2>
         <p className="relative z-10 mt-6 max-w-[700px] text-[24px] text-white/60">
           Interested in the Catalyst Fund? We'd love to connect.
@@ -401,7 +407,8 @@ function ContactSlide() {
 }
 
 /* ── Main Deck Component ── */
-const slides = [TitleSlide, ProblemSlide, ThesisSlide, StrategySlide, FundOverviewSlide, EquivestoSlide, MarketSlide, TeamSlide, TrackRecordSlide, ContactSlide];
+/* Order: Title, Problem, Market (moved to 3), Thesis, Strategy, Fund Overview, Equivesto, Team, Track Record, Contact */
+const slides = [TitleSlide, ProblemSlide, MarketSlide, ThesisSlide, StrategySlide, FundOverviewSlide, EquivestoSlide, TeamSlide, TrackRecordSlide, ContactSlide];
 
 export default function CatalystDeck() {
   const [current, setCurrent] = useState(0);
@@ -466,6 +473,17 @@ export default function CatalystDeck() {
           <ArrowRight className="h-5 w-5" />
         </button>
         <span className="ml-2 text-[13px] text-white/40">{current + 1}/{slides.length}</span>
+        {/* Download button */}
+        <a
+          href="/pdfs/catalyst-fund-one-pager.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="ml-1 text-white/60 hover:text-white transition-opacity"
+          title="Download One-Pager"
+        >
+          <Download className="h-4 w-4" />
+        </a>
       </div>
 
       {/* Exit button */}
