@@ -72,7 +72,7 @@ function TitleSlide() {
           Proving the thesis. Building the track record. Deploying capital to ClimateTech's next generation.
         </p>
         <div className="relative z-10 mt-12 h-1 w-32 rounded-full bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)]" />
-        <p className="relative z-10 mt-6 text-[18px] tracking-widest text-white/40">CONFIDENTIAL · 2025</p>
+        <p className="relative z-10 mt-6 text-[18px] tracking-widest text-white/40">CONFIDENTIAL · 2026</p>
       </div>
     </ScaledSlide>
   );
@@ -295,49 +295,58 @@ function EquivestoSlide() {
 
 function TeamSlide() {
   const leadership = [
-    { name: "Bryan Duarte", role: "Managing Partner", img: bryanDuarte },
-    { name: "Keyona Meeks", role: "General Partner", img: keyonaMeeks },
+    { name: "Bryan Duarte", role: "Managing Partner", img: bryanDuarte, linkedin: "https://www.linkedin.com/in/bryanduarte/" },
+    { name: "Keyona Meeks", role: "General Partner", img: keyonaMeeks, linkedin: "https://www.linkedin.com/in/keyonameeks/" },
   ];
   const ic = [
-    { name: "Allison Gibson", role: "Investment Readiness", img: allisonGibson },
-    { name: "Bryan Watson", role: "CleanTech / Finance", img: bryanWatson },
-    { name: "John Nicholson", role: "Environmental Expert", img: johnNicholson },
-    { name: "Melissa Allen", role: "Finance Leader", img: melissaAllen },
+    { name: "Allison Gibson", role: "Investment Readiness", img: allisonGibson, linkedin: "https://www.linkedin.com/in/allisongibson/" },
+    { name: "Bryan Watson", role: "CleanTech / Finance", img: bryanWatson, linkedin: "https://www.linkedin.com/in/bryanwatson/" },
+    { name: "John Nicholson", role: "Environmental Expert", img: johnNicholson, linkedin: "https://www.linkedin.com/in/johnnicholson/" },
+    { name: "Melissa Allen", role: "Finance Leader", img: melissaAllen, linkedin: "https://www.linkedin.com/in/melissaallen/" },
   ];
   const advisory = [
-    { name: "Lindsey Motlow", role: "Energy Research", img: lindseyMotlow },
-    { name: "Marlon Thompson", role: "Founder / Investor", img: marlonThompson },
-    { name: "Nicholas Parker", role: "Cleantech Pioneer", img: nicholasParker },
-    { name: "Jade Lockard", role: "Fundraising Strategy", img: jadeLockard },
+    { name: "Lindsey Motlow", role: "Energy Research", img: lindseyMotlow, linkedin: "https://www.linkedin.com/in/lindseymotlow/" },
+    { name: "Marlon Thompson", role: "Founder / Investor", img: marlonThompson, linkedin: "https://www.linkedin.com/in/marlonthompson/" },
+    { name: "Nicholas Parker", role: "Cleantech Pioneer", img: nicholasParker, linkedin: "https://www.linkedin.com/in/nicholasparker/" },
+    { name: "Jade Lockard", role: "Fundraising Strategy", img: jadeLockard, linkedin: "https://www.linkedin.com/in/jadelockard/" },
   ];
 
-  const PersonCard = ({ p, size = "lg" }: { p: { name: string; role: string; img: string }; size?: "lg" | "sm" }) => (
-    <div className="flex flex-col items-center text-center">
-      <img src={p.img} alt={p.name} className={`rounded-full object-cover ring-2 ring-[hsl(195,85%,35%)/30] ${size === "lg" ? "h-24 w-24" : "h-16 w-16"}`} />
-      <p className={`mt-3 font-semibold text-white ${size === "lg" ? "text-[20px]" : "text-[16px]"}`}>{p.name}</p>
-      <p className={`text-[hsl(195,85%,50%)] ${size === "lg" ? "text-[16px]" : "text-[13px]"}`}>{p.role}</p>
-    </div>
+  type Person = { name: string; role: string; img: string; linkedin: string };
+
+  const PersonCard = ({ p, size = "lg" }: { p: Person; size?: "lg" | "sm" }) => (
+    <a
+      href={p.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      className="group flex flex-col items-center text-center transition-transform hover:scale-105"
+    >
+      <img src={p.img} alt={p.name} className={`rounded-full object-cover ring-2 ring-[hsl(195,85%,35%)/30] group-hover:ring-[hsl(195,85%,50%)] transition-all ${size === "lg" ? "h-[100px] w-[100px]" : "h-20 w-20"}`} />
+      <p className={`mt-3 font-semibold text-white group-hover:text-[hsl(195,85%,50%)] transition-colors ${size === "lg" ? "text-[20px]" : "text-[17px]"}`}>{p.name}</p>
+      <p className={`text-[hsl(195,85%,50%)] ${size === "lg" ? "text-[15px]" : "text-[13px]"}`}>{p.role}</p>
+    </a>
   );
 
   return (
     <ScaledSlide>
-      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-24">
         <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Our Team</p>
-        <h2 className="text-[52px] font-bold text-white">Leadership & Advisors</h2>
-        <div className="mt-12 space-y-12">
+        <h2 className="text-[48px] font-bold text-white">Leadership & Advisors</h2>
+        <div className="mt-10 space-y-10 max-w-[1700px]">
           <div>
-            <p className="mb-6 text-[14px] font-semibold uppercase tracking-widest text-white/40">Executive Leadership</p>
-            <div className="flex gap-16">{leadership.map((p) => <PersonCard key={p.name} p={p} size="lg" />)}</div>
+            <p className="mb-5 text-[14px] font-semibold uppercase tracking-widest text-white/40">Executive Leadership</p>
+            <div className="flex gap-20">{leadership.map((p) => <PersonCard key={p.name} p={p} size="lg" />)}</div>
           </div>
           <div>
-            <p className="mb-6 text-[14px] font-semibold uppercase tracking-widest text-white/40">Investment Committee</p>
-            <div className="flex gap-12">{ic.map((p) => <PersonCard key={p.name} p={p} size="sm" />)}</div>
+            <p className="mb-5 text-[14px] font-semibold uppercase tracking-widest text-white/40">Investment Committee</p>
+            <div className="grid grid-cols-4 gap-10">{ic.map((p) => <PersonCard key={p.name} p={p} size="sm" />)}</div>
           </div>
           <div>
-            <p className="mb-6 text-[14px] font-semibold uppercase tracking-widest text-white/40">Advisory Committee</p>
-            <div className="flex gap-12">{advisory.map((p) => <PersonCard key={p.name} p={p} size="sm" />)}</div>
+            <p className="mb-5 text-[14px] font-semibold uppercase tracking-widest text-white/40">Advisory Committee</p>
+            <div className="grid grid-cols-4 gap-10">{advisory.map((p) => <PersonCard key={p.name} p={p} size="sm" />)}</div>
           </div>
         </div>
+        <p className="mt-8 text-[14px] text-white/30">Click any team member to view their LinkedIn profile</p>
       </div>
     </ScaledSlide>
   );
