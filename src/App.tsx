@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Index from "./pages/Index";
 import CatalystFund from "./pages/CatalystFund";
+import CatalystDeck from "./pages/CatalystDeck";
 import FundI from "./pages/FundI";
 import Opportunities from "./pages/Opportunities";
 import Contact from "./pages/Contact";
@@ -20,20 +21,28 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <div className="flex-1">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/catalyst-fund" element={<CatalystFund />} />
-              <Route path="/fund-i" element={<FundI />} />
-              <Route path="/opportunities" element={<Opportunities />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
-          <Footer />
-        </div>
+        <Routes>
+          <Route path="/catalyst-deck" element={<CatalystDeck />} />
+          <Route
+            path="*"
+            element={
+              <div className="flex min-h-screen flex-col">
+                <Navbar />
+                <div className="flex-1">
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/catalyst-fund" element={<CatalystFund />} />
+                    <Route path="/fund-i" element={<FundI />} />
+                    <Route path="/opportunities" element={<Opportunities />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </div>
+                <Footer />
+              </div>
+            }
+          />
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
