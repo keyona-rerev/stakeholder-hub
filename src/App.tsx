@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Index from "./pages/Index";
 import CatalystFund from "./pages/CatalystFund";
 import CatalystDeck from "./pages/CatalystDeck";
+import FoundationDeck from "./pages/FoundationDeck";
 import FundI from "./pages/FundI";
 import Opportunities from "./pages/Opportunities";
 import Contact from "./pages/Contact";
@@ -23,6 +24,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/catalyst-deck" element={<CatalystDeck />} />
+          <Route path="/foundation-deck" element={<FoundationDeck />} />
           <Route
             path="*"
             element={
