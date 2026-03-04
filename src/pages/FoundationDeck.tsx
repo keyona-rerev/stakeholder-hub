@@ -1,0 +1,776 @@
+import { useState, useEffect, useCallback, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowLeft, ArrowRight, X, ChevronRight, CheckCircle2, XCircle,
+  TrendingUp, Mail, Download, AlertTriangle, Shield, Megaphone,
+  Building2, Scale, Leaf
+} from "lucide-react";
+
+import logo from "@/assets/logo.png";
+import bryanDuarte from "@/assets/team/bryan-duarte.jpg";
+import keyonaMeeks from "@/assets/team/keyona-meeks.jpg";
+import allisonGibson from "@/assets/team/allison-gibson.jpg";
+import bryanWatson from "@/assets/team/bryan-watson.jpg";
+import johnNicholson from "@/assets/team/john-nicholson.jpg";
+import melissaAllen from "@/assets/team/melissa-allen.jpg";
+import lindseyMotlow from "@/assets/team/lindsey-motlow.jpg";
+import marlonThompson from "@/assets/team/marlon-thompson.jpg";
+import nicholasParker from "@/assets/team/nicholas-parker.jpg";
+import jadeLockard from "@/assets/team/jade-lockard.jpg";
+
+/* ── Scaled slide wrapper ── */
+function ScaledSlide({ children }: { children: React.ReactNode }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const resize = () => {
+      if (!containerRef.current) return;
+      const parent = containerRef.current.parentElement!;
+      const sx = parent.clientWidth / 1920;
+      const sy = parent.clientHeight / 1080;
+      setScale(Math.min(sx, sy));
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 flex items-center justify-center overflow-hidden">
+      <div
+        className="slide-content"
+        style={{
+          width: 1920,
+          height: 1080,
+          transform: `scale(${scale})`,
+          transformOrigin: "center center",
+          position: "absolute",
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 1 — Title
+   ══════════════════════════════════════════════════════ */
+function TitleSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col items-center justify-center bg-[hsl(210,40%,6%)] px-40 text-center">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute -top-1/3 -right-1/4 h-[800px] w-[800px] rounded-full bg-[hsl(195,85%,35%)] blur-[200px]" />
+          <div className="absolute -bottom-1/4 -left-1/4 h-[600px] w-[600px] rounded-full bg-[hsl(200,75%,30%)] blur-[180px]" />
+        </div>
+        <div className="relative z-10 mb-12 rounded-2xl bg-white/95 px-10 py-6 shadow-[0_8px_40px_-8px_hsl(195,85%,35%/0.25)]">
+          <img src={logo} alt="BlackTech Capital" className="h-16" />
+        </div>
+        <h1 className="relative z-10 text-[72px] font-bold leading-tight tracking-tight text-white">
+          Investing at the Intersection of{" "}
+          <span className="bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)] bg-clip-text text-transparent">
+            Impact & Market
+          </span>
+        </h1>
+        <p className="relative z-10 mt-6 max-w-[900px] text-[28px] leading-relaxed text-white/70">
+          Building sustainable impact through market-aligned architecture.
+        </p>
+        <div className="relative z-10 mt-12 h-1 w-32 rounded-full bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)]" />
+        <p className="relative z-10 mt-6 text-[18px] tracking-widest text-white/40">CONFIDENTIAL · 2026</p>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 2 — The Landscape
+   ══════════════════════════════════════════════════════ */
+function LandscapeSlide() {
+  const columns = [
+    {
+      icon: <Scale className="h-8 w-8" />,
+      title: "Regulations Shift",
+      body: "Impact-driven policies change with every new administration. What's mandated today is rolled back tomorrow.",
+      example: "Paris Agreement withdrawal, ESG disclosure rollbacks, shifting clean energy subsidies",
+    },
+    {
+      icon: <Building2 className="h-8 w-8" />,
+      title: "Corporate Pledges Are Seasonal",
+      body: "Companies make commitments when convenient and abandon them when margins tighten.",
+      example: "Fortune 500 DEI budget cuts of 40%+ in 2023–2024, abandoned net-zero timelines",
+    },
+    {
+      icon: <Megaphone className="h-8 w-8" />,
+      title: "Boards Drop Values Fast",
+      body: "When impact was never core to the business model, boards discard it at the first sign of pressure.",
+      example: "ESG fund closures, corporate sustainability team layoffs, abandoned diversity targets",
+    },
+  ];
+
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
+          The Landscape
+        </p>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          The state of <span className="text-[hsl(195,85%,50%)]">impact</span> today
+        </h2>
+        <p className="mt-4 max-w-[900px] text-[22px] text-white/60">
+          Impact initiatives built on goodwill alone are fragile by design.
+        </p>
+        <div className="mt-14 grid max-w-[1500px] grid-cols-3 gap-10">
+          {columns.map((col) => (
+            <div key={col.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-10">
+              <div className="text-[hsl(38,80%,55%)]">{col.icon}</div>
+              <h3 className="mt-5 text-[24px] font-semibold text-white">{col.title}</h3>
+              <p className="mt-3 text-[19px] leading-relaxed text-white/60">{col.body}</p>
+              <p className="mt-5 border-t border-white/10 pt-4 text-[15px] italic text-white/40">{col.example}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 3 — The Fragility Problem
+   ══════════════════════════════════════════════════════ */
+function FragilitySlide() {
+  const pillars = [
+    {
+      label: "Regulation",
+      icon: <Scale className="h-10 w-10" />,
+      stat: "180°",
+      desc: "Policy reversals per administration cycle",
+      quote: "What one government mandates, the next dismantles.",
+    },
+    {
+      label: "Corporate Pledges",
+      icon: <Building2 className="h-10 w-10" />,
+      stat: "40%+",
+      desc: "DEI & sustainability budget cuts (2023–24)",
+      quote: "Pledges made in press releases, broken in board rooms.",
+    },
+    {
+      label: "PR-Driven Impact",
+      icon: <Megaphone className="h-10 w-10" />,
+      stat: "68%",
+      desc: "Of ESG funds underperformed in 2023",
+      quote: "When impact is marketing, it's the first line item cut.",
+    },
+  ];
+
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(38,80%,55%)]">
+          The Fragility Problem
+        </p>
+        <h2 className="max-w-[1100px] text-[52px] font-bold leading-[1.15] text-white">
+          Three pillars of impact — all <span className="text-[hsl(38,80%,55%)]">unstable</span>
+        </h2>
+        <div className="mt-14 grid max-w-[1500px] grid-cols-3 gap-10">
+          {pillars.map((p) => (
+            <div key={p.label} className="relative overflow-hidden rounded-2xl border border-[hsl(38,80%,55%)/20] bg-[hsl(38,80%,55%)/5] p-10">
+              {/* Crack decoration */}
+              <div className="absolute top-0 right-0 h-24 w-24 opacity-10">
+                <AlertTriangle className="h-24 w-24 text-[hsl(38,80%,55%)]" />
+              </div>
+              <div className="text-[hsl(38,80%,55%)]">{p.icon}</div>
+              <h3 className="mt-5 text-[22px] font-semibold text-white">{p.label}</h3>
+              <p className="mt-6 text-[52px] font-bold text-[hsl(38,80%,55%)]">{p.stat}</p>
+              <p className="mt-1 text-[17px] text-white/50">{p.desc}</p>
+              <p className="mt-6 border-t border-white/10 pt-5 text-[17px] italic leading-relaxed text-white/50">
+                "{p.quote}"
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 4 — The Architecture Principle
+   ══════════════════════════════════════════════════════ */
+function ArchitectureSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col items-center justify-center bg-[hsl(210,40%,6%)] px-40 text-center">
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute top-1/4 left-1/3 h-[600px] w-[600px] rounded-full bg-[hsl(195,85%,35%)] blur-[200px]" />
+        </div>
+        <Shield className="relative z-10 h-16 w-16 text-[hsl(195,85%,50%)]" />
+        <h2 className="relative z-10 mt-8 max-w-[1200px] text-[56px] font-bold leading-[1.15] text-white">
+          Impact initiatives must be built for{" "}
+          <span className="bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)] bg-clip-text text-transparent">
+            market-driven success
+          </span>{" "}
+          from the jump.
+        </h2>
+        <div className="relative z-10 mt-12 h-1 w-32 rounded-full bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)]" />
+        <p className="relative z-10 mt-10 max-w-[900px] text-[26px] leading-relaxed text-white/60">
+          When market incentives and impact outcomes are aligned, even actors
+          without your values are incentivized to sustain the work.
+        </p>
+        <div className="relative z-10 mt-14 grid max-w-[1200px] grid-cols-2 gap-8">
+          <div className="rounded-2xl border border-[hsl(38,80%,55%)/20] bg-[hsl(38,80%,55%)/5] p-8 text-left">
+            <p className="text-[14px] font-semibold uppercase tracking-widest text-[hsl(38,80%,55%)]">Goodwill-Dependent Impact</p>
+            <p className="mt-3 text-[20px] text-white/50">Survives only as long as champions remain. Fragile to political cycles, leadership changes, and market pressure.</p>
+          </div>
+          <div className="rounded-2xl border border-[hsl(195,85%,35%)/30] bg-[hsl(195,85%,35%)/5] p-8 text-left">
+            <p className="text-[14px] font-semibold uppercase tracking-widest text-[hsl(195,85%,50%)]">Market-Aligned Impact</p>
+            <p className="mt-3 text-[20px] text-white/70">Self-sustaining. Everyone — allies and non-allies — is incentivized to maintain it because it drives market success.</p>
+          </div>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 5 — What This Means in Practice
+   ══════════════════════════════════════════════════════ */
+function PracticeSlide() {
+  const points = [
+    {
+      title: "Survives Political Cycles",
+      desc: "When a company's climate solution is also its most profitable product line, no administration change can defund it.",
+    },
+    {
+      title: "Survives Board Turnover",
+      desc: "New board members don't cut what drives revenue. Impact embedded in the business model is protected by fiduciary duty.",
+    },
+    {
+      title: "Survives Market Pressure",
+      desc: "In downturns, companies cut costs — but they don't cut their core value proposition. Market-aligned impact IS the value proposition.",
+    },
+    {
+      title: "Creates Natural Momentum",
+      desc: "Customers, partners, and investors all push in the same direction — not because they share your values, but because it's good business.",
+    },
+  ];
+
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
+          In Practice
+        </p>
+        <h2 className="max-w-[1100px] text-[52px] font-bold leading-[1.15] text-white">
+          Companies that solve real market problems{" "}
+          <span className="text-[hsl(195,85%,50%)]">and</span> deliver impact
+        </h2>
+        <p className="mt-4 max-w-[900px] text-[22px] text-white/60">
+          create natural momentum that is genuinely unstoppable.
+        </p>
+        <div className="mt-14 grid max-w-[1500px] grid-cols-2 gap-8">
+          {points.map((p) => (
+            <div key={p.title} className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <CheckCircle2 className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
+              <div>
+                <h3 className="text-[22px] font-semibold text-white">{p.title}</h3>
+                <p className="mt-2 text-[18px] leading-relaxed text-white/60">{p.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 6 — Why ClimateTech
+   ══════════════════════════════════════════════════════ */
+function WhyClimateTechSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
+          Why ClimateTech
+        </p>
+        <h2 className="max-w-[1100px] text-[52px] font-bold leading-[1.15] text-white">
+          Where market and impact alignment is{" "}
+          <span className="text-[hsl(195,85%,50%)]">strongest</span>
+        </h2>
+        <p className="mt-4 max-w-[900px] text-[22px] text-white/60">
+          ClimateTech is the defining sector of our thesis — structural tailwinds make it impossible to ignore.
+        </p>
+        <div className="mt-14 grid max-w-[1400px] grid-cols-4 gap-8">
+          {[
+            { value: "$150B", label: "ClimateTech VC market projected by 2032" },
+            { value: "10%", label: "Climate tech's share of total VC (up from 7%)" },
+            { value: "$7.6B", label: "VC in US clean energy in 2024" },
+            { value: "$6B", label: "AI-climate solutions raised in 9 months" },
+          ].map((s) => (
+            <div key={s.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <TrendingUp className="h-6 w-6 text-[hsl(195,85%,50%)]" />
+              <p className="mt-4 text-[44px] font-bold text-white">{s.value}</p>
+              <p className="mt-2 text-[18px] leading-relaxed text-white/50">{s.label}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 rounded-xl bg-[hsl(195,85%,35%)/10] px-8 py-5 max-w-[1400px]">
+          <p className="text-[20px] text-white/70">
+            <Leaf className="mr-2 inline h-5 w-5 text-[hsl(170,60%,45%)]" />
+            ClimateTech companies don't just do good — they <span className="font-semibold text-white">capture massive markets</span>. That's the architecture principle in action.
+          </p>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 7 — The Gap
+   ══════════════════════════════════════════════════════ */
+function GapSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">The Gap</p>
+        <h2 className="max-w-[1200px] text-[56px] font-bold leading-[1.15] text-white">
+          Underrepresented founders lack access to{" "}
+          <span className="text-[hsl(195,85%,50%)]">early-stage capital</span>
+        </h2>
+        <div className="mt-16 grid max-w-[1400px] grid-cols-3 gap-12">
+          {[
+            { stat: "<1%", desc: "of VC funding goes to Black founders across all industries" },
+            { stat: "Pre-Seed", desc: "is the most underserved stage — where impact begins" },
+            { stat: "Canada", desc: "Untapped cleantech ecosystem with structural advantages and diverse talent" },
+          ].map((item) => (
+            <div key={item.stat} className="border-l-2 border-[hsl(195,85%,35%)/30] pl-8">
+              <p className="text-[48px] font-bold text-[hsl(195,85%,50%)]">{item.stat}</p>
+              <p className="mt-3 text-[22px] leading-relaxed text-white/60">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 8 — Our Approach
+   ══════════════════════════════════════════════════════ */
+function ApproachSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Our Approach</p>
+        <h2 className="max-w-[1100px] text-[52px] font-bold leading-[1.15] text-white">
+          Back underrepresented founders building{" "}
+          <span className="text-[hsl(195,85%,50%)]">ClimateTech solutions</span> at the earliest stage
+        </h2>
+        <div className="mt-16 grid max-w-[1400px] grid-cols-3 gap-10">
+          {[
+            { title: "ClimateTech Focus", items: ["Clean Energy", "Sustainable Materials", "Carbon Tech", "Climate Adaptation"] },
+            { title: "Pre-Seed Stage", items: ["First institutional check", "$50K–$250K investments", "Highest impact per dollar", "Portfolio of 6 companies"] },
+            { title: "Canada Geography", items: ["Growing cleantech ecosystem", "Government incentive alignment", "Diverse founder talent pool", "Strategic market positioning"] },
+          ].map((col) => (
+            <div key={col.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-10">
+              <h3 className="mb-6 text-[24px] font-semibold text-[hsl(195,85%,50%)]">{col.title}</h3>
+              <ul className="space-y-4">
+                {col.items.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-[20px] text-white/70">
+                    <ChevronRight className="h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 9 — Fund Strategy
+   ══════════════════════════════════════════════════════ */
+function StrategySlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Fund Strategy</p>
+        <h2 className="text-[52px] font-bold text-white">
+          Strategic Momentum, <span className="text-[hsl(195,85%,50%)]">Deliberate Execution</span>
+        </h2>
+        <p className="mt-4 max-w-[900px] text-[22px] text-white/60">
+          We took a strategic pause from Fund I to build momentum and a track record via the Catalyst Fund — deploying fully in 2026.
+        </p>
+        <div className="mt-14 grid grid-cols-2 gap-10 max-w-[1400px]">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-10 opacity-60">
+            <div className="mb-4 inline-block rounded-full bg-white/10 px-5 py-1.5 text-[14px] font-semibold text-white/60">STRATEGIC PAUSE</div>
+            <h3 className="text-[36px] font-bold text-white">Fund I</h3>
+            <p className="mt-2 text-[20px] text-white/50">The institutional blueprint — $15M target</p>
+            <div className="mt-8 space-y-4">
+              {["$15M target fund size", "Institutional LP base", "Full portfolio construction", "Long-term institutional vehicle"].map((item) => (
+                <p key={item} className="flex items-center gap-3 text-[20px] text-white/40">
+                  <span className="h-2 w-2 rounded-full bg-white/20" />
+                  {item}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div className="relative rounded-2xl border-2 border-[hsl(195,85%,35%)/40] bg-[hsl(195,85%,35%)/5] p-10">
+            <div className="absolute -top-px -right-px rounded-bl-xl rounded-tr-2xl bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)] px-5 py-1.5 text-[14px] font-bold text-white">
+              DEPLOYING 2026
+            </div>
+            <h3 className="text-[36px] font-bold text-[hsl(195,85%,50%)]">Catalyst Fund</h3>
+            <p className="mt-2 text-[20px] text-white/70">Building the track record</p>
+            <div className="mt-8 space-y-4">
+              {[
+                "$500K–$2M flexible fund size",
+                "Accessible LP minimums ($10K)",
+                "6 Pre-Seed investments",
+                "Equivesto partnership for efficiency",
+                "Building track record for Fund I",
+              ].map((item) => (
+                <p key={item} className="flex items-center gap-3 text-[20px] text-white/80">
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
+                  {item}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 10 — Catalyst Fund Overview
+   ══════════════════════════════════════════════════════ */
+function FundOverviewSlide() {
+  const terms = [
+    ["Fund Size", "$500K–$2M"],
+    ["Investments", "6 companies"],
+    ["Check Size", "$50K–$250K"],
+    ["Stage", "Pre-Seed"],
+    ["Geography", "Canada"],
+    ["LP Minimum", "$10K"],
+    ["Mgmt Fee", "~2% avg (4%→2%→1%)"],
+    ["Carry", "20%"],
+    ["Hurdle Rate", "7%"],
+    ["Fund Life", "10 years + 2 ext."],
+  ];
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Catalyst Fund</p>
+        <h2 className="text-[52px] font-bold text-white">Key Terms</h2>
+        <div className="mt-14 grid max-w-[1400px] grid-cols-2 gap-x-16 gap-y-6">
+          {terms.map(([k, v]) => (
+            <div key={k} className="flex items-baseline justify-between border-b border-white/10 pb-4">
+              <span className="text-[22px] text-white/60">{k}</span>
+              <span className="text-[24px] font-semibold text-white">{v}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 11 — Equivesto
+   ══════════════════════════════════════════════════════ */
+function EquivestoSlide() {
+  const services = [
+    { name: "KYP Due Diligence", eq: true, trad: false },
+    { name: "Marketing & Compliance", eq: true, trad: false },
+    { name: "KYC Investor Onboarding", eq: true, trad: "partial" as const },
+    { name: "GP & LP Legal Formation", eq: true, trad: false },
+    { name: "LP Fund Holding & Escrow", eq: true, trad: false },
+    { name: "Annual Financial Statements", eq: true, trad: true },
+    { name: "Tax Filings", eq: true, trad: false },
+    { name: "Investor Communications", eq: true, trad: true },
+    { name: "Fund Dissolution", eq: true, trad: false },
+  ];
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Structural Advantage</p>
+        <h2 className="text-[48px] font-bold text-white">The Equivesto Partnership</h2>
+        <p className="mt-3 max-w-[800px] text-[20px] text-white/60">OSC-licensed Exempt Market Dealer — unlocking services unavailable to traditional fund admins.</p>
+        <div className="mt-10 flex gap-12 max-w-[1500px]">
+          <div className="flex-1 space-y-3">
+            <div className="grid grid-cols-[1fr_80px_80px] gap-2 pb-2 text-[14px] font-semibold uppercase tracking-widest text-white/40">
+              <span>Service</span><span className="text-center text-[hsl(195,85%,50%)]">Equivesto</span><span className="text-center">Trad.</span>
+            </div>
+            {services.map((s) => (
+              <div key={s.name} className="grid grid-cols-[1fr_80px_80px] items-center gap-2 rounded-lg bg-white/[0.03] px-4 py-3">
+                <span className="text-[18px] text-white/80">{s.name}</span>
+                <span className="flex justify-center">{s.eq ? <CheckCircle2 className="h-5 w-5 text-[hsl(195,85%,50%)]" /> : <XCircle className="h-5 w-5 text-white/20" />}</span>
+                <span className="flex justify-center">
+                  {s.trad === true ? <CheckCircle2 className="h-5 w-5 text-white/40" /> : s.trad === "partial" ? <span className="text-[14px] text-[hsl(38,80%,55%)]">Partial</span> : <XCircle className="h-5 w-5 text-red-400/40" />}
+                </span>
+              </div>
+            ))}
+            <p className="pt-2 text-[16px] text-white/40">6/9 NOT available + 1 partial from Trad. Admin</p>
+          </div>
+          <div className="w-[400px] space-y-6 pt-8">
+            <div className="rounded-2xl border border-[hsl(195,85%,35%)/30] bg-[hsl(195,85%,35%)/5] p-8">
+              <p className="text-[14px] font-semibold uppercase tracking-widest text-[hsl(195,85%,50%)]">Equivesto</p>
+              <p className="mt-2 text-[48px] font-bold text-white">~$190K</p>
+              <p className="text-[16px] text-white/50">10-year total (medium scenario)</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 opacity-60">
+              <p className="text-[14px] font-semibold uppercase tracking-widest text-white/50">Traditional Admin</p>
+              <p className="mt-2 text-[48px] font-bold text-white">$375K–$650K</p>
+              <p className="text-[16px] text-white/50">10-year total</p>
+            </div>
+            <div className="rounded-xl bg-[hsl(195,85%,35%)/10] px-6 py-4 text-center">
+              <p className="text-[22px] font-bold text-[hsl(195,85%,50%)]">$185K–$460K saved</p>
+              <p className="text-[14px] text-white/50">Goes to founders & LP returns</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 12 — Team & Advisors
+   ══════════════════════════════════════════════════════ */
+function TeamSlide() {
+  const leadership = [
+    { name: "Bryan Duarte", role: "Managing Partner", img: bryanDuarte, linkedin: "https://www.linkedin.com/in/bryanduarte/" },
+    { name: "Keyona Meeks", role: "General Partner", img: keyonaMeeks, linkedin: "https://www.linkedin.com/in/keyonameeks/" },
+  ];
+  const ic = [
+    { name: "Allison Gibson", role: "Investment Readiness", img: allisonGibson, linkedin: "https://www.linkedin.com/in/allisongibson/" },
+    { name: "Bryan Watson", role: "CleanTech / Finance", img: bryanWatson, linkedin: "https://www.linkedin.com/in/bryanwatson/" },
+    { name: "John Nicholson", role: "Environmental Expert", img: johnNicholson, linkedin: "https://www.linkedin.com/in/johnnicholson/" },
+    { name: "Melissa Allen", role: "Finance Leader", img: melissaAllen, linkedin: "https://www.linkedin.com/in/melissaallen/" },
+  ];
+  const advisory = [
+    { name: "Lindsey Motlow", role: "Energy Research", img: lindseyMotlow, linkedin: "https://www.linkedin.com/in/lindseymotlow/" },
+    { name: "Marlon Thompson", role: "Founder / Investor", img: marlonThompson, linkedin: "https://www.linkedin.com/in/marlonthompson/" },
+    { name: "Nicholas Parker", role: "Cleantech Pioneer", img: nicholasParker, linkedin: "https://www.linkedin.com/in/nicholasparker/" },
+    { name: "Jade Lockard", role: "Fundraising Strategy", img: jadeLockard, linkedin: "https://www.linkedin.com/in/jadelockard/" },
+  ];
+
+  type Person = { name: string; role: string; img: string; linkedin: string };
+
+  const PersonCard = ({ p, size = "lg" }: { p: Person; size?: "lg" | "sm" }) => (
+    <a
+      href={p.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      className="group flex flex-col items-center text-center transition-transform hover:scale-105"
+    >
+      <img src={p.img} alt={p.name} className={`rounded-full object-cover ring-2 ring-[hsl(195,85%,35%)/30] group-hover:ring-[hsl(195,85%,50%)] transition-all ${size === "lg" ? "h-[100px] w-[100px]" : "h-20 w-20"}`} />
+      <p className={`mt-3 font-semibold text-white group-hover:text-[hsl(195,85%,50%)] transition-colors ${size === "lg" ? "text-[20px]" : "text-[17px]"}`}>{p.name}</p>
+      <p className={`text-[hsl(195,85%,50%)] ${size === "lg" ? "text-[15px]" : "text-[13px]"}`}>{p.role}</p>
+    </a>
+  );
+
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-24">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Our Team</p>
+        <h2 className="text-[48px] font-bold text-white">Leadership & Advisors</h2>
+        <div className="mt-10 space-y-10 max-w-[1700px]">
+          <div>
+            <p className="mb-5 text-[14px] font-semibold uppercase tracking-widest text-white/40">Executive Leadership</p>
+            <div className="flex gap-20">{leadership.map((p) => <PersonCard key={p.name} p={p} size="lg" />)}</div>
+          </div>
+          <div>
+            <p className="mb-5 text-[14px] font-semibold uppercase tracking-widest text-white/40">Investment Committee</p>
+            <div className="grid grid-cols-4 gap-10">{ic.map((p) => <PersonCard key={p.name} p={p} size="sm" />)}</div>
+          </div>
+          <div>
+            <p className="mb-5 text-[14px] font-semibold uppercase tracking-widest text-white/40">Advisory Committee</p>
+            <div className="grid grid-cols-4 gap-10">{advisory.map((p) => <PersonCard key={p.name} p={p} size="sm" />)}</div>
+          </div>
+        </div>
+        <p className="mt-8 text-[14px] text-white/30">Click any team member to view their LinkedIn profile</p>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 13 — Track Record
+   ══════════════════════════════════════════════════════ */
+function TrackRecordSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Track Record</p>
+        <h2 className="text-[52px] font-bold text-white">Proven Experience</h2>
+        <div className="mt-14 grid max-w-[1400px] grid-cols-2 gap-12">
+          <div className="flex gap-6 rounded-2xl border border-white/10 bg-white/[0.03] p-10">
+            <img src={bryanDuarte} alt="Bryan Duarte" className="h-20 w-20 shrink-0 rounded-full object-cover ring-2 ring-[hsl(195,85%,35%)/30]" />
+            <div>
+              <p className="text-[24px] font-semibold text-white">Bryan Duarte</p>
+              <p className="mt-1 text-[16px] text-[hsl(195,85%,50%)]">Managing Partner</p>
+              <p className="mt-4 text-[18px] leading-relaxed text-white/60">
+                5x Entrepreneur with 3 Exits (8x and 10x EBITDA). 30+ years energy industry. CleanTech EIR, Techstars advisor, Founder of Enliten.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-6 rounded-2xl border border-white/10 bg-white/[0.03] p-10">
+            <img src={keyonaMeeks} alt="Keyona Meeks" className="h-20 w-20 shrink-0 rounded-full object-cover ring-2 ring-[hsl(195,85%,35%)/30]" />
+            <div>
+              <p className="text-[24px] font-semibold text-white">Keyona Meeks</p>
+              <p className="mt-1 text-[16px] text-[hsl(195,85%,50%)]">General Partner</p>
+              <p className="mt-4 text-[18px] leading-relaxed text-white/60">
+                10 deal attributions at Bronze Valley including wildwonder (Inc. 5000 #109), Brevity ($2M AI platform), Grovara ($8.75M marketplace). SXSW Judge.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-10 rounded-xl bg-[hsl(195,85%,35%)/10] px-8 py-5 max-w-[1400px]">
+          <p className="text-[20px] text-white/80">🏆 WEF (UpLink) Top Innovative Fund selection 2022 · Pro-rata co-investment opportunities available to LPs</p>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 14 — Contact / CTA
+   ══════════════════════════════════════════════════════ */
+function ContactSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col items-center justify-center bg-[hsl(210,40%,6%)] px-40 text-center">
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute -bottom-1/3 -right-1/4 h-[700px] w-[700px] rounded-full bg-[hsl(195,85%,35%)] blur-[200px]" />
+        </div>
+        <div className="relative z-10 mb-10 rounded-2xl bg-white/95 px-8 py-5 shadow-[0_8px_40px_-8px_hsl(195,85%,35%/0.25)]">
+          <img src={logo} alt="BlackTech Capital" className="h-12" />
+        </div>
+        <h2 className="relative z-10 text-[56px] font-bold text-white">Partner With Us</h2>
+        <p className="relative z-10 mt-6 max-w-[750px] text-[24px] text-white/60">
+          Join us in building impact that's architected for permanence — not dependent on the next election, the next board meeting, or the next news cycle.
+        </p>
+        <div className="relative z-10 mt-12 flex items-center gap-8">
+          <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-8 py-5">
+            <Mail className="h-6 w-6 text-[hsl(195,85%,50%)]" />
+            <span className="text-[22px] text-white">info@blacktechcapital.com</span>
+          </div>
+        </div>
+        <p className="relative z-10 mt-16 text-[16px] tracking-widest text-white/30">CONFIDENTIAL · FOR QUALIFIED INVESTORS ONLY</p>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ── Main Deck Component ── */
+const slides = [
+  TitleSlide,       // 1
+  LandscapeSlide,   // 2
+  FragilitySlide,   // 3
+  ArchitectureSlide,// 4
+  PracticeSlide,    // 5
+  WhyClimateTechSlide, // 6
+  GapSlide,         // 7
+  ApproachSlide,    // 8
+  StrategySlide,    // 9
+  FundOverviewSlide,// 10
+  EquivestoSlide,   // 11
+  TeamSlide,        // 12
+  TrackRecordSlide, // 13
+  ContactSlide,     // 14
+];
+
+export default function FoundationDeck() {
+  const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
+
+  const go = useCallback(
+    (dir: 1 | -1) => {
+      setCurrent((c) => Math.max(0, Math.min(slides.length - 1, c + dir)));
+    },
+    []
+  );
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); go(1); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
+      else if (e.key === "Escape") navigate("/");
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [go, navigate]);
+
+  const SlideComponent = slides[current];
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-[hsl(210,40%,6%)] select-none"
+      onClick={(e) => {
+        const x = e.clientX / window.innerWidth;
+        if (x > 0.65) go(1);
+        else if (x < 0.35) go(-1);
+      }}
+    >
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          className="absolute inset-0"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -40 }}
+          transition={{ duration: 0.3 }}
+        >
+          <SlideComponent />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Navigation bar */}
+      <div className="absolute bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-4 rounded-full border border-white/10 bg-black/60 px-5 py-2.5 backdrop-blur-md">
+        <button onClick={() => go(-1)} disabled={current === 0} className="text-white/60 hover:text-white disabled:opacity-30 transition-opacity">
+          <ArrowLeft className="h-5 w-5" />
+        </button>
+        <div className="flex gap-1.5">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
+              className={`h-1.5 rounded-full transition-all ${i === current ? "w-6 bg-[hsl(195,85%,50%)]" : "w-1.5 bg-white/20 hover:bg-white/40"}`}
+            />
+          ))}
+        </div>
+        <button onClick={() => go(1)} disabled={current === slides.length - 1} className="text-white/60 hover:text-white disabled:opacity-30 transition-opacity">
+          <ArrowRight className="h-5 w-5" />
+        </button>
+        <span className="ml-2 text-[13px] text-white/40">{current + 1}/{slides.length}</span>
+        <a
+          href="/pdfs/catalyst-fund-one-pager.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="ml-1 text-white/60 hover:text-white transition-opacity"
+          title="Download One-Pager"
+        >
+          <Download className="h-4 w-4" />
+        </a>
+      </div>
+
+      {/* Exit button */}
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-5 right-5 z-50 rounded-full border border-white/10 bg-black/40 p-2 text-white/50 backdrop-blur hover:text-white transition-colors"
+      >
+        <X className="h-5 w-5" />
+      </button>
+    </div>
+  );
+}
