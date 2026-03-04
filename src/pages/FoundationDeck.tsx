@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft, ArrowRight, X, ChevronRight, CheckCircle2, XCircle,
   TrendingUp, Mail, Download, AlertTriangle, Shield, Megaphone,
-  Building2, Scale, Leaf
+  Building2, Scale, Leaf, Users, Handshake, Target, Rocket, Gem
 } from "lucide-react";
 
 import logo from "@/assets/logo.png";
@@ -86,82 +86,33 @@ function TitleSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 2 — The Landscape
+   SLIDE 2 — The Fragility of Impact (merged Landscape + Fragility)
    ══════════════════════════════════════════════════════ */
-function LandscapeSlide() {
-  const columns = [
+function FragilitySlide() {
+  const pillars = [
     {
       icon: <Scale className="h-8 w-8" />,
-      title: "Regulations Shift",
+      label: "Regulation",
+      stat: "180°",
+      statLabel: "Policy reversals per cycle",
       body: "Impact-driven policies change with every new administration. What's mandated today is rolled back tomorrow.",
       example: "Paris Agreement withdrawal, ESG disclosure rollbacks, shifting clean energy subsidies",
     },
     {
       icon: <Building2 className="h-8 w-8" />,
-      title: "Corporate Pledges Are Seasonal",
-      body: "Companies make commitments when convenient and abandon them when margins tighten.",
-      example: "Fortune 500 DEI budget cuts of 40%+ in 2023–2024, abandoned net-zero timelines",
+      label: "Corporate Pledges",
+      stat: "40%+",
+      statLabel: "DEI & sustainability cuts (2023–24)",
+      body: "Companies make commitments when convenient and abandon them when margins tighten or boards turn over.",
+      example: "Fortune 500 DEI budget cuts, abandoned net-zero timelines, ESG fund closures",
     },
     {
       icon: <Megaphone className="h-8 w-8" />,
-      title: "Boards Drop Values Fast",
-      body: "When impact was never core to the business model, boards discard it at the first sign of pressure.",
-      example: "ESG fund closures, corporate sustainability team layoffs, abandoned diversity targets",
-    },
-  ];
-
-  return (
-    <ScaledSlide>
-      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
-        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
-          The Landscape
-        </p>
-        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
-          The state of <span className="text-[hsl(195,85%,50%)]">impact</span> today
-        </h2>
-        <p className="mt-4 max-w-[900px] text-[22px] text-white/60">
-          Impact initiatives built on goodwill alone are fragile by design.
-        </p>
-        <div className="mt-14 grid max-w-[1500px] grid-cols-3 gap-10">
-          {columns.map((col) => (
-            <div key={col.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-10">
-              <div className="text-[hsl(38,80%,55%)]">{col.icon}</div>
-              <h3 className="mt-5 text-[24px] font-semibold text-white">{col.title}</h3>
-              <p className="mt-3 text-[19px] leading-relaxed text-white/60">{col.body}</p>
-              <p className="mt-5 border-t border-white/10 pt-4 text-[15px] italic text-white/40">{col.example}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </ScaledSlide>
-  );
-}
-
-/* ══════════════════════════════════════════════════════
-   SLIDE 3 — The Fragility Problem
-   ══════════════════════════════════════════════════════ */
-function FragilitySlide() {
-  const pillars = [
-    {
-      label: "Regulation",
-      icon: <Scale className="h-10 w-10" />,
-      stat: "180°",
-      desc: "Policy reversals per administration cycle",
-      quote: "What one government mandates, the next dismantles.",
-    },
-    {
-      label: "Corporate Pledges",
-      icon: <Building2 className="h-10 w-10" />,
-      stat: "40%+",
-      desc: "DEI & sustainability budget cuts (2023–24)",
-      quote: "Pledges made in press releases, broken in board rooms.",
-    },
-    {
       label: "PR-Driven Impact",
-      icon: <Megaphone className="h-10 w-10" />,
       stat: "68%",
-      desc: "Of ESG funds underperformed in 2023",
-      quote: "When impact is marketing, it's the first line item cut.",
+      statLabel: "ESG funds underperformed in 2023",
+      body: "When impact was never core to the business model, it's the first line item cut under pressure.",
+      example: "Corporate sustainability team layoffs, abandoned diversity targets, greenwashing scandals",
     },
   ];
 
@@ -169,25 +120,27 @@ function FragilitySlide() {
     <ScaledSlide>
       <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
         <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(38,80%,55%)]">
-          The Fragility Problem
+          The Problem
         </p>
-        <h2 className="max-w-[1100px] text-[52px] font-bold leading-[1.15] text-white">
-          Three pillars of impact — all <span className="text-[hsl(38,80%,55%)]">unstable</span>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          Impact built on goodwill is{" "}
+          <span className="text-[hsl(38,80%,55%)]">fragile by design</span>
         </h2>
-        <div className="mt-14 grid max-w-[1500px] grid-cols-3 gap-10">
+        <p className="mt-4 max-w-[1000px] text-[22px] text-white/60">
+          Regulations shift with administrations. Corporate pledges are seasonal. Boards drop ESG when it's inconvenient. None of these foundations are stable.
+        </p>
+        <div className="mt-12 grid max-w-[1500px] grid-cols-3 gap-10">
           {pillars.map((p) => (
-            <div key={p.label} className="relative overflow-hidden rounded-2xl border border-[hsl(38,80%,55%)/20] bg-[hsl(38,80%,55%)/5] p-10">
-              {/* Crack decoration */}
-              <div className="absolute top-0 right-0 h-24 w-24 opacity-10">
-                <AlertTriangle className="h-24 w-24 text-[hsl(38,80%,55%)]" />
+            <div key={p.label} className="relative overflow-hidden rounded-2xl border border-[hsl(38,80%,55%)/20] bg-[hsl(38,80%,55%)/5] p-8">
+              <div className="absolute top-4 right-4 opacity-10">
+                <AlertTriangle className="h-16 w-16 text-[hsl(38,80%,55%)]" />
               </div>
               <div className="text-[hsl(38,80%,55%)]">{p.icon}</div>
-              <h3 className="mt-5 text-[22px] font-semibold text-white">{p.label}</h3>
-              <p className="mt-6 text-[52px] font-bold text-[hsl(38,80%,55%)]">{p.stat}</p>
-              <p className="mt-1 text-[17px] text-white/50">{p.desc}</p>
-              <p className="mt-6 border-t border-white/10 pt-5 text-[17px] italic leading-relaxed text-white/50">
-                "{p.quote}"
-              </p>
+              <h3 className="mt-4 text-[22px] font-semibold text-white">{p.label}</h3>
+              <p className="mt-2 text-[18px] leading-relaxed text-white/60">{p.body}</p>
+              <p className="mt-5 text-[44px] font-bold text-[hsl(38,80%,55%)]">{p.stat}</p>
+              <p className="text-[15px] text-white/40">{p.statLabel}</p>
+              <p className="mt-4 border-t border-white/10 pt-3 text-[14px] italic text-white/35">{p.example}</p>
             </div>
           ))}
         </div>
@@ -197,7 +150,7 @@ function FragilitySlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 4 — The Architecture Principle
+   SLIDE 3 — The Architecture Principle (core thesis)
    ══════════════════════════════════════════════════════ */
 function ArchitectureSlide() {
   return (
@@ -214,12 +167,12 @@ function ArchitectureSlide() {
           </span>{" "}
           from the jump.
         </h2>
-        <div className="relative z-10 mt-12 h-1 w-32 rounded-full bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)]" />
-        <p className="relative z-10 mt-10 max-w-[900px] text-[26px] leading-relaxed text-white/60">
+        <div className="relative z-10 mt-10 h-1 w-32 rounded-full bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)]" />
+        <p className="relative z-10 mt-8 max-w-[950px] text-[26px] leading-relaxed text-white/60">
           When market incentives and impact outcomes are aligned, even actors
-          without your values are incentivized to sustain the work.
+          without your values are incentivized to sustain the work. That's how you build something genuinely unstoppable.
         </p>
-        <div className="relative z-10 mt-14 grid max-w-[1200px] grid-cols-2 gap-8">
+        <div className="relative z-10 mt-12 grid max-w-[1200px] grid-cols-2 gap-8">
           <div className="rounded-2xl border border-[hsl(38,80%,55%)/20] bg-[hsl(38,80%,55%)/5] p-8 text-left">
             <p className="text-[14px] font-semibold uppercase tracking-widest text-[hsl(38,80%,55%)]">Goodwill-Dependent Impact</p>
             <p className="mt-3 text-[20px] text-white/50">Survives only as long as champions remain. Fragile to political cycles, leadership changes, and market pressure.</p>
@@ -235,51 +188,59 @@ function ArchitectureSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 5 — What This Means in Practice
+   SLIDE 4 — Why Venture Capital
    ══════════════════════════════════════════════════════ */
-function PracticeSlide() {
-  const points = [
-    {
-      title: "Survives Political Cycles",
-      desc: "When a company's climate solution is also its most profitable product line, no administration change can defund it.",
-    },
-    {
-      title: "Survives Board Turnover",
-      desc: "New board members don't cut what drives revenue. Impact embedded in the business model is protected by fiduciary duty.",
-    },
-    {
-      title: "Survives Market Pressure",
-      desc: "In downturns, companies cut costs — but they don't cut their core value proposition. Market-aligned impact IS the value proposition.",
-    },
-    {
-      title: "Creates Natural Momentum",
-      desc: "Customers, partners, and investors all push in the same direction — not because they share your values, but because it's good business.",
-    },
-  ];
-
+function WhyVCSlide() {
   return (
     <ScaledSlide>
       <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
         <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
-          In Practice
+          Why Venture Capital
         </p>
-        <h2 className="max-w-[1100px] text-[52px] font-bold leading-[1.15] text-white">
-          Companies that solve real market problems{" "}
-          <span className="text-[hsl(195,85%,50%)]">and</span> deliver impact
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          The asset class built for{" "}
+          <span className="text-[hsl(195,85%,50%)]">outsized returns & alignment</span>
         </h2>
-        <p className="mt-4 max-w-[900px] text-[22px] text-white/60">
-          create natural momentum that is genuinely unstoppable.
+        <p className="mt-4 max-w-[1000px] text-[22px] text-white/60">
+          We chose venture capital explicitly because it manufactures exactly the architecture we're describing — when you're smart about it, it works.
         </p>
-        <div className="mt-14 grid max-w-[1500px] grid-cols-2 gap-8">
-          {points.map((p) => (
-            <div key={p.title} className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-              <CheckCircle2 className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
-              <div>
-                <h3 className="text-[22px] font-semibold text-white">{p.title}</h3>
-                <p className="mt-2 text-[18px] leading-relaxed text-white/60">{p.desc}</p>
-              </div>
+        <div className="mt-12 grid max-w-[1500px] grid-cols-2 gap-8">
+          <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+            <Rocket className="mt-1 h-8 w-8 shrink-0 text-[hsl(195,85%,50%)]" />
+            <div>
+              <h3 className="text-[22px] font-semibold text-white">Outsized Returns</h3>
+              <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                The market data shows serious innovation potential in climate and energy. Technology is constantly being developed — it's waiting for the right person at the right time. Our job is to find them.
+              </p>
             </div>
-          ))}
+          </div>
+          <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+            <Handshake className="mt-1 h-8 w-8 shrink-0 text-[hsl(195,85%,50%)]" />
+            <div>
+              <h3 className="text-[22px] font-semibold text-white">Natural Alignment</h3>
+              <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                Impact isn't just in the product — it's in how terms are structured. Equitable terms mean founders do what they do best: grow the company. We empower them to do so.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+            <Users className="mt-1 h-8 w-8 shrink-0 text-[hsl(195,85%,50%)]" />
+            <div>
+              <h3 className="text-[22px] font-semibold text-white">Founder Empowerment</h3>
+              <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                Venture is a powerful vehicle because the founder gets to do what they're best at — building and scaling — while we provide the capital, network, and strategic support to accelerate their success.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+            <Gem className="mt-1 h-8 w-8 shrink-0 text-[hsl(195,85%,50%)]" />
+            <div>
+              <h3 className="text-[22px] font-semibold text-white">Equitable Structure</h3>
+              <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                VC as an asset class, when done right, creates genuine win-win outcomes. The incentive structure ensures that supporting founders isn't charity — it's the highest-return strategy.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </ScaledSlide>
@@ -287,7 +248,166 @@ function PracticeSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 6 — Why ClimateTech
+   SLIDE 5 — The Market Gap
+   ══════════════════════════════════════════════════════ */
+function MarketGapSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">The Market Opportunity</p>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          Half the planet is{" "}
+          <span className="text-[hsl(195,85%,50%)]">systematically underfunded</span>
+        </h2>
+        <p className="mt-4 max-w-[1000px] text-[22px] text-white/60">
+          Women and people of color represent the majority of the global population. The funding gap isn't a social problem — it's a market inefficiency.
+        </p>
+        <div className="mt-14 grid max-w-[1400px] grid-cols-3 gap-12">
+          <div className="border-l-2 border-[hsl(195,85%,35%)/30] pl-8">
+            <p className="text-[56px] font-bold text-[hsl(195,85%,50%)]">&lt;1%</p>
+            <p className="mt-2 text-[22px] leading-relaxed text-white/60">of venture funding goes to Black founders in 2025</p>
+          </div>
+          <div className="border-l-2 border-[hsl(195,85%,35%)/30] pl-8">
+            <p className="text-[56px] font-bold text-[hsl(195,85%,50%)]">&lt;6%</p>
+            <p className="mt-2 text-[22px] leading-relaxed text-white/60">of VC funding goes to women-led teams</p>
+          </div>
+          <div className="border-l-2 border-[hsl(195,85%,35%)/30] pl-8">
+            <p className="text-[56px] font-bold text-[hsl(195,85%,50%)]">Pre-Seed</p>
+            <p className="mt-2 text-[22px] leading-relaxed text-white/60">is the most underserved stage — where impact begins</p>
+          </div>
+        </div>
+        <div className="mt-12 rounded-xl bg-[hsl(195,85%,35%)/10] px-8 py-6 max-w-[1400px]">
+          <p className="text-[21px] text-white/80">
+            The only thing separating these founders from world-changing success — in dollars <span className="italic">and</span> in carbon drawdown — isn't the strength of their ideas or the precision of the market opportunity.{" "}
+            <span className="font-semibold text-white">It's their ability to access private finance networks.</span>
+          </p>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 6 — What We Look For (Investment Criteria)
+   ══════════════════════════════════════════════════════ */
+function CriteriaSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
+          Investment Criteria
+        </p>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          We invest in <span className="text-[hsl(195,85%,50%)]">market innovations</span>,
+          not corporate compliance tools
+        </h2>
+        <p className="mt-4 max-w-[1000px] text-[22px] text-white/60">
+          It's not just about thesis fit. Every investment starts with three non-negotiables — because market-aligned impact demands genuine technical and commercial substance.
+        </p>
+        <div className="mt-12 grid max-w-[1500px] grid-cols-3 gap-10">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-10">
+            <Target className="h-8 w-8 text-[hsl(195,85%,50%)]" />
+            <h3 className="mt-5 text-[22px] font-semibold text-white">Technically Brilliant Team</h3>
+            <p className="mt-3 text-[18px] leading-relaxed text-white/60">
+              Deep domain expertise. The kind of founders who understand the science and the market — not just the pitch.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-10">
+            <TrendingUp className="h-8 w-8 text-[hsl(195,85%,50%)]" />
+            <h3 className="mt-5 text-[22px] font-semibold text-white">Substantial Market Innovation</h3>
+            <p className="mt-3 text-[18px] leading-relaxed text-white/60">
+              We don't invest in ESG dashboards — those are subject to corporate pledges and regulations that change. We invest in innovations that create irreversible market value.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-10">
+            <Leaf className="h-8 w-8 text-[hsl(195,85%,50%)]" />
+            <h3 className="mt-5 text-[22px] font-semibold text-white">Architecture Principle Alignment</h3>
+            <p className="mt-3 text-[18px] leading-relaxed text-white/60">
+              The impact must be embedded in the business model — inseparable from the company's commercial success.
+            </p>
+          </div>
+        </div>
+        <div className="mt-10 rounded-xl border border-[hsl(195,85%,35%)/20] bg-[hsl(195,85%,35%)/5] px-8 py-6 max-w-[1500px]">
+          <p className="text-[14px] font-semibold uppercase tracking-widest text-[hsl(195,85%,50%)] mb-2">Case Study: Mars Materials</p>
+          <p className="text-[19px] text-white/70">
+            Our first investment. Making supply chains that use acrylonitrile both{" "}
+            <span className="font-semibold text-white">more affordable and cleaner</span>. Potentially{" "}
+            <span className="font-semibold text-white">gigatons of carbon drawdown</span>{" "}
+            throughout their stakeholder network. That's market-aligned impact at scale.
+          </p>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 7 — Our Primary Strategy (Investor Introductions)
+   ══════════════════════════════════════════════════════ */
+function StrategyIntrosSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
+          Our Primary Strategy
+        </p>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          We help founders{" "}
+          <span className="text-[hsl(195,85%,50%)]">finish raising their rounds</span>
+        </h2>
+        <p className="mt-4 max-w-[1000px] text-[22px] text-white/60">
+          Investor introductions are our top priority when working with the most promising founders on the market. We take this seriously because we know the numbers.
+        </p>
+        <div className="mt-12 flex gap-10 max-w-[1500px]">
+          <div className="flex-1 space-y-6">
+            <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <Handshake className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
+              <div>
+                <h3 className="text-[22px] font-semibold text-white">Strategic Investor Introductions</h3>
+                <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                  We actively connect our portfolio founders with aligned investors, accelerators, and strategic partners to help them close their rounds.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <Users className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
+              <div>
+                <h3 className="text-[22px] font-semibold text-white">Network-First Approach</h3>
+                <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                  Venture capital itself isn't broken — when you're smart about it, it works. The gap is access. We bridge it.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <CheckCircle2 className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
+              <div>
+                <h3 className="text-[22px] font-semibold text-white">Pro-Rata Co-Investment</h3>
+                <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                  LP co-investment opportunities available for our strongest portfolio companies.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="w-[480px] flex flex-col justify-center">
+            <div className="rounded-2xl border border-[hsl(195,85%,35%)/20] bg-[hsl(195,85%,35%)/5] p-10">
+              <p className="text-[16px] font-semibold uppercase tracking-widest text-[hsl(195,85%,50%)] mb-6">Why This Matters</p>
+              <p className="text-[20px] leading-relaxed text-white/70">
+                These founders have the ideas, the technical brilliance, and the market opportunity. What they lack is access to private finance networks.
+              </p>
+              <p className="mt-6 text-[20px] leading-relaxed text-white/70">
+                We have a real bias towards action — when we find the right founders, we don't just write a check. We{" "}
+                <span className="font-semibold text-white">open every door we can.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 8 — Why ClimateTech
    ══════════════════════════════════════════════════════ */
 function WhyClimateTechSlide() {
   return (
@@ -301,7 +421,7 @@ function WhyClimateTechSlide() {
           <span className="text-[hsl(195,85%,50%)]">strongest</span>
         </h2>
         <p className="mt-4 max-w-[900px] text-[22px] text-white/60">
-          ClimateTech is the defining sector of our thesis — structural tailwinds make it impossible to ignore.
+          A plethora of technology is constantly being developed in climate and energy. It's our job to find the right people and determine if it's the right time.
         </p>
         <div className="mt-14 grid max-w-[1400px] grid-cols-4 gap-8">
           {[
@@ -329,74 +449,9 @@ function WhyClimateTechSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 7 — The Gap
+   SLIDE 9 — Fund Strategy (Fund I pause → Catalyst)
    ══════════════════════════════════════════════════════ */
-function GapSlide() {
-  return (
-    <ScaledSlide>
-      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
-        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">The Gap</p>
-        <h2 className="max-w-[1200px] text-[56px] font-bold leading-[1.15] text-white">
-          Underrepresented founders lack access to{" "}
-          <span className="text-[hsl(195,85%,50%)]">early-stage capital</span>
-        </h2>
-        <div className="mt-16 grid max-w-[1400px] grid-cols-3 gap-12">
-          {[
-            { stat: "<1%", desc: "of VC funding goes to Black founders across all industries" },
-            { stat: "Pre-Seed", desc: "is the most underserved stage — where impact begins" },
-            { stat: "Canada", desc: "Untapped cleantech ecosystem with structural advantages and diverse talent" },
-          ].map((item) => (
-            <div key={item.stat} className="border-l-2 border-[hsl(195,85%,35%)/30] pl-8">
-              <p className="text-[48px] font-bold text-[hsl(195,85%,50%)]">{item.stat}</p>
-              <p className="mt-3 text-[22px] leading-relaxed text-white/60">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </ScaledSlide>
-  );
-}
-
-/* ══════════════════════════════════════════════════════
-   SLIDE 8 — Our Approach
-   ══════════════════════════════════════════════════════ */
-function ApproachSlide() {
-  return (
-    <ScaledSlide>
-      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
-        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">Our Approach</p>
-        <h2 className="max-w-[1100px] text-[52px] font-bold leading-[1.15] text-white">
-          Back underrepresented founders building{" "}
-          <span className="text-[hsl(195,85%,50%)]">ClimateTech solutions</span> at the earliest stage
-        </h2>
-        <div className="mt-16 grid max-w-[1400px] grid-cols-3 gap-10">
-          {[
-            { title: "ClimateTech Focus", items: ["Clean Energy", "Sustainable Materials", "Carbon Tech", "Climate Adaptation"] },
-            { title: "Pre-Seed Stage", items: ["First institutional check", "$50K–$250K investments", "Highest impact per dollar", "Portfolio of 6 companies"] },
-            { title: "Canada Geography", items: ["Growing cleantech ecosystem", "Government incentive alignment", "Diverse founder talent pool", "Strategic market positioning"] },
-          ].map((col) => (
-            <div key={col.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-10">
-              <h3 className="mb-6 text-[24px] font-semibold text-[hsl(195,85%,50%)]">{col.title}</h3>
-              <ul className="space-y-4">
-                {col.items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-[20px] text-white/70">
-                    <ChevronRight className="h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </ScaledSlide>
-  );
-}
-
-/* ══════════════════════════════════════════════════════
-   SLIDE 9 — Fund Strategy
-   ══════════════════════════════════════════════════════ */
-function StrategySlide() {
+function FundStrategySlide() {
   return (
     <ScaledSlide>
       <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
@@ -449,7 +504,7 @@ function StrategySlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 10 — Catalyst Fund Overview
+   SLIDE 10 — Catalyst Fund Overview (Key Terms)
    ══════════════════════════════════════════════════════ */
 function FundOverviewSlide() {
   const terms = [
@@ -673,20 +728,20 @@ function ContactSlide() {
 
 /* ── Main Deck Component ── */
 const slides = [
-  TitleSlide,       // 1
-  LandscapeSlide,   // 2
-  FragilitySlide,   // 3
-  ArchitectureSlide,// 4
-  PracticeSlide,    // 5
-  WhyClimateTechSlide, // 6
-  GapSlide,         // 7
-  ApproachSlide,    // 8
-  StrategySlide,    // 9
-  FundOverviewSlide,// 10
-  EquivestoSlide,   // 11
-  TeamSlide,        // 12
-  TrackRecordSlide, // 13
-  ContactSlide,     // 14
+  TitleSlide,          // 1  — Title
+  FragilitySlide,      // 2  — The Problem: Impact built on goodwill is fragile
+  ArchitectureSlide,   // 3  — The Architecture Principle (core thesis)
+  WhyVCSlide,          // 4  — Why Venture Capital as the asset class
+  MarketGapSlide,      // 5  — The Market Opportunity (funding gap)
+  CriteriaSlide,       // 6  — Investment Criteria + Mars Materials
+  StrategyIntrosSlide, // 7  — Primary Strategy: Investor Introductions
+  WhyClimateTechSlide, // 8  — Why ClimateTech (market data)
+  FundStrategySlide,   // 9  — Fund Strategy (Fund I pause → Catalyst)
+  FundOverviewSlide,   // 10 — Catalyst Fund Key Terms
+  EquivestoSlide,      // 11 — Equivesto Partnership
+  TeamSlide,           // 12 — Team & Advisors
+  TrackRecordSlide,    // 13 — Track Record
+  ContactSlide,        // 14 — Contact / CTA
 ];
 
 export default function FoundationDeck() {
