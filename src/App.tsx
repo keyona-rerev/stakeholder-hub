@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import CatalystFund from "./pages/CatalystFund";
 import CatalystDeck from "./pages/CatalystDeck";
 import FoundationDeck from "./pages/FoundationDeck";
+import WRCFDeck from "./pages/WRCFDeck";
 import FundI from "./pages/FundI";
 import Opportunities from "./pages/Opportunities";
 import Contact from "./pages/Contact";
