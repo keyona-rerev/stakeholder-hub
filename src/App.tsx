@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import CatalystFund from "./pages/CatalystFund";
 import CatalystDeck from "./pages/CatalystDeck";
 import FoundationDeck from "./pages/FoundationDeck";
+import WRCFDeck from "./pages/WRCFDeck";
 import FundI from "./pages/FundI";
 import Opportunities from "./pages/Opportunities";
 import Contact from "./pages/Contact";
@@ -25,6 +26,7 @@ const App = () => (
         <Routes>
           <Route path="/catalyst-deck" element={<CatalystDeck />} />
           <Route path="/foundation-deck" element={<FoundationDeck />} />
+          <Route path="/wrcf-deck" element={<WRCFDeck />} />
           <Route
             path="*"
             element={

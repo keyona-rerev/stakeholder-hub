@@ -1,57 +1,42 @@
 
 
-# WRCF Pitch Deck — `/wrcf-deck`
+# Foundation Pitch Deck — `/foundation-deck`
 
-## Context
+## Core Narrative Arc
 
-This is a competition deck for Waterloo Region Community Foundation. They're already sold on the mission — they believe in all 12 funds. The scoring is:
-- **Strategic Fit (40%)**: Alignment with WRCF priorities, relevance to Waterloo Region
-- **Impact & Credibility (40%)**: Model strength, team, track record, financial clarity
-- **Regional Engagement (20%)**: Willingness to engage with Waterloo Region partners
+The presentation builds a single compelling argument for foundation audiences: **impact that depends on goodwill is fragile; impact built on market alignment is unstoppable.** Then it positions BlackTech Capital as the firm that architects exactly that.
 
-The existing Foundation Deck covers the 40% Impact & Credibility well. This new deck needs to nail the other 60%.
+## Slide Structure (12–14 slides)
 
-**Main competitor**: Velocity Fund II (University of Waterloo, local presence).
-
-## Design Approach
-
-- Same `ScaledSlide` system, dark theme, navigation from Foundation Deck
-- **Fewer words, more visuals** — high-level concepts only, bullets become speaker notes in your head
-- ~10-12 slides, tight and visual
-- Route: `/wrcf-deck`, no Navbar/Footer
-
-## Slide Structure
-
-1. **Title** — "BlackTech Capital × WRCF" — framed as a partnership pitch, not a fund pitch. CONFIDENTIAL 2026.
-
-2. **Shared Values** — Side-by-side visual mapping of WRCF's 6 values (Equity-centred, Approachable, Accountable, Catalytic, Collaborative, Impactful) to concrete BTC behaviors. Icon-driven, minimal text. This is the "we already speak the same language" slide.
-
-3. **Mission Alignment Framework** — Pull directly from WRCF's Investment Policy Venn diagram structure (Equitable Communities, Connected Communities, Sustainable Communities → Thriving People). Show how BTC's ClimateTech focus maps to their framework — especially Climate Action, Economic Security, Racial Equity, and Smart/Resilient Cities.
-
-4. **How We Work With Founders** — Concrete examples, not intentions. Visual cards showing:
-   - Mars Materials: what BTC actually did (intros, support, round completion)
-   - Serenity Power: how BTC got into a deal others couldn't, and what collaboration looks like
-   - Emphasis on investor introductions as primary strategy — show the receipts
-
-5. **Already Building Together** — Subtly highlight that BTC is the only fund that showed up to WRCF's calls. Frame the existing relationship as proof of collaborative DNA. Position this as "we've already started working together."
-
-6. **Waterloo Region Commitment** — The concrete pledge: commit to investing in at least one company from Waterloo Region. Show a proposed collaboration process between BTC and WRCF for sourcing, evaluating, and supporting local founders. Canadian team members, Canadian geography focus, local connections.
-
-7. **Why We Win Deals Others Can't** — Serenity Power case study. Short, visual. The point: underrepresented founders trust BTC because of who we are and how we operate. That's a structural sourcing advantage no one else has.
-
-8. **Fund Overview** — Condensed version: Catalyst Fund key terms in a clean visual grid. Minimal — they've done diligence already.
-
-9. **Team & Canadian Connections** — Same clickable team grid but with emphasis on Canadian/local presence. Highlight team members with Waterloo Region or Canadian ties.
-
-10. **Track Record** — Bryan + Keyona highlights, WEF recognition. Brief — they know this.
-
-11. **Partnership Vision** — CTA slide reframed: "Let's Build This Together." Not "invest in us" but "partner with us to prove that impact investing works when it's collaborative." Contact info.
+1. **Title** — BlackTech Capital logo (white container), "Investing at the Intersection of Impact & Market", CONFIDENTIAL 2026
+2. **The Landscape** — The state of impact: regulations shift with administrations, corporate pledges are seasonal, boards drop ESG when inconvenient. Three columns with concrete examples.
+3. **The Fragility Problem** — Visual slide: three pillars (Regulation, Corporate Pledges, PR-Driven Impact) shown as unstable/cracking, with quotes or data points about how each has failed
+4. **The Architecture Principle** — The core thesis: "Impact initiatives must be built for market-driven success from the jump." When market incentives and impact outcomes are aligned, even actors without your values are incentivized to sustain the work. This is the "setup" slide.
+5. **What This Means in Practice** — Concrete framing: companies that solve real market problems AND deliver impact create natural momentum that survives political cycles, board turnover, and market pressure
+6. **Why ClimateTech** — The sector where market and impact alignment is strongest. $150B projected market, growth stats, structural tailwinds
+7. **The Gap** — <1% VC to Black founders, Pre-Seed is most underserved stage, Canada's untapped cleantech ecosystem
+8. **Our Approach** — Pre-Seed ClimateTech, underrepresented founders, Canada geography, portfolio of 6 companies
+9. **Fund Strategy** — Strategic pause from Fund I ($15M institutional blueprint) to build momentum and track record via Catalyst Fund ($500K–$2M), deploying fully in 2026
+10. **Catalyst Fund Overview** — Key terms: size, check size, LP minimum, management fee, carry, hurdle rate
+11. **Structural Advantage: Equivesto** — Cost comparison, services comparison highlights
+12. **Team & Advisors** — Same layout as Catalyst deck (clickable LinkedIn), full horizontal width
+13. **Track Record** — Bryan + Keyona highlights, WEF recognition
+14. **Contact / CTA** — Tailored for foundations: "Partner with us", contact info
 
 ## Technical Implementation
 
-- **New file**: `src/pages/WRCFDeck.tsx` — seeded from `FoundationDeck.tsx`, reusing `ScaledSlide`, navigation shell, team data, and shared slide components
-- **Route**: `/wrcf-deck` added to `App.tsx` (no Navbar/Footer)
-- New slides: 1 (Title), 2 (Values), 3 (Mission Framework), 4 (How We Work), 5 (Already Building), 6 (Waterloo Commitment), 7 (Why We Win Deals), 11 (Partnership CTA)
-- Adapted/condensed: 8 (Fund Overview), 9 (Team), 10 (Track Record)
-- Visual style: larger icons, bigger type, fewer bullets — designed so the audience watches Bryan, not the screen
+- **New file**: `src/pages/FoundationDeck.tsx` — reuses the same `ScaledSlide` pattern and navigation system from `CatalystDeck.tsx`
+- **Route**: `/foundation-deck` added to `App.tsx` alongside `/catalyst-deck` (no Navbar/Footer wrapper)
+- **Shared components**: Extract `ScaledSlide` and the navigation shell into a shared module or duplicate inline (keeping it simple since these are standalone presentation files)
+- **Design**: Same dark theme, same accent colors, same motion transitions. Slides 2–5 are the new narrative content; slides 6+ reuse/adapt existing data from the Catalyst deck
+- **Exit button**: navigates to `/` instead of `/catalyst-fund`
+- **Download button**: links to same one-pager PDF (or can be updated later)
+
+## What's New vs. Reused
+
+| New slides (custom content) | Adapted from Catalyst deck |
+|---|---|
+| Title, Landscape, Fragility Problem, Architecture Principle, What This Means | Market/Gap, Approach, Strategy, Fund Overview, Equivesto, Team, Track Record, Contact |
+
+The first 5 slides are the narrative "setup" — the market-driven impact argument. Then it transitions into the firm and fund specifics that foundations need to see.
 
