@@ -26,6 +26,7 @@ const App = () => (
         <Routes>
           <Route path="/catalyst-deck" element={<CatalystDeck />} />
           <Route path="/foundation-deck" element={<FoundationDeck />} />
+          <Route path="/wrcf-deck" element={<WRCFDeck />} />
           <Route
             path="*"
             element={
