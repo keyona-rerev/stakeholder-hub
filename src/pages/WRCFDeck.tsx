@@ -1,4 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import bgRain from "@/assets/bg-rain.jpg";
+import bgOcean from "@/assets/bg-ocean.jpg";
+import bgIce from "@/assets/bg-ice.jpg";
+import bgFlamingo from "@/assets/bg-flamingo.jpg";
 
 const LOGO = "https://res.cloudinary.com/dialhpycd/image/upload/v1772833511/BTC_Logo_with_text_-_Transparent_Background_-_Large_finf66.png";
 
@@ -18,6 +22,20 @@ const TEAM = {
 const TOTAL = 10;
 const THEMES: Array<"dark" | "light" | "teal"> = [
   "dark", "light", "light", "dark", "light", "teal", "dark", "light", "dark", "dark",
+];
+
+// Map slides to background images (null = no image)
+const SLIDE_IMAGES: Array<string | null> = [
+  bgOcean,    // S1 Cover — ocean, dark overlay
+  null,       // S2 Values — clean light
+  bgFlamingo, // S3 Venn — flamingo, light glass overlay
+  bgRain,     // S4 Case Studies — rain, dark overlay
+  null,       // S5 Stats — clean light
+  bgIce,      // S6 Pledge — ice, teal glass overlay
+  bgOcean,    // S7 Fund Terms — ocean, dark overlay
+  null,       // S8 Team — clean light
+  bgRain,     // S9 Track Record — rain, dark overlay
+  bgOcean,    // S10 CTA — ocean, dark overlay
 ];
 
 export default function WRCFDeck() {
@@ -89,34 +107,111 @@ export default function WRCFDeck() {
   );
 }
 
+/* ── Slide wrapper with optional blurred bg image ── */
 function Slide({ idx, cur, children }: { idx: number; cur: number; children: React.ReactNode }) {
   const active = idx === cur;
   const theme = THEMES[idx];
-  const bg =
-    idx === 0 ? "#0c1410" :
+  const bgImage = SLIDE_IMAGES[idx];
+
+  const baseBg =
     idx === 5 ? "#2ec4b6" :
-    idx === 9 ? "#0c1410" :
     theme === "dark" ? "#0c1410" : "#f0ede6";
 
-  const extraBg =
-    idx === 0 ? "radial-gradient(ellipse 90% 70% at 50% 110%, rgba(46,196,182,0.13) 0%, transparent 60%)" :
-    idx === 9 ? "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(46,196,182,0.14) 0%, transparent 55%)" :
-    undefined;
+  // Overlay colors per theme
+  const overlay =
+    idx === 5 ? "rgba(46,196,182,0.82)" :
+    theme === "dark" ? "rgba(12,20,16,0.78)" :
+    "rgba(240,237,230,0.85)";
 
   return (
     <div
       className={`wrcf-slide ${active ? "active" : ""}`}
       style={{
-        backgroundColor: bg,
-        backgroundImage: extraBg,
+        backgroundColor: baseBg,
         color: theme === "dark" ? "#f0ede6" : "#0c1410",
       }}
     >
-      {children}
+      {bgImage && (
+        <>
+          <div
+            className="wrcf-bg-image"
+            style={{ backgroundImage: `url(${bgImage})` }}
+          />
+          <div className="wrcf-bg-overlay" style={{ background: overlay }} />
+        </>
+      )}
+      {!bgImage && (idx === 0 || idx === 9) && (
+        <div className="wrcf-bg-overlay" style={{
+          background: idx === 0
+            ? "radial-gradient(ellipse 90% 70% at 50% 110%, rgba(46,196,182,0.13) 0%, transparent 60%)"
+            : "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(46,196,182,0.14) 0%, transparent 55%)",
+        }} />
+      )}
+      <div className="wrcf-slide-content">
+        {children}
+      </div>
     </div>
   );
 }
 
+/* ── Icons (replacing emojis) ── */
+function Icon({ type, size = 20, color = "#2ec4b6" }: { type: string; size?: number; color?: string }) {
+  const s = { width: size, height: size, flexShrink: 0 };
+  switch (type) {
+    case "link":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        </svg>
+      );
+    case "clipboard":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+          <rect x="8" y="2" width="8" height="4" rx="1" />
+        </svg>
+      );
+    case "handshake":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M11 17l-1.5 1.5a2.12 2.12 0 0 1-3 0 2.12 2.12 0 0 1 0-3L8 14" />
+          <path d="M16 8l1.5-1.5a2.12 2.12 0 0 1 3 0 2.12 2.12 0 0 1 0 3L19 11" />
+          <path d="M7 8l-2.5 2.5a2.12 2.12 0 0 0 0 3l.5.5" />
+          <path d="M17 16l2.5-2.5a2.12 2.12 0 0 0 0-3l-.5-.5" />
+          <path d="M3 21l3-3" /><path d="M21 3l-3 3" />
+          <path d="M12 12l-3 3" /><path d="M15 9l-3 3" />
+        </svg>
+      );
+    case "calendar":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+      );
+    case "leaf":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89-.82" />
+          <path d="M6.5 12.5C8 9.5 11 7.5 17 8c1-5-4-7-4-7S5.5 3.5 6.5 12.5Z" />
+        </svg>
+      );
+    case "trophy":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+          <path d="M4 22h16" /><path d="M10 22V14a2 2 0 0 1 4 0v8" />
+          <path d="M6 4v6a6 6 0 0 0 12 0V4H6Z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+/* ── Shared micro-components ── */
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return <div className="up wrcf-eyebrow">{children}</div>;
 }
@@ -139,6 +234,7 @@ function TeamPhoto({ src, size = 54 }: { src: string; size?: number }) {
   );
 }
 
+/* ── SLIDE 1: Cover ── */
 function SlideCover() {
   return (
     <div className="wrcf-center">
@@ -159,6 +255,7 @@ function SlideCover() {
   );
 }
 
+/* ── SLIDE 2: Values ── */
 const VALUES = [
   { icon: "⬡", title: "Equity-Centred", p1: "Capital for", p2: "the overlooked" },
   { icon: "◎", title: "Approachable", p1: "$10K opens", p2: "the door" },
@@ -175,7 +272,7 @@ function SlideValues() {
       <div className="up wrcf-values-grid">
         {VALUES.map((v, i) => (
           <div key={i} className="wrcf-value-cell">
-            <span style={{ fontSize: "1.2rem" }}>{v.icon}</span>
+            <span style={{ fontSize: "1.2rem", color: "#2ec4b6" }}>{v.icon}</span>
             <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.88rem" }}>{v.title}</span>
             <span style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontStyle: "italic", fontSize: "1.1rem", opacity: 0.5 }}>
               {v.p1}<br />{v.p2}
@@ -187,6 +284,7 @@ function SlideValues() {
   );
 }
 
+/* ── SLIDE 3: Venn ── */
 function SlideVenn() {
   return (
     <div className="wrcf-center">
@@ -209,6 +307,7 @@ function SlideVenn() {
   );
 }
 
+/* ── SLIDE 4: Case Studies ── */
 function SlideCaseStudies() {
   return (
     <div className="wrcf-left">
@@ -243,7 +342,7 @@ function SlideCaseStudies() {
 }
 function CaseCard({ tag, name, bullets, footer }: { tag: string; name: string; bullets: string[]; footer: string }) {
   return (
-    <div className="wrcf-case-card">
+    <div className="wrcf-case-card wrcf-glass-card">
       <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.3 }}>{tag}</span>
       <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)", margin: "0.8rem 0" }}>{name}</h3>
       <ul className="wrcf-bullet-list">
@@ -256,6 +355,7 @@ function CaseCard({ tag, name, bullets, footer }: { tag: string; name: string; b
   );
 }
 
+/* ── SLIDE 5: Stats ── */
 function SlideStats() {
   return (
     <div className="wrcf-center">
@@ -281,6 +381,7 @@ function StatBlock({ num, label, desc }: { num: string; label: string; desc: str
   );
 }
 
+/* ── SLIDE 6: Pledge ── */
 function SlidePledge() {
   return (
     <div className="wrcf-center" style={{ position: "relative" }}>
@@ -291,13 +392,13 @@ function SlidePledge() {
       </h2>
       <div className="up wrcf-pledge-row">
         {[
-          { icon: "🔗", label: "Joint sourcing pipeline" },
-          { icon: "📋", label: "Regular deal flow reporting" },
-          { icon: "🤝", label: "Collaborative founder evaluation" },
-          { icon: "📅", label: "Quarterly touchpoints" },
+          { icon: "link" as const, label: "Joint sourcing pipeline" },
+          { icon: "clipboard" as const, label: "Regular deal flow reporting" },
+          { icon: "handshake" as const, label: "Collaborative founder evaluation" },
+          { icon: "calendar" as const, label: "Quarterly touchpoints" },
         ].map((item, i) => (
-          <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.4rem" }}>
-            <span style={{ fontSize: "1.4rem" }}>{item.icon}</span>
+          <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+            <Icon type={item.icon} size={22} color="#0c1410" />
             <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.8rem", opacity: 0.6, textAlign: "center", maxWidth: "13ch" }}>{item.label}</span>
           </div>
         ))}
@@ -306,6 +407,7 @@ function SlidePledge() {
   );
 }
 
+/* ── SLIDE 7: Fund Terms ── */
 const TERMS = [
   { key: "Fund Size", value: "$500K – $2M", teal: true },
   { key: "Investments", value: "6 Pre-Seed", sub: "Canadian ClimateTech companies" },
@@ -321,20 +423,24 @@ function SlideFundTerms() {
       <H2>{`<em>Catalyst Fund</em> — Key Terms`}</H2>
       <div className="up wrcf-terms-grid">
         {TERMS.map((t, i) => (
-          <div key={i} className="wrcf-term-cell">
+          <div key={i} className="wrcf-term-cell wrcf-glass-card">
             <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.3 }}>{t.key}</span>
             <span style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)", color: t.teal ? "#2ec4b6" : undefined }}>{t.value}</span>
             {t.sub && <span style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "0.75rem", opacity: 0.3 }}>{t.sub}</span>}
           </div>
         ))}
       </div>
-      <p className="up" style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "0.78rem", opacity: 0.28, marginTop: "2vh" }}>
-        🌿 Equivesto partnership saves $185K–$460K over fund life vs. traditional admin
-      </p>
+      <div className="up" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "2vh" }}>
+        <Icon type="leaf" size={14} color="rgba(240,237,230,0.4)" />
+        <span style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "0.78rem", opacity: 0.28 }}>
+          Equivesto partnership saves $185K–$460K over fund life vs. traditional admin
+        </span>
+      </div>
     </div>
   );
 }
 
+/* ── SLIDE 8: Team ── */
 function SlideTeam() {
   return (
     <div className="wrcf-left">
@@ -344,7 +450,7 @@ function SlideTeam() {
         <div className="wrcf-team-section" style={{ flexShrink: 0 }}>
           <span className="wrcf-team-label">EXECUTIVE</span>
           <div style={{ display: "flex", gap: "2rem" }}>
-            <PersonCard name="Bryan Duarte" role="Managing Partner" photo={TEAM.bryan} size={76} flag="🇨🇦 Canadian" />
+            <PersonCard name="Bryan Duarte" role="Managing Partner" photo={TEAM.bryan} size={76} flag="CA" />
             <PersonCard name="Keyona Meeks" role="General Partner" photo={TEAM.keyona} size={76} />
           </div>
         </div>
@@ -354,7 +460,7 @@ function SlideTeam() {
             <span className="wrcf-team-label">INVESTMENT COMMITTEE</span>
             <div className="wrcf-team-wrap">
               <PersonCard name="Allison Gibson" role="Inv. Readiness" photo={TEAM.allison} />
-              <PersonCard name="Bryan Watson" role="CleanTech" photo={TEAM.watson} flag="🇨🇦" />
+              <PersonCard name="Bryan Watson" role="CleanTech" photo={TEAM.watson} flag="CA" />
               <PersonCard name="John Nicholson" role="Environmental" photo={TEAM.john} />
               <PersonCard name="Melissa Allen" role="Finance" photo={TEAM.melissa} />
             </div>
@@ -364,7 +470,7 @@ function SlideTeam() {
             <div className="wrcf-team-wrap">
               <PersonCard name="Lindsey Motlow" role="Energy Research" photo={TEAM.lindsey} />
               <PersonCard name="Marlon Thompson" role="Founder/Investor" photo={TEAM.marlon} />
-              <PersonCard name="Nicholas Parker" role="Cleantech Pioneer" photo={TEAM.nicholas} flag="🇨🇦" />
+              <PersonCard name="Nicholas Parker" role="Cleantech Pioneer" photo={TEAM.nicholas} flag="CA" />
               <PersonCard name="Jade Lockard" role="Fundraising" photo={TEAM.jade} />
             </div>
           </div>
@@ -373,24 +479,37 @@ function SlideTeam() {
     </div>
   );
 }
+function FlagBadge() {
+  return (
+    <span style={{
+      fontFamily: "var(--f-mono)", fontSize: "0.55rem", letterSpacing: "0.1em",
+      color: "#2ec4b6", opacity: 0.7,
+      border: "1px solid rgba(46,196,182,0.3)", borderRadius: 3,
+      padding: "1px 5px",
+    }}>
+      CA
+    </span>
+  );
+}
 function PersonCard({ name, role, photo, size = 54, flag }: { name: string; role: string; photo: string; size?: number; flag?: string }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.3rem" }}>
       <TeamPhoto src={photo} size={size} />
       <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.78rem", textAlign: "center" }}>{name}</span>
       <span style={{ fontFamily: "var(--f-body)", fontSize: "0.68rem", color: "#2ec4b6", textAlign: "center" }}>{role}</span>
-      {flag && <span style={{ fontFamily: "var(--f-mono)", fontSize: "0.6rem", opacity: 0.5 }}>{flag}</span>}
+      {flag && <FlagBadge />}
     </div>
   );
 }
 
+/* ── SLIDE 9: Track Record ── */
 function SlideTrackRecord() {
   return (
     <div className="wrcf-left" style={{ alignItems: "center" }}>
       <Eyebrow>Track Record</Eyebrow>
       <H2>{`<em>Proven</em> Experience`}</H2>
       <div className="up wrcf-cards-2col" style={{ maxWidth: 900 }}>
-        <div className="wrcf-case-card">
+        <div className="wrcf-case-card wrcf-glass-card">
           <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "2rem" }}>Bryan Duarte</h3>
           <span style={{ fontFamily: "var(--f-body)", fontSize: "0.72rem", color: "#2ec4b6", opacity: 0.8, marginBottom: "1rem", display: "block" }}>Managing Partner</span>
           <ul className="wrcf-dash-list">
@@ -399,7 +518,7 @@ function SlideTrackRecord() {
             <li>CleanTech EIR · Techstars advisor</li>
           </ul>
         </div>
-        <div className="wrcf-case-card">
+        <div className="wrcf-case-card wrcf-glass-card">
           <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "2rem" }}>Keyona Meeks</h3>
           <span style={{ fontFamily: "var(--f-body)", fontSize: "0.72rem", color: "#2ec4b6", opacity: 0.8, marginBottom: "1rem", display: "block" }}>General Partner</span>
           <ul className="wrcf-dash-list">
@@ -409,13 +528,17 @@ function SlideTrackRecord() {
           </ul>
         </div>
       </div>
-      <p className="up" style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "0.8rem", opacity: 0.3, marginTop: "2vh" }}>
-        🏆 WEF (UpLink) Top Innovative Fund — 2022
-      </p>
+      <div className="up" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "2vh" }}>
+        <Icon type="trophy" size={14} color="rgba(240,237,230,0.4)" />
+        <span style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "0.8rem", opacity: 0.3 }}>
+          WEF (UpLink) Top Innovative Fund — 2022
+        </span>
+      </div>
     </div>
   );
 }
 
+/* ── SLIDE 10: CTA ── */
 function SlideCTA() {
   return (
     <div className="wrcf-center">
@@ -448,6 +571,7 @@ function SlideCTA() {
   );
 }
 
+/* ── CSS ── */
 const CSS_TEXT = `
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -465,19 +589,53 @@ const CSS_TEXT = `
 
 .wrcf-slide {
   position: absolute; inset: 0;
-  padding: 5vh 7vw;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   opacity: 0; pointer-events: none;
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 .wrcf-slide.active { opacity: 1; pointer-events: auto; }
 
+/* Background image layer */
+.wrcf-bg-image {
+  position: absolute; inset: 0; z-index: 0;
+  background-size: cover; background-position: center;
+  filter: blur(2px);
+  transform: scale(1.05); /* prevent blur edge artifacts */
+}
+
+/* Overlay on top of image */
+.wrcf-bg-overlay {
+  position: absolute; inset: 0; z-index: 1;
+}
+
+/* Content sits above overlay */
+.wrcf-slide-content {
+  position: relative; z-index: 2;
+  padding: 5vh 7vw;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+}
+
+/* Glass card effect for cards on image slides */
+.wrcf-glass-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+/* Entry animation */
 @keyframes wrcf-up {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.wrcf-slide .up {
+.wrcf-slide .up,
+.wrcf-slide-content .up,
+.wrcf-slide-content .wrcf-center .up,
+.wrcf-slide-content .wrcf-left .up {
   opacity: 0; transform: translateY(18px);
 }
 .wrcf-slide.active .up {
@@ -491,6 +649,7 @@ const CSS_TEXT = `
 .wrcf-slide.active .up:nth-child(6) { animation-delay: 0.40s; }
 .wrcf-slide.active .up:nth-child(7) { animation-delay: 0.47s; }
 
+/* Typography */
 .wrcf-h1 {
   font-family: var(--f-serif); font-weight: 300;
   font-size: clamp(3rem, 7vw, 6.5rem);
@@ -511,9 +670,11 @@ const CSS_TEXT = `
   opacity: 0.35; margin-bottom: 1.2vh;
 }
 
+/* Layouts */
 .wrcf-center { display: flex; flex-direction: column; align-items: center; gap: 1.8vh; width: 100%; }
 .wrcf-left { display: flex; flex-direction: column; align-items: flex-start; gap: 1.8vh; width: 100%; }
 
+/* Values grid */
 .wrcf-values-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: rgba(0,0,0,0.12);
@@ -524,6 +685,7 @@ const CSS_TEXT = `
   display: flex; flex-direction: column; gap: 0.5rem;
 }
 
+/* Cards */
 .wrcf-cards-2col {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 2px; width: 100%; margin-top: 1vh;
@@ -560,6 +722,7 @@ const CSS_TEXT = `
   color: #2ec4b6; opacity: 0.4;
 }
 
+/* Stats */
 .wrcf-stats-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 2px; max-width: 780px; width: 100%; margin-top: 1vh;
@@ -569,6 +732,7 @@ const CSS_TEXT = `
   display: flex; flex-direction: column; gap: 0.4rem;
 }
 
+/* Pledge */
 .wrcf-ghost-1 {
   position: absolute; left: 50%; top: 50%;
   transform: translate(-50%, -50%);
@@ -576,13 +740,14 @@ const CSS_TEXT = `
   font-size: clamp(10rem, 22vw, 22rem);
   color: rgba(12,20,16,0.1);
   pointer-events: none; user-select: none;
-  line-height: 1;
+  line-height: 1; z-index: 0;
 }
 .wrcf-pledge-row {
   display: flex; gap: 3rem; margin-top: 3vh;
   position: relative; z-index: 1;
 }
 
+/* Terms */
 .wrcf-terms-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 2px; max-width: 1000px; width: 100%; margin-top: 1vh;
@@ -594,6 +759,7 @@ const CSS_TEXT = `
   display: flex; flex-direction: column; gap: 0.3rem;
 }
 
+/* Team */
 .wrcf-team-layout {
   display: flex; gap: 4vw; width: 100%; margin-top: 1vh;
   align-items: flex-start;
@@ -607,6 +773,7 @@ const CSS_TEXT = `
   display: flex; flex-wrap: wrap; gap: 1.5rem;
 }
 
+/* Nav */
 .wrcf-nav {
   position: fixed; bottom: 2vh; left: 0; right: 0;
   display: flex; flex-direction: column; align-items: center;
