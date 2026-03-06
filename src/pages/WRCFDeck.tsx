@@ -21,13 +21,13 @@ const TEAM = {
   jade: "https://res.cloudinary.com/dialhpycd/image/upload/v1770137638/Jade_Lockard_c0lqyt.jpg",
 };
 
-const TOTAL = 10;
+const TOTAL = 12;
 const THEMES: Array<"dark" | "light" | "teal"> = [
-  "dark", "light", "light", "dark", "light", "teal", "dark", "light", "dark", "dark",
+  "dark", "light", "light", "dark", "dark", "light", "light", "teal", "dark", "light", "dark", "dark",
 ];
 
 const SLIDE_IMAGES: Array<string | null> = [
-  bgOcean, null, bgFlamingo, bgRain, null, null, bgOcean, null, bgRain, bgOcean,
+  bgOcean, null, bgFlamingo, bgRain, bgFlamingo, bgIce, null, null, bgOcean, null, bgRain, bgOcean,
 ];
 
 export default function WRCFDeck() {
@@ -66,12 +66,14 @@ export default function WRCFDeck() {
         <Slide idx={1} cur={cur}><SlideValues /></Slide>
         <Slide idx={2} cur={cur}><SlideVenn /></Slide>
         <Slide idx={3} cur={cur}><SlideCaseStudies /></Slide>
-        <Slide idx={4} cur={cur}><SlideStats /></Slide>
-        <Slide idx={5} cur={cur}><SlidePledge /></Slide>
-        <Slide idx={6} cur={cur}><SlideFundTerms /></Slide>
-        <Slide idx={7} cur={cur}><SlideTeam /></Slide>
-        <Slide idx={8} cur={cur}><SlideTrackRecord /></Slide>
-        <Slide idx={9} cur={cur}><SlideCTA /></Slide>
+        <Slide idx={4} cur={cur}><SlideMarketAligned /></Slide>
+        <Slide idx={5} cur={cur}><SlideFounderSupport /></Slide>
+        <Slide idx={6} cur={cur}><SlideStats /></Slide>
+        <Slide idx={7} cur={cur}><SlidePledge /></Slide>
+        <Slide idx={8} cur={cur}><SlideFundTerms /></Slide>
+        <Slide idx={9} cur={cur}><SlideTeam /></Slide>
+        <Slide idx={10} cur={cur}><SlideTrackRecord /></Slide>
+        <Slide idx={11} cur={cur}><SlideCTA /></Slide>
 
         <div className="wrcf-nav">
           <div className="wrcf-dots">
@@ -106,11 +108,11 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
   const bgImage = SLIDE_IMAGES[idx];
 
   const baseBg =
-    idx === 5 ? "#2ec4b6" :
+    idx === 7 ? "#2ec4b6" :
     theme === "dark" ? "#0c1410" : "#f0ede6";
 
   const overlay =
-    idx === 5 ? "rgba(46,196,182,0.92)" :
+    idx === 7 ? "rgba(46,196,182,0.92)" :
     theme === "dark" ? "rgba(12,20,16,0.78)" :
     "rgba(240,237,230,0.85)";
 
@@ -128,7 +130,7 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
           <div className="wrcf-bg-overlay" style={{ background: overlay }} />
         </>
       )}
-      {!bgImage && (idx === 0 || idx === 9) && (
+      {!bgImage && (idx === 0 || idx === 11) && (
         <div className="wrcf-bg-overlay" style={{
           background: idx === 0
             ? "radial-gradient(ellipse 90% 70% at 50% 110%, rgba(46,196,182,0.13) 0%, transparent 60%)"
@@ -192,6 +194,56 @@ function Icon({ type, size = 20, color = "#2ec4b6" }: { type: string; size?: num
           <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
           <path d="M4 22h16" /><path d="M10 22V14a2 2 0 0 1 4 0v8" />
           <path d="M6 4v6a6 6 0 0 0 12 0V4H6Z" />
+        </svg>
+      );
+    case "shield":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="M9 12l2 2 4-4" />
+        </svg>
+      );
+    case "trending":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+          <polyline points="16 7 22 7 22 13" />
+        </svg>
+      );
+    case "loop":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17 1l4 4-4 4" />
+          <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+          <path d="M7 23l-4-4 4-4" />
+          <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+        </svg>
+      );
+    case "network":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="5" r="3" />
+          <circle cx="5" cy="19" r="3" />
+          <circle cx="19" cy="19" r="3" />
+          <line x1="12" y1="8" x2="5" y2="16" />
+          <line x1="12" y1="8" x2="19" y2="16" />
+        </svg>
+      );
+    case "target":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      );
+    case "rocket":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+          <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+          <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+          <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
         </svg>
       );
     default:
@@ -333,22 +385,82 @@ function SlideCaseStudies() {
 function CaseCard({ tag, name, logo, bullets, footer }: { tag: string; name: string; logo?: string; bullets: string[]; footer: string }) {
   return (
     <div className="wrcf-case-card wrcf-glass-card">
-      <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.5 }}>{tag}</span>
+      <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.85, color: "#f0ede6" }}>{tag}</span>
       <div style={{ display: "flex", alignItems: "center", gap: "1rem", margin: "0.8rem 0" }}>
         {logo && <img src={logo} alt={name} style={{ height: 36, objectFit: "contain" }} />}
-        <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)" }}>{name}</h3>
+        <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)", color: "#f0ede6" }}>{name}</h3>
       </div>
-      <ul className="wrcf-bullet-list">
+      <ul className="wrcf-bullet-list" style={{ color: "#f0ede6", opacity: 0.9 }}>
         {bullets.map((b, i) => <li key={i}>{b}</li>)}
       </ul>
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "0.8rem", marginTop: "auto" }}>
-        <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.15em", opacity: 0.35 }}>{footer}</span>
+        <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.15em", opacity: 0.7, color: "#f0ede6" }}>{footer}</span>
       </div>
     </div>
   );
 }
 
-/* ── SLIDE 5: Stats ── */
+/* ── SLIDE 5: Market-Aligned Impact ── */
+function SlideMarketAligned() {
+  return (
+    <div className="wrcf-center">
+      <Eyebrow>Our Approach</Eyebrow>
+      <H2>{`Impact That <em>Outlasts Us</em>`}</H2>
+      <p className="up" style={{
+        fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "clamp(1rem, 1.3vw, 1.25rem)",
+        lineHeight: 1.65, opacity: 0.85, maxWidth: "52ch", textAlign: "center", color: "#f0ede6",
+      }}>
+        We architect every investment for market-driven success from day one. When impact is aligned with strong market outcomes, it doesn't depend on one fund, one cycle, or one champion — it sustains itself.
+      </p>
+      <div className="up" style={{ display: "flex", gap: "3.5rem", marginTop: "3vh" }}>
+        {[
+          { icon: "shield" as const, text: "Survives political cycles and regulatory shifts" },
+          { icon: "trending" as const, text: "Every actor stays incentivized by market success" },
+          { icon: "loop" as const, text: "Impact that compounds — not campaigns that expire" },
+        ].map((item, i) => (
+          <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.8rem", maxWidth: "18ch" }}>
+            <div style={{ width: 48, height: 48, borderRadius: "50%", background: "rgba(46,196,182,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Icon type={item.icon} size={24} color="#2ec4b6" />
+            </div>
+            <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.9rem", opacity: 0.85, textAlign: "center", color: "#f0ede6" }}>{item.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── SLIDE 6: Founder Support — Investor Introductions ── */
+function SlideFounderSupport() {
+  return (
+    <div className="wrcf-center">
+      <Eyebrow>Founder Support</Eyebrow>
+      <H2>{`Introductions Are <em>Our Primary Job</em>`}</H2>
+      <p className="up" style={{
+        fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "clamp(1rem, 1.3vw, 1.25rem)",
+        lineHeight: 1.65, opacity: 0.85, maxWidth: "52ch", textAlign: "center",
+      }}>
+        Underrepresented founders don't need operational coaching or technical hand-holding. They need fully raised rounds that get them where we already know they can go — which is why we invested in the first place.
+      </p>
+      <div className="up" style={{ display: "flex", gap: "3.5rem", marginTop: "3vh" }}>
+        {[
+          { icon: "network" as const, text: "Investor introductions to close rounds" },
+          { icon: "target" as const, text: "Structurally aligned support, not generic mentorship" },
+          { icon: "rocket" as const, text: "Founders succeed when capital flows — we make it flow" },
+        ].map((item, i) => (
+          <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.8rem", maxWidth: "18ch" }}>
+            <div style={{ width: 48, height: 48, borderRadius: "50%", background: "rgba(46,196,182,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Icon type={item.icon} size={24} color="#2ec4b6" />
+            </div>
+            <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.9rem", opacity: 0.85, textAlign: "center" }}>{item.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── SLIDE 7: Stats ── */
 function SlideStats() {
   return (
     <div className="wrcf-center">
@@ -374,11 +486,10 @@ function StatBlock({ num, label, desc }: { num: string; label: string; desc: str
   );
 }
 
-/* ── SLIDE 6: Pledge ── */
+/* ── SLIDE 8: Pledge ── */
 function SlidePledge() {
   return (
     <div className="wrcf-center" style={{ position: "relative" }}>
-      <div className="wrcf-ghost-1">1</div>
       <Eyebrow>Regional Engagement</Eyebrow>
       <h2 className="up" style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.9rem, 3.4vw, 3.4rem)", lineHeight: 1.15, textAlign: "center", position: "relative", zIndex: 1 }}>
         We commit to investing in<br /><strong style={{ fontWeight: 600 }}>at least one</strong><br />Waterloo Region company.
@@ -402,7 +513,7 @@ function SlidePledge() {
   );
 }
 
-/* ── SLIDE 7: Fund Terms ── */
+/* ── SLIDE 9: Fund Terms ── */
 const TERMS = [
   { key: "Fund Size", value: "$500K – $2M", teal: true },
   { key: "Investments", value: "6 Pre-Seed", sub: "Canadian ClimateTech companies" },
@@ -435,7 +546,7 @@ function SlideFundTerms() {
   );
 }
 
-/* ── SLIDE 8: Team ── */
+/* ── SLIDE 10: Team ── */
 function SlideTeam() {
   return (
     <div className="wrcf-left">
@@ -497,7 +608,7 @@ function PersonCard({ name, role, photo, size = 54, flag }: { name: string; role
   );
 }
 
-/* ── SLIDE 9: Track Record ── */
+/* ── SLIDE 11: Track Record ── */
 function SlideTrackRecord() {
   return (
     <div className="wrcf-left" style={{ alignItems: "center" }}>
@@ -543,7 +654,7 @@ function SlideTrackRecord() {
   );
 }
 
-/* ── SLIDE 10: CTA ── */
+/* ── SLIDE 12: CTA ── */
 function SlideCTA() {
   return (
     <div className="wrcf-center">
@@ -699,7 +810,7 @@ const CSS_TEXT = `
 .wrcf-bullet-list {
   list-style: none; padding: 0; margin: 0 0 1rem 0;
   font-family: var(--f-body); font-weight: 400;
-  font-size: 0.92rem; opacity: 0.75; line-height: 1.55;
+  font-size: 0.92rem; line-height: 1.55;
 }
 .wrcf-bullet-list li {
   padding-left: 1rem; position: relative; margin-bottom: 0.4rem;
@@ -733,15 +844,6 @@ const CSS_TEXT = `
 }
 
 /* Pledge */
-.wrcf-ghost-1 {
-  position: absolute; left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--f-serif); font-weight: 300;
-  font-size: clamp(10rem, 22vw, 22rem);
-  color: rgba(12,20,16,0.1);
-  pointer-events: none; user-select: none;
-  line-height: 1; z-index: 0;
-}
 .wrcf-pledge-row {
   display: flex; gap: 3rem; margin-top: 3vh;
   position: relative; z-index: 1;
