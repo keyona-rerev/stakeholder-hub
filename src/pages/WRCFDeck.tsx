@@ -3,6 +3,8 @@ import bgRain from "@/assets/bg-rain.jpg";
 import bgOcean from "@/assets/bg-ocean.jpg";
 import bgIce from "@/assets/bg-ice.jpg";
 import bgFlamingo from "@/assets/bg-flamingo.jpg";
+import marsLogo from "@/assets/mars-materials-logo.webp";
+import serenityLogo from "@/assets/serenity-power-logo.png";
 
 const LOGO = "https://res.cloudinary.com/dialhpycd/image/upload/v1772833511/BTC_Logo_with_text_-_Transparent_Background_-_Large_finf66.png";
 
@@ -24,18 +26,8 @@ const THEMES: Array<"dark" | "light" | "teal"> = [
   "dark", "light", "light", "dark", "light", "teal", "dark", "light", "dark", "dark",
 ];
 
-// Map slides to background images (null = no image)
 const SLIDE_IMAGES: Array<string | null> = [
-  bgOcean,    // S1 Cover — ocean, dark overlay
-  null,       // S2 Values — clean light
-  bgFlamingo, // S3 Venn — flamingo, light glass overlay
-  bgRain,     // S4 Case Studies — rain, dark overlay
-  null,       // S5 Stats — clean light
-  bgIce,      // S6 Pledge — ice, teal glass overlay
-  bgOcean,    // S7 Fund Terms — ocean, dark overlay
-  null,       // S8 Team — clean light
-  bgRain,     // S9 Track Record — rain, dark overlay
-  bgOcean,    // S10 CTA — ocean, dark overlay
+  bgOcean, null, bgFlamingo, bgRain, null, bgIce, bgOcean, null, bgRain, bgOcean,
 ];
 
 export default function WRCFDeck() {
@@ -117,7 +109,6 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
     idx === 5 ? "#2ec4b6" :
     theme === "dark" ? "#0c1410" : "#f0ede6";
 
-  // Overlay colors per theme
   const overlay =
     idx === 5 ? "rgba(46,196,182,0.82)" :
     theme === "dark" ? "rgba(12,20,16,0.78)" :
@@ -133,10 +124,7 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
     >
       {bgImage && (
         <>
-          <div
-            className="wrcf-bg-image"
-            style={{ backgroundImage: `url(${bgImage})` }}
-          />
+          <div className="wrcf-bg-image" style={{ backgroundImage: `url(${bgImage})` }} />
           <div className="wrcf-bg-overlay" style={{ background: overlay }} />
         </>
       )}
@@ -245,7 +233,7 @@ function SlideCover() {
         <span className="wrcf-title-name" style={{ color: "#2ec4b6" }}>WRCF</span>
       </div>
       <TealRule />
-      <p className="up" style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "clamp(0.85rem, 1.1vw, 1.1rem)", opacity: 0.38, textAlign: "center", maxWidth: "38ch" }}>
+      <p className="up" style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "clamp(0.95rem, 1.2vw, 1.2rem)", opacity: 0.75, textAlign: "center", maxWidth: "38ch", color: "#f0ede6" }}>
         A partnership for equitable, sustainable impact in Waterloo Region and beyond.
       </p>
       <span className="up" style={{ fontFamily: "var(--f-mono)", fontSize: 9, letterSpacing: "0.22em", textTransform: "uppercase", opacity: 0.16, marginTop: "3vh" }}>
@@ -273,8 +261,8 @@ function SlideValues() {
         {VALUES.map((v, i) => (
           <div key={i} className="wrcf-value-cell">
             <span style={{ fontSize: "1.2rem", color: "#2ec4b6" }}>{v.icon}</span>
-            <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.88rem" }}>{v.title}</span>
-            <span style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontStyle: "italic", fontSize: "1.1rem", opacity: 0.5 }}>
+            <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.95rem" }}>{v.title}</span>
+            <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.9rem", opacity: 0.7 }}>
               {v.p1}<br />{v.p2}
             </span>
           </div>
@@ -294,14 +282,14 @@ function SlideVenn() {
         <circle cx="180" cy="355" r="158" fill="rgba(46,196,182,0.06)" stroke="rgba(46,196,182,0.28)" strokeWidth="1.5" />
         <circle cx="400" cy="355" r="158" fill="rgba(46,196,182,0.06)" stroke="rgba(46,196,182,0.28)" strokeWidth="1.5" />
         <circle cx="290" cy="292" r="54" fill="rgba(46,196,182,0.22)" stroke="rgba(46,196,182,0.55)" strokeWidth="1.5" />
-        <text x="290" y="48" textAnchor="middle" fontFamily="var(--f-serif)" fontStyle="italic" fontSize="26" fill="#2ec4b6">Equitable</text>
-        <text x="290" y="76" textAnchor="middle" fontFamily="var(--f-body)" fontSize="13" fill="rgba(12,20,16,0.42)">Racial equity · $10K LP · Fair founder terms</text>
-        <text x="108" y="462" textAnchor="middle" fontFamily="var(--f-serif)" fontStyle="italic" fontSize="24" fill="rgba(12,20,16,0.65)">Sustainable</text>
-        <text x="108" y="486" textAnchor="middle" fontFamily="var(--f-body)" fontSize="12" fill="rgba(12,20,16,0.42)">ClimateTech only · Carbon drawdown</text>
-        <text x="472" y="462" textAnchor="middle" fontFamily="var(--f-serif)" fontStyle="italic" fontSize="24" fill="rgba(12,20,16,0.65)">Connected</text>
-        <text x="472" y="486" textAnchor="middle" fontFamily="var(--f-body)" fontSize="12" fill="rgba(12,20,16,0.42)">Investor intros · Canada–US pipeline</text>
-        <text x="290" y="287" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="300" fontSize="14" fill="rgba(12,20,16,0.75)">Thriving</text>
-        <text x="290" y="305" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="300" fontSize="14" fill="rgba(12,20,16,0.75)">People</text>
+        <text x="290" y="48" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="26" fill="#2ec4b6">Equitable</text>
+        <text x="290" y="76" textAnchor="middle" fontFamily="var(--f-body)" fontSize="13" fill="rgba(12,20,16,0.6)">Racial equity · $10K LP · Fair founder terms</text>
+        <text x="108" y="462" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="24" fill="rgba(12,20,16,0.8)">Sustainable</text>
+        <text x="108" y="486" textAnchor="middle" fontFamily="var(--f-body)" fontSize="12" fill="rgba(12,20,16,0.6)">ClimateTech only · Carbon drawdown</text>
+        <text x="472" y="462" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="24" fill="rgba(12,20,16,0.8)">Connected</text>
+        <text x="472" y="486" textAnchor="middle" fontFamily="var(--f-body)" fontSize="12" fill="rgba(12,20,16,0.6)">Investor intros · Canada–US pipeline</text>
+        <text x="290" y="287" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="400" fontSize="14" fill="rgba(12,20,16,0.85)">Thriving</text>
+        <text x="290" y="305" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="400" fontSize="14" fill="rgba(12,20,16,0.85)">People</text>
       </svg>
     </div>
   );
@@ -317,6 +305,7 @@ function SlideCaseStudies() {
         <CaseCard
           tag="PORTFOLIO CO. 01"
           name="Mars Materials"
+          logo={marsLogo}
           bullets={[
             "First cheque in — conviction before consensus",
             "Strategic intros to close their round",
@@ -328,6 +317,7 @@ function SlideCaseStudies() {
         <CaseCard
           tag="PORTFOLIO CO. 02"
           name="Serenity Power"
+          logo={serenityLogo}
           bullets={[
             "Got into a deal others couldn't access",
             "Founders chose us — trust earned, not bought",
@@ -340,16 +330,19 @@ function SlideCaseStudies() {
     </div>
   );
 }
-function CaseCard({ tag, name, bullets, footer }: { tag: string; name: string; bullets: string[]; footer: string }) {
+function CaseCard({ tag, name, logo, bullets, footer }: { tag: string; name: string; logo?: string; bullets: string[]; footer: string }) {
   return (
     <div className="wrcf-case-card wrcf-glass-card">
-      <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.3 }}>{tag}</span>
-      <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)", margin: "0.8rem 0" }}>{name}</h3>
+      <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.5 }}>{tag}</span>
+      <div style={{ display: "flex", alignItems: "center", gap: "1rem", margin: "0.8rem 0" }}>
+        {logo && <img src={logo} alt={name} style={{ height: 36, objectFit: "contain" }} />}
+        <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)" }}>{name}</h3>
+      </div>
       <ul className="wrcf-bullet-list">
         {bullets.map((b, i) => <li key={i}>{b}</li>)}
       </ul>
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "0.8rem", marginTop: "auto" }}>
-        <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.15em", opacity: 0.22 }}>{footer}</span>
+        <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.15em", opacity: 0.35 }}>{footer}</span>
       </div>
     </div>
   );
@@ -365,7 +358,7 @@ function SlideStats() {
         <StatBlock num="<1%" label="of VC to Black founders" desc="We see deals others miss — because founders see us first." />
         <StatBlock num="<6%" label="of VC to women-led teams" desc="Half the planet's talent, systematically underfunded. Market inefficiency = opportunity." />
       </div>
-      <p className="up" style={{ fontFamily: "var(--f-serif)", fontStyle: "italic", fontSize: "1.1rem", opacity: 0.38, marginTop: "2.5vh" }}>
+      <p className="up" style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "1.1rem", opacity: 0.7, marginTop: "2.5vh" }}>
         That's not a talking point — it's a sourcing advantage.
       </p>
     </div>
@@ -375,8 +368,8 @@ function StatBlock({ num, label, desc }: { num: string; label: string; desc: str
   return (
     <div className="wrcf-stat-block">
       <span style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(4rem, 7.5vw, 7.5rem)", color: "#2ec4b6", lineHeight: 1, letterSpacing: "-0.03em" }}>{num}</span>
-      <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.18em", opacity: 0.35 }}>{label}</span>
-      <span style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "0.85rem", opacity: 0.45, maxWidth: "22ch" }}>{desc}</span>
+      <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.18em", opacity: 0.6 }}>{label}</span>
+      <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.9rem", opacity: 0.7, maxWidth: "24ch" }}>{desc}</span>
     </div>
   );
 }
@@ -399,7 +392,7 @@ function SlidePledge() {
         ].map((item, i) => (
           <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
             <Icon type={item.icon} size={22} color="#0c1410" />
-            <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.8rem", opacity: 0.6, textAlign: "center", maxWidth: "13ch" }}>{item.label}</span>
+            <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.85rem", opacity: 0.75, textAlign: "center", maxWidth: "13ch" }}>{item.label}</span>
           </div>
         ))}
       </div>
@@ -424,15 +417,15 @@ function SlideFundTerms() {
       <div className="up wrcf-terms-grid">
         {TERMS.map((t, i) => (
           <div key={i} className="wrcf-term-cell wrcf-glass-card">
-            <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.3 }}>{t.key}</span>
+            <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.45 }}>{t.key}</span>
             <span style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)", color: t.teal ? "#2ec4b6" : undefined }}>{t.value}</span>
-            {t.sub && <span style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "0.75rem", opacity: 0.3 }}>{t.sub}</span>}
+            {t.sub && <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.78rem", opacity: 0.5 }}>{t.sub}</span>}
           </div>
         ))}
       </div>
       <div className="up" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "2vh" }}>
-        <Icon type="leaf" size={14} color="rgba(240,237,230,0.4)" />
-        <span style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "0.78rem", opacity: 0.28 }}>
+        <Icon type="leaf" size={14} color="rgba(240,237,230,0.5)" />
+        <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.82rem", opacity: 0.45 }}>
           Equivesto partnership saves $185K–$460K over fund life vs. traditional admin
         </span>
       </div>
@@ -495,8 +488,8 @@ function PersonCard({ name, role, photo, size = 54, flag }: { name: string; role
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.3rem" }}>
       <TeamPhoto src={photo} size={size} />
-      <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.78rem", textAlign: "center" }}>{name}</span>
-      <span style={{ fontFamily: "var(--f-body)", fontSize: "0.68rem", color: "#2ec4b6", textAlign: "center" }}>{role}</span>
+      <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.82rem", textAlign: "center" }}>{name}</span>
+      <span style={{ fontFamily: "var(--f-body)", fontSize: "0.72rem", color: "#2ec4b6", textAlign: "center" }}>{role}</span>
       {flag && <FlagBadge />}
     </div>
   );
@@ -510,8 +503,13 @@ function SlideTrackRecord() {
       <H2>{`<em>Proven</em> Experience`}</H2>
       <div className="up wrcf-cards-2col" style={{ maxWidth: 900 }}>
         <div className="wrcf-case-card wrcf-glass-card">
-          <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "2rem" }}>Bryan Duarte</h3>
-          <span style={{ fontFamily: "var(--f-body)", fontSize: "0.72rem", color: "#2ec4b6", opacity: 0.8, marginBottom: "1rem", display: "block" }}>Managing Partner</span>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.5rem" }}>
+            <TeamPhoto src={TEAM.bryan} size={56} />
+            <div>
+              <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "2rem" }}>Bryan Duarte</h3>
+              <span style={{ fontFamily: "var(--f-body)", fontSize: "0.82rem", color: "#2ec4b6", display: "block" }}>Managing Partner</span>
+            </div>
+          </div>
           <ul className="wrcf-dash-list">
             <li>5x Entrepreneur · 3 Exits (8x &amp; 10x EBITDA)</li>
             <li>30+ years energy industry experience</li>
@@ -519,8 +517,13 @@ function SlideTrackRecord() {
           </ul>
         </div>
         <div className="wrcf-case-card wrcf-glass-card">
-          <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "2rem" }}>Keyona Meeks</h3>
-          <span style={{ fontFamily: "var(--f-body)", fontSize: "0.72rem", color: "#2ec4b6", opacity: 0.8, marginBottom: "1rem", display: "block" }}>General Partner</span>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.5rem" }}>
+            <TeamPhoto src={TEAM.keyona} size={56} />
+            <div>
+              <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "2rem" }}>Keyona Meeks</h3>
+              <span style={{ fontFamily: "var(--f-body)", fontSize: "0.82rem", color: "#2ec4b6", display: "block" }}>General Partner</span>
+            </div>
+          </div>
           <ul className="wrcf-dash-list">
             <li>10 deal attributions at Bronze Valley — top accelerator for underrepresented founders</li>
             <li>wildwonder (Inc. 5000 #109) · Brevity ($2M) · Grovara ($8.75M)</li>
@@ -529,8 +532,8 @@ function SlideTrackRecord() {
         </div>
       </div>
       <div className="up" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "2vh" }}>
-        <Icon type="trophy" size={14} color="rgba(240,237,230,0.4)" />
-        <span style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "0.8rem", opacity: 0.3 }}>
+        <Icon type="trophy" size={14} color="rgba(240,237,230,0.5)" />
+        <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.85rem", opacity: 0.5 }}>
           WEF (UpLink) Top Innovative Fund — 2022
         </span>
       </div>
@@ -545,18 +548,18 @@ function SlideCTA() {
       <img src={LOGO} alt="BlackTech Capital" className="up" style={{ height: 56, objectFit: "contain" }} />
       <h1 className="up wrcf-h1" dangerouslySetInnerHTML={{ __html: `Let's Build This <em>Together</em>` }} />
       <TealRule />
-      <p className="up" style={{ fontFamily: "var(--f-body)", fontWeight: 300, fontSize: "1rem", opacity: 0.45 }}>
+      <p className="up" style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "1.05rem", opacity: 0.75 }}>
         Not "invest in us" — <strong style={{ opacity: 1 }}>partner with us.</strong>
       </p>
       <a
-        href="mailto:info@blacktechcapital.com"
+        href="mailto:bduarte@blacktechcapital.com"
         className="up"
         style={{
           fontFamily: "var(--f-mono)", fontSize: "1rem", color: "#2ec4b6", letterSpacing: "0.08em",
           border: "1px solid rgba(46,196,182,0.3)", padding: "0.85rem 2rem", textDecoration: "none",
         }}
       >
-        info@blacktechcapital.com
+        bduarte@blacktechcapital.com
       </a>
       <div className="up" style={{ display: "flex", gap: "2rem", fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.2 }}>
         <span>Equitable</span>
@@ -597,20 +600,17 @@ const CSS_TEXT = `
 }
 .wrcf-slide.active { opacity: 1; pointer-events: auto; }
 
-/* Background image layer */
 .wrcf-bg-image {
   position: absolute; inset: 0; z-index: 0;
   background-size: cover; background-position: center;
   filter: blur(2px);
-  transform: scale(1.05); /* prevent blur edge artifacts */
+  transform: scale(1.05);
 }
 
-/* Overlay on top of image */
 .wrcf-bg-overlay {
   position: absolute; inset: 0; z-index: 1;
 }
 
-/* Content sits above overlay */
 .wrcf-slide-content {
   position: relative; z-index: 2;
   padding: 5vh 7vw;
@@ -619,7 +619,6 @@ const CSS_TEXT = `
   justify-content: center; align-items: center;
 }
 
-/* Glass card effect for cards on image slides */
 .wrcf-glass-card {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -627,7 +626,6 @@ const CSS_TEXT = `
   border: 1px solid rgba(255,255,255,0.1) !important;
 }
 
-/* Entry animation */
 @keyframes wrcf-up {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -656,7 +654,7 @@ const CSS_TEXT = `
   line-height: 0.95; letter-spacing: -0.02em;
   text-align: center;
 }
-.wrcf-h1 em, .wrcf-h2 em { font-style: italic; color: #2ec4b6; }
+.wrcf-h1 em, .wrcf-h2 em { font-style: normal; color: #2ec4b6; }
 
 .wrcf-h2 {
   font-family: var(--f-serif); font-weight: 300;
@@ -665,9 +663,9 @@ const CSS_TEXT = `
 }
 
 .wrcf-eyebrow {
-  font-family: var(--f-mono); font-size: 10px;
+  font-family: var(--f-mono); font-size: 11px;
   letter-spacing: 0.25em; text-transform: uppercase;
-  opacity: 0.35; margin-bottom: 1.2vh;
+  opacity: 0.55; margin-bottom: 1.2vh;
 }
 
 /* Layouts */
@@ -698,8 +696,8 @@ const CSS_TEXT = `
 }
 .wrcf-bullet-list {
   list-style: none; padding: 0; margin: 0 0 1rem 0;
-  font-family: var(--f-body); font-weight: 300;
-  font-size: 0.88rem; opacity: 0.5; line-height: 1.55;
+  font-family: var(--f-body); font-weight: 400;
+  font-size: 0.92rem; opacity: 0.75; line-height: 1.55;
 }
 .wrcf-bullet-list li {
   padding-left: 1rem; position: relative; margin-bottom: 0.4rem;
@@ -711,8 +709,8 @@ const CSS_TEXT = `
 }
 .wrcf-dash-list {
   list-style: none; padding: 0; margin: 0;
-  font-family: var(--f-body); font-weight: 300;
-  font-size: 0.88rem; opacity: 0.5; line-height: 1.55;
+  font-family: var(--f-body); font-weight: 400;
+  font-size: 0.92rem; opacity: 0.75; line-height: 1.55;
 }
 .wrcf-dash-list li {
   padding-left: 1.2rem; position: relative; margin-bottom: 0.4rem;
@@ -767,7 +765,7 @@ const CSS_TEXT = `
 .wrcf-team-section { display: flex; flex-direction: column; gap: 1rem; }
 .wrcf-team-label {
   font-family: var(--f-mono); font-size: 9px;
-  text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.3;
+  text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.45;
 }
 .wrcf-team-wrap {
   display: flex; flex-wrap: wrap; gap: 1.5rem;
