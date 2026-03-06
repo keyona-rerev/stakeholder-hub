@@ -1,42 +1,50 @@
 
 
-# Foundation Pitch Deck — `/foundation-deck`
+# Replace WRCF Deck with v3 Design
 
-## Core Narrative Arc
+## What Changed
 
-The presentation builds a single compelling argument for foundation audiences: **impact that depends on goodwill is fragile; impact built on market alignment is unstoppable.** Then it positions BlackTech Capital as the firm that architects exactly that.
+The uploaded HTML is a completely redesigned 10-slide deck with a refined, minimal aesthetic. Key differences from the current React version:
 
-## Slide Structure (12–14 slides)
+- **Typography**: Cormorant Garamond (serif) for headings, DM Sans for body, DM Mono for labels — replaces the current bold/heavy style
+- **Color palette**: `#0c1410` ink, `#f0ede6` light, `#2ec4b6` teal — much warmer and more editorial
+- **Slide themes**: Alternating dark/light/teal backgrounds (not all dark)
+- **Less text, more space**: Exactly what the feedback requested
+- **10 slides** (down from 11): Title, Values (light), Venn (light), Case Studies (dark), Structural Advantage (light), Pledge (teal bg), Fund Terms (dark), Team (light), Track Record (dark), CTA (dark)
+- **SVG Venn diagram** on slide 3 instead of CSS circles
+- **Pledge slide** uses giant ghost "1" with teal background — very visual
+- **Team slide** uses light background with a horizontal layout (Executive | IC | Advisory)
+- **No ScaledSlide wrapper** — uses viewport-relative sizing (`vw`/`vh`/`clamp`) for responsive scaling
+- **Cloudinary URLs** for team photos instead of local imports
 
-1. **Title** — BlackTech Capital logo (white container), "Investing at the Intersection of Impact & Market", CONFIDENTIAL 2026
-2. **The Landscape** — The state of impact: regulations shift with administrations, corporate pledges are seasonal, boards drop ESG when inconvenient. Three columns with concrete examples.
-3. **The Fragility Problem** — Visual slide: three pillars (Regulation, Corporate Pledges, PR-Driven Impact) shown as unstable/cracking, with quotes or data points about how each has failed
-4. **The Architecture Principle** — The core thesis: "Impact initiatives must be built for market-driven success from the jump." When market incentives and impact outcomes are aligned, even actors without your values are incentivized to sustain the work. This is the "setup" slide.
-5. **What This Means in Practice** — Concrete framing: companies that solve real market problems AND deliver impact create natural momentum that survives political cycles, board turnover, and market pressure
-6. **Why ClimateTech** — The sector where market and impact alignment is strongest. $150B projected market, growth stats, structural tailwinds
-7. **The Gap** — <1% VC to Black founders, Pre-Seed is most underserved stage, Canada's untapped cleantech ecosystem
-8. **Our Approach** — Pre-Seed ClimateTech, underrepresented founders, Canada geography, portfolio of 6 companies
-9. **Fund Strategy** — Strategic pause from Fund I ($15M institutional blueprint) to build momentum and track record via Catalyst Fund ($500K–$2M), deploying fully in 2026
-10. **Catalyst Fund Overview** — Key terms: size, check size, LP minimum, management fee, carry, hurdle rate
-11. **Structural Advantage: Equivesto** — Cost comparison, services comparison highlights
-12. **Team & Advisors** — Same layout as Catalyst deck (clickable LinkedIn), full horizontal width
-13. **Track Record** — Bryan + Keyona highlights, WEF recognition
-14. **Contact / CTA** — Tailored for foundations: "Partner with us", contact info
+## Implementation
 
-## Technical Implementation
+**Single file change**: Rewrite `src/pages/WRCFDeck.tsx` entirely to be a React port of the HTML:
 
-- **New file**: `src/pages/FoundationDeck.tsx` — reuses the same `ScaledSlide` pattern and navigation system from `CatalystDeck.tsx`
-- **Route**: `/foundation-deck` added to `App.tsx` alongside `/catalyst-deck` (no Navbar/Footer wrapper)
-- **Shared components**: Extract `ScaledSlide` and the navigation shell into a shared module or duplicate inline (keeping it simple since these are standalone presentation files)
-- **Design**: Same dark theme, same accent colors, same motion transitions. Slides 2–5 are the new narrative content; slides 6+ reuse/adapt existing data from the Catalyst deck
-- **Exit button**: navigates to `/` instead of `/catalyst-fund`
-- **Download button**: links to same one-pager PDF (or can be updated later)
+- Import Google Fonts via `@import` in a style block or add to `index.html`
+- Convert each of the 10 HTML slides into React components
+- Port all CSS as inline styles or a `<style>` tag within the component (keeping it self-contained like the HTML)
+- Keep the existing navigation pattern (keyboard, click, dots) but style it per the HTML's nav design (fixed dots + arrow buttons with theme-aware colors)
+- Use Cloudinary URLs for team photos (matching the HTML) since the local assets may not match the layout expectations
+- Use the logo Cloudinary URL from the HTML
+- Keep the route and `App.tsx` unchanged
 
-## What's New vs. Reused
+**No changes needed to `App.tsx`** — the route already exists.
 
-| New slides (custom content) | Adapted from Catalyst deck |
-|---|---|
-| Title, Landscape, Fragility Problem, Architecture Principle, What This Means | Market/Gap, Approach, Strategy, Fund Overview, Equivesto, Team, Track Record, Contact |
+## Slide mapping (HTML → React)
 
-The first 5 slides are the narrative "setup" — the market-driven impact argument. Then it transitions into the firm and fund specifics that foundations need to see.
+1. **S1 Cover** — Dark, radial gradient, Cloudinary logo, "BlackTech Capital × WRCF" lockup
+2. **S2 Values** — Light bg, 3×2 grid with icon/title/phrase cells
+3. **S3 Venn** — Light bg, inline SVG (Equitable/Sustainable/Connected → Thriving People)
+4. **S4 Case Studies** — Dark, two-column cards (Mars Materials, Serenity Power)
+5. **S5 Structural Advantage** — Light bg, two stat blocks (<1%, <6%), italic tagline
+6. **S6 Pledge** — Teal bg, giant ghost "1", commitment items with emoji icons
+7. **S7 Fund Terms** — Dark, 3×2 grid of term blocks, Equivesto savings note
+8. **S8 Team** — Light bg, horizontal layout with Executive/IC/Advisory columns, Cloudinary photos
+9. **S9 Track Record** — Dark, two-column blocks for Bryan & Keyona, WEF badge
+10. **S10 CTA** — Dark with radial gradient, "Let's Build This Together", email, pills
+
+## Files
+
+- `src/pages/WRCFDeck.tsx` — full rewrite
 
