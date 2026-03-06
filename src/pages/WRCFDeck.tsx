@@ -27,7 +27,7 @@ const THEMES: Array<"dark" | "light" | "teal"> = [
 ];
 
 const SLIDE_IMAGES: Array<string | null> = [
-  bgOcean, null, bgFlamingo, bgRain, null, bgIce, bgOcean, null, bgRain, bgOcean,
+  bgOcean, null, bgFlamingo, bgRain, null, null, bgOcean, null, bgRain, bgOcean,
 ];
 
 export default function WRCFDeck() {
@@ -110,7 +110,7 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
     theme === "dark" ? "#0c1410" : "#f0ede6";
 
   const overlay =
-    idx === 5 ? "rgba(46,196,182,0.82)" :
+    idx === 5 ? "rgba(46,196,182,0.92)" :
     theme === "dark" ? "rgba(12,20,16,0.78)" :
     "rgba(240,237,230,0.85)";
 
@@ -277,19 +277,19 @@ function SlideVenn() {
   return (
     <div className="wrcf-center">
       <Eyebrow>Mission Alignment</Eyebrow>
-      <svg viewBox="0 0 580 500" style={{ width: "min(580px, 70vw)", height: "auto", marginTop: "2vh" }} className="up">
-        <circle cx="290" cy="175" r="158" fill="rgba(46,196,182,0.09)" stroke="rgba(46,196,182,0.45)" strokeWidth="1.5" />
-        <circle cx="180" cy="355" r="158" fill="rgba(46,196,182,0.06)" stroke="rgba(46,196,182,0.28)" strokeWidth="1.5" />
-        <circle cx="400" cy="355" r="158" fill="rgba(46,196,182,0.06)" stroke="rgba(46,196,182,0.28)" strokeWidth="1.5" />
-        <circle cx="290" cy="292" r="54" fill="rgba(46,196,182,0.22)" stroke="rgba(46,196,182,0.55)" strokeWidth="1.5" />
-        <text x="290" y="48" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="26" fill="#2ec4b6">Equitable</text>
-        <text x="290" y="76" textAnchor="middle" fontFamily="var(--f-body)" fontSize="13" fill="rgba(12,20,16,0.6)">Racial equity · $10K LP · Fair founder terms</text>
-        <text x="108" y="462" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="24" fill="rgba(12,20,16,0.8)">Sustainable</text>
-        <text x="108" y="486" textAnchor="middle" fontFamily="var(--f-body)" fontSize="12" fill="rgba(12,20,16,0.6)">ClimateTech only · Carbon drawdown</text>
-        <text x="472" y="462" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="24" fill="rgba(12,20,16,0.8)">Connected</text>
-        <text x="472" y="486" textAnchor="middle" fontFamily="var(--f-body)" fontSize="12" fill="rgba(12,20,16,0.6)">Investor intros · Canada–US pipeline</text>
-        <text x="290" y="287" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="400" fontSize="14" fill="rgba(12,20,16,0.85)">Thriving</text>
-        <text x="290" y="305" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="400" fontSize="14" fill="rgba(12,20,16,0.85)">People</text>
+      <svg viewBox="0 0 580 540" style={{ width: "min(540px, 62vw)", height: "auto", marginTop: "1vh" }} className="up">
+        <circle cx="290" cy="175" r="140" fill="rgba(46,196,182,0.09)" stroke="rgba(46,196,182,0.45)" strokeWidth="1.5" />
+        <circle cx="195" cy="335" r="140" fill="rgba(46,196,182,0.06)" stroke="rgba(46,196,182,0.28)" strokeWidth="1.5" />
+        <circle cx="385" cy="335" r="140" fill="rgba(46,196,182,0.06)" stroke="rgba(46,196,182,0.28)" strokeWidth="1.5" />
+        <circle cx="290" cy="278" r="48" fill="rgba(46,196,182,0.22)" stroke="rgba(46,196,182,0.55)" strokeWidth="1.5" />
+        <text x="290" y="55" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="24" fill="#2ec4b6">Equitable</text>
+        <text x="290" y="78" textAnchor="middle" fontFamily="var(--f-body)" fontSize="12" fill="rgba(12,20,16,0.6)">Racial equity · $10K LP · Fair founder terms</text>
+        <text x="120" y="468" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="22" fill="rgba(12,20,16,0.8)">Sustainable</text>
+        <text x="120" y="490" textAnchor="middle" fontFamily="var(--f-body)" fontSize="11" fill="rgba(12,20,16,0.6)">ClimateTech only · Carbon drawdown</text>
+        <text x="460" y="468" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="22" fill="rgba(12,20,16,0.8)">Connected</text>
+        <text x="460" y="490" textAnchor="middle" fontFamily="var(--f-body)" fontSize="11" fill="rgba(12,20,16,0.6)">Investor intros · Canada–US pipeline</text>
+        <text x="290" y="273" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="400" fontSize="13" fill="rgba(12,20,16,0.85)">Thriving</text>
+        <text x="290" y="290" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="400" fontSize="13" fill="rgba(12,20,16,0.85)">People</text>
       </svg>
     </div>
   );
@@ -385,14 +385,16 @@ function SlidePledge() {
       </h2>
       <div className="up wrcf-pledge-row">
         {[
-          { icon: "link" as const, label: "Joint sourcing pipeline" },
-          { icon: "clipboard" as const, label: "Regular deal flow reporting" },
-          { icon: "handshake" as const, label: "Collaborative founder evaluation" },
-          { icon: "calendar" as const, label: "Quarterly touchpoints" },
+          { icon: "link" as const, label: "Joint sourcing pipeline", color: "#0c1410" },
+          { icon: "clipboard" as const, label: "Regular deal flow reporting", color: "#1a5c54" },
+          { icon: "handshake" as const, label: "Collaborative founder evaluation", color: "#0c1410" },
+          { icon: "calendar" as const, label: "Quarterly touchpoints", color: "#1a5c54" },
         ].map((item, i) => (
           <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
-            <Icon type={item.icon} size={22} color="#0c1410" />
-            <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.85rem", opacity: 0.75, textAlign: "center", maxWidth: "13ch" }}>{item.label}</span>
+            <div style={{ width: 42, height: 42, borderRadius: "50%", background: "rgba(12,20,16,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Icon type={item.icon} size={20} color={item.color} />
+            </div>
+            <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.85rem", opacity: 0.85, textAlign: "center", maxWidth: "13ch", color: "#0c1410" }}>{item.label}</span>
           </div>
         ))}
       </div>
@@ -620,10 +622,10 @@ const CSS_TEXT = `
 }
 
 .wrcf-glass-card {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.06) !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.18) !important;
+  border: 1px solid rgba(255,255,255,0.25) !important;
 }
 
 @keyframes wrcf-up {
