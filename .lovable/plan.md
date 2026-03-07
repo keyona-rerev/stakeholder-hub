@@ -1,49 +1,42 @@
 
 
-## Plan: Restructure WRCF Deck — Delete Venn, Reorder, Add Impact Metrics, Replace Fund Terms
+# Foundation Pitch Deck — `/foundation-deck`
 
-### New Slide Order (13 slides)
+## Core Narrative Arc
 
-| Idx | Slide | Theme | Background |
-|-----|-------|-------|------------|
-| 0 | Cover | dark | bgOcean |
-| 1 | Values | light | null |
-| 2 | Thesis | dark | bgRain |
-| 3 | Team | light | bgLake (new) |
-| 4 | Case Studies | dark | bgFlamingo |
-| 5 | Market Aligned | dark | bgSea (new) |
-| 6 | Founder Support | light | bgIce |
-| 7 | Stats | light | null |
-| 8 | Pledge (redesigned) | teal | null |
-| 9 | Two Funds One Mission (new) | dark | bgSplash (new) |
-| 10 | Impact Metrics (new) | light | null |
-| 11 | Track Record | dark | bgRain → null (avoid repeat) |
-| 12 | CTA | dark | null |
+The presentation builds a single compelling argument for foundation audiences: **impact that depends on goodwill is fragile; impact built on market alignment is unstoppable.** Then it positions BlackTech Capital as the firm that architects exactly that.
 
-### Changes in `src/pages/WRCFDeck.tsx`
+## Slide Structure (12–14 slides)
 
-**1. Delete `SlideVenn` component** — remove entirely.
+1. **Title** — BlackTech Capital logo (white container), "Investing at the Intersection of Impact & Market", CONFIDENTIAL 2026
+2. **The Landscape** — The state of impact: regulations shift with administrations, corporate pledges are seasonal, boards drop ESG when inconvenient. Three columns with concrete examples.
+3. **The Fragility Problem** — Visual slide: three pillars (Regulation, Corporate Pledges, PR-Driven Impact) shown as unstable/cracking, with quotes or data points about how each has failed
+4. **The Architecture Principle** — The core thesis: "Impact initiatives must be built for market-driven success from the jump." When market incentives and impact outcomes are aligned, even actors without your values are incentivized to sustain the work. This is the "setup" slide.
+5. **What This Means in Practice** — Concrete framing: companies that solve real market problems AND deliver impact create natural momentum that survives political cycles, board turnover, and market pressure
+6. **Why ClimateTech** — The sector where market and impact alignment is strongest. $150B projected market, growth stats, structural tailwinds
+7. **The Gap** — <1% VC to Black founders, Pre-Seed is most underserved stage, Canada's untapped cleantech ecosystem
+8. **Our Approach** — Pre-Seed ClimateTech, underrepresented founders, Canada geography, portfolio of 6 companies
+9. **Fund Strategy** — Strategic pause from Fund I ($15M institutional blueprint) to build momentum and track record via Catalyst Fund ($500K–$2M), deploying fully in 2026
+10. **Catalyst Fund Overview** — Key terms: size, check size, LP minimum, management fee, carry, hurdle rate
+11. **Structural Advantage: Equivesto** — Cost comparison, services comparison highlights
+12. **Team & Advisors** — Same layout as Catalyst deck (clickable LinkedIn), full horizontal width
+13. **Track Record** — Bryan + Keyona highlights, WEF recognition
+14. **Contact / CTA** — Tailored for foundations: "Partner with us", contact info
 
-**2. Reorder slides** — Values (idx 1) before Thesis (idx 2), Team moves to idx 3.
+## Technical Implementation
 
-**3. Add 3 new background images** — import `bg-sea.jpg`, `bg-lake.jpg`, `bg-splash.jpg` from uploaded files into `src/assets/`.
+- **New file**: `src/pages/FoundationDeck.tsx` — reuses the same `ScaledSlide` pattern and navigation system from `CatalystDeck.tsx`
+- **Route**: `/foundation-deck` added to `App.tsx` alongside `/catalyst-deck` (no Navbar/Footer wrapper)
+- **Shared components**: Extract `ScaledSlide` and the navigation shell into a shared module or duplicate inline (keeping it simple since these are standalone presentation files)
+- **Design**: Same dark theme, same accent colors, same motion transitions. Slides 2–5 are the new narrative content; slides 6+ reuse/adapt existing data from the Catalyst deck
+- **Exit button**: navigates to `/` instead of `/catalyst-fund`
+- **Download button**: links to same one-pager PDF (or can be updated later)
 
-**4. Redesign `SlidePledge`** — "Partnering with WRCF" as the dominant centered headline. The investment commitment ("at least one Waterloo Region company") becomes smaller supporting text below. Keep the 4 icon items subordinate.
+## What's New vs. Reused
 
-**5. Replace `SlideFundTerms` with `SlideTwoFunds`** — "Two Funds, One Mission" with two side-by-side cards:
-- **Fund I** (PAUSED badge, dimmed): $15M target, Institutional LP base, Full portfolio construction, Long-term institutional vehicle
-- **Catalyst Fund** (ACTIVE NOW badge, highlighted): $500K–$2M flexible fund size, Accessible LP minimums ($10K), 6 Pre-Seed investments, Equivesto partnership for efficiency, Building track record for Fund I
+| New slides (custom content) | Adapted from Catalyst deck |
+|---|---|
+| Title, Landscape, Fragility Problem, Architecture Principle, What This Means | Market/Gap, Approach, Strategy, Fund Overview, Equivesto, Team, Track Record, Contact |
 
-**6. Add `SlideImpactMetrics`** (new, idx 10) — Three sections:
-- **GHG Reduction Targets**: Year 3: 2 MMT CO2e, Year 5: 10 MMT CO2e, Year 7 (2033): 25 MMT CO2e, Year 10 (2036): 50 MMT CO2e, 2050 Projection (Cumulative): 1,500 MMT (1.5 GT) CO2e
-- **Equity Impacts Targets**: Women Founders – 50%, BIPOC/Minority Founders – 60%, Black Founders – 40%, 2SLGBTQ+ Founders – 5%, Indigenous Founders – 5%
-- **Other Metrics Tracked** (no specific targets): Litres of Water Conserved/Saved, Metric Tonnes of Waste Diverted, Metric Tonnes of Plastic Removed/Reduced/Replaced, Kg of Toxins Eliminated
-
-**7. Update constants** — `TOTAL` stays 13, rebuild `THEMES` and `SLIDE_IMAGES` arrays, update `Slide` component's teal index from 7→8, update radial gradient indices.
-
-### Files to create
-- Copy uploaded images → `src/assets/bg-sea.jpg`, `src/assets/bg-lake.jpg`, `src/assets/bg-splash.jpg`
-
-### Files to edit
-- `src/pages/WRCFDeck.tsx`
+The first 5 slides are the narrative "setup" — the market-driven impact argument. Then it transitions into the firm and fund specifics that foundations need to see.
 
