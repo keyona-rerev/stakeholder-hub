@@ -26,16 +26,16 @@ const TEAM = {
   jade: "https://res.cloudinary.com/dialhpycd/image/upload/v1770137638/Jade_Lockard_c0lqyt.jpg",
 };
 
-const TOTAL = 13;
+const TOTAL = 12;
 const THEMES: Array<"dark" | "light" | "teal"> = [
-  "dark", "light", "dark", "light", "dark", "dark", "light", "light", "teal", "dark", "light", "dark", "dark",
+  "dark", "light", "dark", "dark", "light", "dark", "dark", "light", "light", "teal", "light", "dark",
 ];
 
 const SLIDE_IMAGES: Array<string | null> = [
-  bgOcean, null, bgRain, bgLake, bgFlamingo, bgSea, bgSharks, null, null, bgSplash, null, bgPuddle, null,
+  bgOcean, null, bgRain, bgPuddle, bgLake, bgFlamingo, bgSea, bgSharks, null, null, null, null,
 ];
 
-export default function WRCFDeck() {
+export default function FounderDeck() {
   const [cur, setCur] = useState(0);
   const touchRef = useRef<number | null>(null);
 
@@ -70,16 +70,15 @@ export default function WRCFDeck() {
         <Slide idx={0} cur={cur}><SlideCover /></Slide>
         <Slide idx={1} cur={cur}><SlideValues /></Slide>
         <Slide idx={2} cur={cur}><SlideThesis /></Slide>
-        <Slide idx={3} cur={cur}><SlideTeam /></Slide>
-        <Slide idx={4} cur={cur}><SlideCaseStudies /></Slide>
-        <Slide idx={5} cur={cur}><SlideMarketAligned /></Slide>
-        <Slide idx={6} cur={cur}><SlideFounderSupport /></Slide>
-        <Slide idx={7} cur={cur}><SlideStats /></Slide>
-        <Slide idx={8} cur={cur}><SlidePledge /></Slide>
-        <Slide idx={9} cur={cur}><SlideTwoFunds /></Slide>
+        <Slide idx={3} cur={cur}><SlideTrackRecord /></Slide>
+        <Slide idx={4} cur={cur}><SlideTeam /></Slide>
+        <Slide idx={5} cur={cur}><SlideCaseStudies /></Slide>
+        <Slide idx={6} cur={cur}><SlideMarketAligned /></Slide>
+        <Slide idx={7} cur={cur}><SlideFounderSupport /></Slide>
+        <Slide idx={8} cur={cur}><SlideStats /></Slide>
+        <Slide idx={9} cur={cur}><SlidePledge /></Slide>
         <Slide idx={10} cur={cur}><SlideImpactMetrics /></Slide>
-        <Slide idx={11} cur={cur}><SlideTrackRecord /></Slide>
-        <Slide idx={12} cur={cur}><SlideCTA /></Slide>
+        <Slide idx={11} cur={cur}><SlideCTA /></Slide>
 
         <div className="wrcf-nav">
           <div className="wrcf-dots">
@@ -114,11 +113,11 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
   const bgImage = SLIDE_IMAGES[idx];
 
   const baseBg =
-    idx === 8 ? "#2ec4b6" :
+    idx === 9 ? "#2ec4b6" :
     theme === "dark" ? "#0c1410" : "#f0ede6";
 
   const overlay =
-    idx === 8 ? "rgba(46,196,182,0.92)" :
+    idx === 9 ? "rgba(46,196,182,0.92)" :
     theme === "dark" ? "rgba(12,20,16,0.78)" :
     "rgba(240,237,230,0.85)";
 
@@ -136,7 +135,7 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
           <div className="wrcf-bg-overlay" style={{ background: overlay }} />
         </>
       )}
-      {!bgImage && (idx === 0 || idx === 12) && (
+      {!bgImage && (idx === 0 || idx === 11) && (
         <div className="wrcf-bg-overlay" style={{
           background: idx === 0
             ? "radial-gradient(ellipse 90% 70% at 50% 110%, rgba(46,196,182,0.13) 0%, transparent 60%)"
@@ -354,7 +353,7 @@ const BTC_VALUES = [
 function SlideValues() {
   return (
     <div className="wrcf-left">
-      <Eyebrow>Our Values × WRCF Alignment</Eyebrow>
+      <Eyebrow>Our Values</Eyebrow>
       <H2>{`This isn't philanthropy. It's performance, <em>powered by purpose.</em>`}</H2>
       <div className="up" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2, width: "100%", maxWidth: 1050, marginTop: "1.5vh" }}>
         {BTC_VALUES.map((v, i) => (
@@ -363,17 +362,9 @@ function SlideValues() {
               <Icon type={v.icon} size={20} color="#2ec4b6" />
             </div>
             <span style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: "1.2rem" }}>{v.title}</span>
-            <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.15em", color: "#2ec4b6", opacity: 0.7, marginTop: "auto" }}>{v.wrcf}</span>
           </div>
         ))}
       </div>
-      <p className="up" style={{
-        fontFamily: "var(--f-serif)", fontWeight: 400, fontSize: "clamp(1rem, 1.3vw, 1.25rem)",
-        lineHeight: 1.65, opacity: 0.85, maxWidth: "52ch", textAlign: "center", marginTop: "2.5vh",
-        fontStyle: "normal", color: "#2ec4b6",
-      }}>
-        This isn't philanthropy. It's performance, powered by purpose.
-      </p>
     </div>
   );
 }
