@@ -3,6 +3,9 @@ import bgRain from "@/assets/bg-rain.jpg";
 import bgOcean from "@/assets/bg-ocean.jpg";
 import bgIce from "@/assets/bg-ice.jpg";
 import bgFlamingo from "@/assets/bg-flamingo.jpg";
+import bgSea from "@/assets/bg-sea.jpg";
+import bgLake from "@/assets/bg-lake.jpg";
+import bgSplash from "@/assets/bg-splash.jpg";
 import marsLogo from "@/assets/mars-materials-logo.webp";
 import serenityLogo from "@/assets/serenity-power-logo.png";
 
@@ -23,11 +26,11 @@ const TEAM = {
 
 const TOTAL = 13;
 const THEMES: Array<"dark" | "light" | "teal"> = [
-  "dark", "dark", "light", "light", "dark", "dark", "light", "light", "teal", "dark", "light", "dark", "dark",
+  "dark", "light", "dark", "light", "dark", "dark", "light", "light", "teal", "dark", "light", "dark", "dark",
 ];
 
 const SLIDE_IMAGES: Array<string | null> = [
-  bgOcean, bgRain, null, bgFlamingo, bgRain, bgFlamingo, bgIce, null, null, bgOcean, null, bgRain, bgOcean,
+  bgOcean, null, bgRain, bgLake, bgFlamingo, bgSea, bgIce, null, null, bgSplash, null, null, null,
 ];
 
 export default function WRCFDeck() {
@@ -63,16 +66,16 @@ export default function WRCFDeck() {
         }}
       >
         <Slide idx={0} cur={cur}><SlideCover /></Slide>
-        <Slide idx={1} cur={cur}><SlideThesis /></Slide>
-        <Slide idx={2} cur={cur}><SlideValues /></Slide>
-        <Slide idx={3} cur={cur}><SlideVenn /></Slide>
+        <Slide idx={1} cur={cur}><SlideValues /></Slide>
+        <Slide idx={2} cur={cur}><SlideThesis /></Slide>
+        <Slide idx={3} cur={cur}><SlideTeam /></Slide>
         <Slide idx={4} cur={cur}><SlideCaseStudies /></Slide>
         <Slide idx={5} cur={cur}><SlideMarketAligned /></Slide>
         <Slide idx={6} cur={cur}><SlideFounderSupport /></Slide>
         <Slide idx={7} cur={cur}><SlideStats /></Slide>
         <Slide idx={8} cur={cur}><SlidePledge /></Slide>
-        <Slide idx={9} cur={cur}><SlideFundTerms /></Slide>
-        <Slide idx={10} cur={cur}><SlideTeam /></Slide>
+        <Slide idx={9} cur={cur}><SlideTwoFunds /></Slide>
+        <Slide idx={10} cur={cur}><SlideImpactMetrics /></Slide>
         <Slide idx={11} cur={cur}><SlideTrackRecord /></Slide>
         <Slide idx={12} cur={cur}><SlideCTA /></Slide>
 
@@ -109,11 +112,11 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
   const bgImage = SLIDE_IMAGES[idx];
 
   const baseBg =
-    idx === 7 ? "#2ec4b6" :
+    idx === 8 ? "#2ec4b6" :
     theme === "dark" ? "#0c1410" : "#f0ede6";
 
   const overlay =
-    idx === 7 ? "rgba(46,196,182,0.92)" :
+    idx === 8 ? "rgba(46,196,182,0.92)" :
     theme === "dark" ? "rgba(12,20,16,0.78)" :
     "rgba(240,237,230,0.85)";
 
@@ -145,7 +148,7 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
   );
 }
 
-/* ── Icons (replacing emojis) ── */
+/* ── Icons ── */
 function Icon({ type, size = 20, color = "#2ec4b6" }: { type: string; size?: number; color?: string }) {
   const s = { width: size, height: size, flexShrink: 0 };
   switch (type) {
@@ -247,6 +250,33 @@ function Icon({ type, size = 20, color = "#2ec4b6" }: { type: string; size?: num
           <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
         </svg>
       );
+    case "droplet":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+        </svg>
+      );
+    case "recycle":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" />
+          <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12" />
+          <path d="m14 16 3 3-3 3" />
+          <path d="M8.293 13.596 4.875 7.97l3.418-5.626" />
+          <path d="m9.5 4.5 4 .5-0.5 4" />
+          <path d="M19.032 13.5 15.614 19.126l-6.836 0" />
+          <path d="m14 20-3 3" />
+        </svg>
+      );
+    case "users":
+      return (
+        <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -275,7 +305,7 @@ function TeamPhoto({ src, size = 54 }: { src: string; size?: number }) {
   );
 }
 
-/* ── SLIDE 1: Cover ── */
+/* ── SLIDE 0: Cover ── */
 function SlideCover() {
   return (
     <div className="wrcf-center">
@@ -296,37 +326,7 @@ function SlideCover() {
   );
 }
 
-/* ── SLIDE 2: Thesis ── */
-function SlideThesis() {
-  const cols = [
-    { title: "ClimateTech Focus", items: ["Clean Energy", "Sustainable Materials", "Carbon Tech", "Climate Adaptation"] },
-    { title: "Pre-Seed Stage", items: ["First institutional check", "$50K–$250K investments", "Highest impact per dollar", "Portfolio of 6 companies"] },
-    { title: "Canada Geography", items: ["Growing cleantech ecosystem", "Government incentive alignment", "Diverse founder talent pool", "Strategic market positioning"] },
-  ];
-  return (
-    <div className="wrcf-left">
-      <Eyebrow>Our Thesis</Eyebrow>
-      <H2>{`Back underrepresented founders building <em>ClimateTech solutions</em> at the earliest stage`}</H2>
-      <div className="up" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, width: "100%", maxWidth: 1000, marginTop: "2vh" }}>
-        {cols.map((col, ci) => (
-          <div key={ci} className="wrcf-glass-card" style={{ padding: "2rem" }}>
-            <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: "1.3rem", color: "#2ec4b6", marginBottom: "1.2rem" }}>{col.title}</h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {col.items.map((item, ii) => (
-                <li key={ii} style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.92rem", opacity: 0.85, color: "#f0ede6", paddingLeft: "1.2rem", position: "relative", marginBottom: "0.6rem" }}>
-                  <span style={{ position: "absolute", left: 0, color: "#2ec4b6", opacity: 0.6 }}>›</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ── SLIDE 3: Values ── */
+/* ── SLIDE 1: Values ── */
 const BTC_VALUES = [
   {
     icon: "shield" as const,
@@ -380,25 +380,94 @@ function SlideValues() {
   );
 }
 
-/* ── SLIDE 3: Venn ── */
-function SlideVenn() {
+/* ── SLIDE 2: Thesis ── */
+function SlideThesis() {
+  const cols = [
+    { title: "ClimateTech Focus", items: ["Clean Energy", "Sustainable Materials", "Carbon Tech", "Climate Adaptation"] },
+    { title: "Pre-Seed Stage", items: ["First institutional check", "$50K–$250K investments", "Highest impact per dollar", "Portfolio of 6 companies"] },
+    { title: "Canada Geography", items: ["Growing cleantech ecosystem", "Government incentive alignment", "Diverse founder talent pool", "Strategic market positioning"] },
+  ];
   return (
-    <div className="wrcf-center">
-      <Eyebrow>Mission Alignment</Eyebrow>
-      <svg viewBox="0 0 580 540" style={{ width: "min(540px, 62vw)", height: "auto", marginTop: "1vh" }} className="up">
-        <circle cx="290" cy="175" r="140" fill="rgba(46,196,182,0.09)" stroke="rgba(46,196,182,0.45)" strokeWidth="1.5" />
-        <circle cx="195" cy="335" r="140" fill="rgba(46,196,182,0.06)" stroke="rgba(46,196,182,0.28)" strokeWidth="1.5" />
-        <circle cx="385" cy="335" r="140" fill="rgba(46,196,182,0.06)" stroke="rgba(46,196,182,0.28)" strokeWidth="1.5" />
-        <circle cx="290" cy="278" r="48" fill="rgba(46,196,182,0.22)" stroke="rgba(46,196,182,0.55)" strokeWidth="1.5" />
-        <text x="290" y="55" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="24" fill="#2ec4b6">Equitable</text>
-        <text x="290" y="78" textAnchor="middle" fontFamily="var(--f-body)" fontSize="12" fill="rgba(12,20,16,0.6)">Racial equity · $10K LP · Fair founder terms</text>
-        <text x="120" y="468" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="22" fill="rgba(12,20,16,0.8)">Sustainable</text>
-        <text x="120" y="490" textAnchor="middle" fontFamily="var(--f-body)" fontSize="11" fill="rgba(12,20,16,0.6)">ClimateTech only · Carbon drawdown</text>
-        <text x="460" y="468" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="600" fontSize="22" fill="rgba(12,20,16,0.8)">Connected</text>
-        <text x="460" y="490" textAnchor="middle" fontFamily="var(--f-body)" fontSize="11" fill="rgba(12,20,16,0.6)">Investor intros · Canada–US pipeline</text>
-        <text x="290" y="273" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="400" fontSize="13" fill="rgba(12,20,16,0.85)">Thriving</text>
-        <text x="290" y="290" textAnchor="middle" fontFamily="var(--f-serif)" fontWeight="400" fontSize="13" fill="rgba(12,20,16,0.85)">People</text>
-      </svg>
+    <div className="wrcf-left">
+      <Eyebrow>Our Thesis</Eyebrow>
+      <H2>{`Back underrepresented founders building <em>ClimateTech solutions</em> at the earliest stage`}</H2>
+      <div className="up" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, width: "100%", maxWidth: 1000, marginTop: "2vh" }}>
+        {cols.map((col, ci) => (
+          <div key={ci} className="wrcf-glass-card" style={{ padding: "2rem" }}>
+            <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: "1.3rem", color: "#2ec4b6", marginBottom: "1.2rem" }}>{col.title}</h3>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {col.items.map((item, ii) => (
+                <li key={ii} style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.92rem", opacity: 0.85, color: "#f0ede6", paddingLeft: "1.2rem", position: "relative", marginBottom: "0.6rem" }}>
+                  <span style={{ position: "absolute", left: 0, color: "#2ec4b6", opacity: 0.6 }}>›</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── SLIDE 3: Team ── */
+function SlideTeam() {
+  return (
+    <div className="wrcf-left">
+      <Eyebrow>Our Team</Eyebrow>
+      <H2>{`Leadership <em>& Advisors</em>`}</H2>
+      <div className="up wrcf-team-layout">
+        <div className="wrcf-team-section" style={{ flexShrink: 0 }}>
+          <span className="wrcf-team-label">EXECUTIVE</span>
+          <div style={{ display: "flex", gap: "2rem" }}>
+            <PersonCard name="Bryan Duarte" role="Managing Partner" photo={TEAM.bryan} size={76} flag="CA" />
+            <PersonCard name="Keyona Meeks" role="General Partner" photo={TEAM.keyona} size={76} />
+          </div>
+        </div>
+        <div style={{ width: 1, background: "rgba(0,0,0,0.1)", alignSelf: "stretch" }} />
+        <div style={{ flex: 1, display: "flex", gap: "3vw" }}>
+          <div className="wrcf-team-section">
+            <span className="wrcf-team-label">INVESTMENT COMMITTEE</span>
+            <div className="wrcf-team-wrap">
+              <PersonCard name="Allison Gibson" role="Inv. Readiness" photo={TEAM.allison} />
+              <PersonCard name="Bryan Watson" role="CleanTech" photo={TEAM.watson} flag="CA" />
+              <PersonCard name="John Nicholson" role="Environmental" photo={TEAM.john} />
+              <PersonCard name="Melissa Allen" role="Finance" photo={TEAM.melissa} />
+            </div>
+          </div>
+          <div className="wrcf-team-section">
+            <span className="wrcf-team-label">ADVISORY COMMITTEE</span>
+            <div className="wrcf-team-wrap">
+              <PersonCard name="Lindsey Motlow" role="Energy Research" photo={TEAM.lindsey} />
+              <PersonCard name="Marlon Thompson" role="Founder/Investor" photo={TEAM.marlon} />
+              <PersonCard name="Nicholas Parker" role="Cleantech Pioneer" photo={TEAM.nicholas} flag="CA" />
+              <PersonCard name="Jade Lockard" role="Fundraising" photo={TEAM.jade} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+function FlagBadge() {
+  return (
+    <span style={{
+      fontFamily: "var(--f-mono)", fontSize: "0.55rem", letterSpacing: "0.1em",
+      color: "#2ec4b6", opacity: 0.7,
+      border: "1px solid rgba(46,196,182,0.3)", borderRadius: 3,
+      padding: "1px 5px",
+    }}>
+      CA
+    </span>
+  );
+}
+function PersonCard({ name, role, photo, size = 54, flag }: { name: string; role: string; photo: string; size?: number; flag?: string }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.3rem" }}>
+      <TeamPhoto src={photo} size={size} />
+      <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.82rem", textAlign: "center" }}>{name}</span>
+      <span style={{ fontFamily: "var(--f-body)", fontSize: "0.72rem", color: "#2ec4b6", textAlign: "center" }}>{role}</span>
+      {flag && <FlagBadge />}
     </div>
   );
 }
@@ -486,7 +555,7 @@ function SlideMarketAligned() {
   );
 }
 
-/* ── SLIDE 6: Founder Support — Investor Introductions ── */
+/* ── SLIDE 6: Founder Support ── */
 function SlideFounderSupport() {
   return (
     <div className="wrcf-center">
@@ -542,14 +611,20 @@ function StatBlock({ num, label, desc }: { num: string; label: string; desc: str
   );
 }
 
-/* ── SLIDE 8: Pledge ── */
+/* ── SLIDE 8: Pledge (redesigned — WRCF partnership centred) ── */
 function SlidePledge() {
   return (
     <div className="wrcf-center" style={{ position: "relative" }}>
       <Eyebrow>Regional Engagement</Eyebrow>
-      <h2 className="up" style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.9rem, 3.4vw, 3.4rem)", lineHeight: 1.15, textAlign: "center", position: "relative", zIndex: 1 }}>
-        We commit to investing in<br /><strong style={{ fontWeight: 600 }}>at least one</strong><br />Waterloo Region company.
+      <h2 className="up" style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(2.4rem, 4.5vw, 4.5rem)", lineHeight: 1.05, textAlign: "center", position: "relative", zIndex: 1 }}>
+        Partnering with <strong style={{ fontWeight: 600 }}>WRCF</strong>
       </h2>
+      <p className="up" style={{
+        fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "clamp(0.85rem, 1vw, 1rem)",
+        opacity: 0.65, textAlign: "center", maxWidth: "42ch", marginTop: "0.5vh",
+      }}>
+        We commit to investing in at least one Waterloo Region company.
+      </p>
       <div className="up wrcf-pledge-row">
         {[
           { icon: "link" as const, label: "Joint sourcing pipeline", color: "#0c1410" },
@@ -569,97 +644,136 @@ function SlidePledge() {
   );
 }
 
-/* ── SLIDE 9: Fund Terms ── */
-const TERMS = [
-  { key: "Fund Size", value: "$500K – $2M", teal: true },
-  { key: "Investments", value: "6 Pre-Seed", sub: "Canadian ClimateTech companies" },
-  { key: "Check Size", value: "$50K – $250K" },
-  { key: "LP Minimum", value: "$10K", teal: true },
-  { key: "Carry / Hurdle", value: "20% / 7%" },
-  { key: "Fund Life", value: "10 + 2 ext.", sub: "Deploying 2026" },
-];
-function SlideFundTerms() {
+/* ── SLIDE 9: Two Funds, One Mission ── */
+function SlideTwoFunds() {
   return (
-    <div className="wrcf-left">
-      <Eyebrow>Fund Details</Eyebrow>
-      <H2>{`<em>Catalyst Fund</em> — Key Terms`}</H2>
-      <div className="up wrcf-terms-grid">
-        {TERMS.map((t, i) => (
-          <div key={i} className="wrcf-term-cell wrcf-glass-card">
-            <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.45 }}>{t.key}</span>
-            <span style={{ fontFamily: "var(--f-serif)", fontWeight: 300, fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)", color: t.teal ? "#2ec4b6" : undefined }}>{t.value}</span>
-            {t.sub && <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.78rem", opacity: 0.5 }}>{t.sub}</span>}
+    <div className="wrcf-center">
+      <Eyebrow>Fund Architecture</Eyebrow>
+      <H2>{`Two Funds, <em>One Mission</em>`}</H2>
+      <div className="up" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, width: "100%", maxWidth: 900, marginTop: "2vh" }}>
+        {/* Fund I — paused */}
+        <div className="wrcf-glass-card" style={{ padding: "2.2rem", opacity: 0.55 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.7rem", marginBottom: "1.2rem" }}>
+            <span style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: "1.5rem", color: "#f0ede6" }}>Fund I</span>
+            <span style={{
+              fontFamily: "var(--f-mono)", fontSize: 8, letterSpacing: "0.15em", textTransform: "uppercase",
+              background: "rgba(255,255,255,0.15)", color: "#f0ede6", padding: "3px 10px", borderRadius: 3,
+            }}>PAUSED</span>
           </div>
-        ))}
+          <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            {["$15M target", "Institutional LP base", "Full portfolio construction", "Long-term institutional vehicle"].map((item, i) => (
+              <li key={i} style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.9rem", color: "#f0ede6", opacity: 0.85, paddingLeft: "1.2rem", position: "relative", marginBottom: "0.5rem" }}>
+                <span style={{ position: "absolute", left: 0, color: "#2ec4b6", opacity: 0.5 }}>›</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* Catalyst Fund — active */}
+        <div className="wrcf-glass-card" style={{ padding: "2.2rem", border: "1.5px solid rgba(46,196,182,0.5) !important" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.7rem", marginBottom: "1.2rem" }}>
+            <span style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: "1.5rem", color: "#2ec4b6" }}>Catalyst Fund</span>
+            <span style={{
+              fontFamily: "var(--f-mono)", fontSize: 8, letterSpacing: "0.15em", textTransform: "uppercase",
+              background: "rgba(46,196,182,0.2)", color: "#2ec4b6", padding: "3px 10px", borderRadius: 3,
+              border: "1px solid rgba(46,196,182,0.35)",
+            }}>ACTIVE NOW</span>
+          </div>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            {[
+              "$500K–$2M flexible fund size",
+              "Accessible LP minimums ($10K)",
+              "6 Pre-Seed investments",
+              "Equivesto partnership for efficiency",
+              "Building track record for Fund I",
+            ].map((item, i) => (
+              <li key={i} style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.9rem", color: "#f0ede6", opacity: 0.9, paddingLeft: "1.2rem", position: "relative", marginBottom: "0.5rem" }}>
+                <span style={{ position: "absolute", left: 0, color: "#2ec4b6", opacity: 0.7 }}>›</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="up" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "2vh" }}>
+      <div className="up" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "1.5vh" }}>
         <Icon type="leaf" size={14} color="rgba(240,237,230,0.5)" />
-        <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.82rem", opacity: 0.45 }}>
-          Equivesto partnership saves $185K–$460K over fund life vs. traditional admin
+        <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.82rem", opacity: 0.45, color: "#f0ede6" }}>
+          Catalyst Fund builds the portfolio and track record that unlocks Fund I
         </span>
       </div>
     </div>
   );
 }
 
-/* ── SLIDE 10: Team ── */
-function SlideTeam() {
+/* ── SLIDE 10: Impact Metrics ── */
+function SlideImpactMetrics() {
   return (
     <div className="wrcf-left">
-      <Eyebrow>Our Team</Eyebrow>
-      <H2>{`Leadership <em>& Advisors</em>`}</H2>
-      <div className="up wrcf-team-layout">
-        <div className="wrcf-team-section" style={{ flexShrink: 0 }}>
-          <span className="wrcf-team-label">EXECUTIVE</span>
-          <div style={{ display: "flex", gap: "2rem" }}>
-            <PersonCard name="Bryan Duarte" role="Managing Partner" photo={TEAM.bryan} size={76} flag="CA" />
-            <PersonCard name="Keyona Meeks" role="General Partner" photo={TEAM.keyona} size={76} />
+      <Eyebrow>Impact Metrics</Eyebrow>
+      <H2>{`Measuring What <em>Matters</em>`}</H2>
+      <div className="up" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 2, width: "100%", maxWidth: 1050, marginTop: "1.5vh" }}>
+        {/* GHG Reduction Targets */}
+        <div style={{ background: "rgba(0,0,0,0.06)", padding: "1.8rem 1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+          <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.18em", opacity: 0.5 }}>GHG Reduction Targets</span>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginTop: "0.5rem" }}>
+            {[
+              { year: "Year 3", val: "2 MMT CO₂e" },
+              { year: "Year 5", val: "10 MMT CO₂e" },
+              { year: "Year 7 (2033)", val: "25 MMT CO₂e" },
+              { year: "Year 10 (2036)", val: "50 MMT CO₂e" },
+              { year: "2050 Projection", val: "1,500 MMT (1.5 GT) CO₂e", note: "Cumulative" },
+            ].map((r, i) => (
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderBottom: "1px solid rgba(0,0,0,0.06)", paddingBottom: "0.4rem" }}>
+                <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.82rem", opacity: 0.65 }}>{r.year}</span>
+                <div style={{ textAlign: "right" }}>
+                  <span style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: r.note ? "0.95rem" : "1rem", color: "#2ec4b6" }}>{r.val}</span>
+                  {r.note && <span style={{ fontFamily: "var(--f-mono)", fontSize: 8, display: "block", opacity: 0.5 }}>{r.note}</span>}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div style={{ width: 1, background: "rgba(0,0,0,0.1)", alignSelf: "stretch" }} />
-        <div style={{ flex: 1, display: "flex", gap: "3vw" }}>
-          <div className="wrcf-team-section">
-            <span className="wrcf-team-label">INVESTMENT COMMITTEE</span>
-            <div className="wrcf-team-wrap">
-              <PersonCard name="Allison Gibson" role="Inv. Readiness" photo={TEAM.allison} />
-              <PersonCard name="Bryan Watson" role="CleanTech" photo={TEAM.watson} flag="CA" />
-              <PersonCard name="John Nicholson" role="Environmental" photo={TEAM.john} />
-              <PersonCard name="Melissa Allen" role="Finance" photo={TEAM.melissa} />
-            </div>
+
+        {/* Equity Impacts Targets */}
+        <div style={{ background: "rgba(0,0,0,0.06)", padding: "1.8rem 1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+          <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.18em", opacity: 0.5 }}>Equity Impacts Targets</span>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginTop: "0.5rem" }}>
+            {[
+              { label: "Women Founders", pct: "50%" },
+              { label: "BIPOC/Minority Founders", pct: "60%" },
+              { label: "Black Founders", pct: "40%" },
+              { label: "2SLGBTQ+ Founders", pct: "5%" },
+              { label: "Indigenous Founders", pct: "5%" },
+            ].map((r, i) => (
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(0,0,0,0.06)", paddingBottom: "0.4rem" }}>
+                <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.82rem", opacity: 0.65 }}>{r.label}</span>
+                <span style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: "1.1rem", color: "#2ec4b6" }}>{r.pct}</span>
+              </div>
+            ))}
           </div>
-          <div className="wrcf-team-section">
-            <span className="wrcf-team-label">ADVISORY COMMITTEE</span>
-            <div className="wrcf-team-wrap">
-              <PersonCard name="Lindsey Motlow" role="Energy Research" photo={TEAM.lindsey} />
-              <PersonCard name="Marlon Thompson" role="Founder/Investor" photo={TEAM.marlon} />
-              <PersonCard name="Nicholas Parker" role="Cleantech Pioneer" photo={TEAM.nicholas} flag="CA" />
-              <PersonCard name="Jade Lockard" role="Fundraising" photo={TEAM.jade} />
-            </div>
+        </div>
+
+        {/* Other Metrics Tracked */}
+        <div style={{ background: "rgba(0,0,0,0.06)", padding: "1.8rem 1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+          <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.18em", opacity: 0.5 }}>Other Metrics Tracked</span>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem", marginTop: "0.5rem" }}>
+            {[
+              { icon: "droplet" as const, label: "Litres of Water Conserved / Saved" },
+              { icon: "recycle" as const, label: "Metric Tonnes of Waste Diverted" },
+              { icon: "leaf" as const, label: "Metric Tonnes of Plastic Removed / Reduced / Replaced" },
+              { icon: "shield" as const, label: "Kg of Toxins Eliminated" },
+            ].map((r, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.7rem" }}>
+                <Icon type={r.icon} size={16} color="#2ec4b6" />
+                <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.82rem", opacity: 0.75, lineHeight: 1.4 }}>{r.label}</span>
+              </div>
+            ))}
           </div>
+          <span style={{ fontFamily: "var(--f-mono)", fontSize: 8, textTransform: "uppercase", letterSpacing: "0.12em", opacity: 0.4, marginTop: "auto" }}>
+            No specific targets — tracked as portfolio develops
+          </span>
         </div>
       </div>
-    </div>
-  );
-}
-function FlagBadge() {
-  return (
-    <span style={{
-      fontFamily: "var(--f-mono)", fontSize: "0.55rem", letterSpacing: "0.1em",
-      color: "#2ec4b6", opacity: 0.7,
-      border: "1px solid rgba(46,196,182,0.3)", borderRadius: 3,
-      padding: "1px 5px",
-    }}>
-      CA
-    </span>
-  );
-}
-function PersonCard({ name, role, photo, size = 54, flag }: { name: string; role: string; photo: string; size?: number; flag?: string }) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.3rem" }}>
-      <TeamPhoto src={photo} size={size} />
-      <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.82rem", textAlign: "center" }}>{name}</span>
-      <span style={{ fontFamily: "var(--f-body)", fontSize: "0.72rem", color: "#2ec4b6", textAlign: "center" }}>{role}</span>
-      {flag && <FlagBadge />}
     </div>
   );
 }
