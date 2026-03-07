@@ -21,13 +21,13 @@ const TEAM = {
   jade: "https://res.cloudinary.com/dialhpycd/image/upload/v1770137638/Jade_Lockard_c0lqyt.jpg",
 };
 
-const TOTAL = 12;
+const TOTAL = 13;
 const THEMES: Array<"dark" | "light" | "teal"> = [
-  "dark", "light", "light", "dark", "dark", "light", "light", "teal", "dark", "light", "dark", "dark",
+  "dark", "dark", "light", "light", "dark", "dark", "light", "light", "teal", "dark", "light", "dark", "dark",
 ];
 
 const SLIDE_IMAGES: Array<string | null> = [
-  bgOcean, null, bgFlamingo, bgRain, bgFlamingo, bgIce, null, null, bgOcean, null, bgRain, bgOcean,
+  bgOcean, bgRain, null, bgFlamingo, bgRain, bgFlamingo, bgIce, null, null, bgOcean, null, bgRain, bgOcean,
 ];
 
 export default function WRCFDeck() {
@@ -63,17 +63,18 @@ export default function WRCFDeck() {
         }}
       >
         <Slide idx={0} cur={cur}><SlideCover /></Slide>
-        <Slide idx={1} cur={cur}><SlideValues /></Slide>
-        <Slide idx={2} cur={cur}><SlideVenn /></Slide>
-        <Slide idx={3} cur={cur}><SlideCaseStudies /></Slide>
-        <Slide idx={4} cur={cur}><SlideMarketAligned /></Slide>
-        <Slide idx={5} cur={cur}><SlideFounderSupport /></Slide>
-        <Slide idx={6} cur={cur}><SlideStats /></Slide>
-        <Slide idx={7} cur={cur}><SlidePledge /></Slide>
-        <Slide idx={8} cur={cur}><SlideFundTerms /></Slide>
-        <Slide idx={9} cur={cur}><SlideTeam /></Slide>
-        <Slide idx={10} cur={cur}><SlideTrackRecord /></Slide>
-        <Slide idx={11} cur={cur}><SlideCTA /></Slide>
+        <Slide idx={1} cur={cur}><SlideThesis /></Slide>
+        <Slide idx={2} cur={cur}><SlideValues /></Slide>
+        <Slide idx={3} cur={cur}><SlideVenn /></Slide>
+        <Slide idx={4} cur={cur}><SlideCaseStudies /></Slide>
+        <Slide idx={5} cur={cur}><SlideMarketAligned /></Slide>
+        <Slide idx={6} cur={cur}><SlideFounderSupport /></Slide>
+        <Slide idx={7} cur={cur}><SlideStats /></Slide>
+        <Slide idx={8} cur={cur}><SlidePledge /></Slide>
+        <Slide idx={9} cur={cur}><SlideFundTerms /></Slide>
+        <Slide idx={10} cur={cur}><SlideTeam /></Slide>
+        <Slide idx={11} cur={cur}><SlideTrackRecord /></Slide>
+        <Slide idx={12} cur={cur}><SlideCTA /></Slide>
 
         <div className="wrcf-nav">
           <div className="wrcf-dots">
@@ -130,7 +131,7 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
           <div className="wrcf-bg-overlay" style={{ background: overlay }} />
         </>
       )}
-      {!bgImage && (idx === 0 || idx === 11) && (
+      {!bgImage && (idx === 0 || idx === 12) && (
         <div className="wrcf-bg-overlay" style={{
           background: idx === 0
             ? "radial-gradient(ellipse 90% 70% at 50% 110%, rgba(46,196,182,0.13) 0%, transparent 60%)"
@@ -295,28 +296,83 @@ function SlideCover() {
   );
 }
 
-/* ── SLIDE 2: Values ── */
-const VALUES = [
-  { icon: "⬡", title: "Equity-Centred", p1: "Capital for", p2: "the overlooked" },
-  { icon: "◎", title: "Approachable", p1: "$10K opens", p2: "the door" },
-  { icon: "◇", title: "Accountable", p1: "7% hurdle.", p2: "OSC-licensed." },
-  { icon: "✦", title: "Catalytic", p1: "First cheques.", p2: "Unlocks follow-on." },
-  { icon: "⟡", title: "Collaborative", p1: "Intros are our", p2: "#1 priority" },
-  { icon: "◉", title: "Impactful", p1: "Real outcomes,", p2: "not dashboards" },
+/* ── SLIDE 2: Thesis ── */
+function SlideThesis() {
+  const cols = [
+    { title: "ClimateTech Focus", items: ["Clean Energy", "Sustainable Materials", "Carbon Tech", "Climate Adaptation"] },
+    { title: "Pre-Seed Stage", items: ["First institutional check", "$50K–$250K investments", "Highest impact per dollar", "Portfolio of 6 companies"] },
+    { title: "Canada Geography", items: ["Growing cleantech ecosystem", "Government incentive alignment", "Diverse founder talent pool", "Strategic market positioning"] },
+  ];
+  return (
+    <div className="wrcf-left">
+      <Eyebrow>Our Thesis</Eyebrow>
+      <H2>{`Back underrepresented founders building <em>ClimateTech solutions</em> at the earliest stage`}</H2>
+      <div className="up" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, width: "100%", maxWidth: 1000, marginTop: "2vh" }}>
+        {cols.map((col, ci) => (
+          <div key={ci} className="wrcf-glass-card" style={{ padding: "2rem" }}>
+            <h3 style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: "1.3rem", color: "#2ec4b6", marginBottom: "1.2rem" }}>{col.title}</h3>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {col.items.map((item, ii) => (
+                <li key={ii} style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.92rem", opacity: 0.85, color: "#f0ede6", paddingLeft: "1.2rem", position: "relative", marginBottom: "0.6rem" }}>
+                  <span style={{ position: "absolute", left: 0, color: "#2ec4b6", opacity: 0.6 }}>›</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── SLIDE 3: Values ── */
+const BTC_VALUES = [
+  {
+    icon: "shield" as const,
+    title: "Integrity",
+    desc: "We believe principled capital is the most powerful capital. Every decision is grounded in transparency and accountability.",
+    wrcf: "Aligned with WRCF's commitment to ethical stewardship",
+  },
+  {
+    icon: "network" as const,
+    title: "Inclusion",
+    desc: "We champion the equitable advancement of the teams and technologies that will define a sustainable future.",
+    wrcf: "Aligned with WRCF's equity-centred grantmaking",
+  },
+  {
+    icon: "handshake" as const,
+    title: "Collaboration",
+    desc: "Superior outcomes come from partnership — with founders, LPs, and community stakeholders working together.",
+    wrcf: "Aligned with WRCF's collaborative community model",
+  },
+  {
+    icon: "trending" as const,
+    title: "Impact",
+    desc: "Financial performance and tangible, positive impact are two sides of the same coin — not in tension.",
+    wrcf: "Aligned with WRCF's measurable impact mandate",
+  },
 ];
 function SlideValues() {
   return (
     <div className="wrcf-left">
-      <Eyebrow>Strategic Fit</Eyebrow>
-      <H2>{`We Already Speak <em>the Same Language</em>`}</H2>
-      <div className="up wrcf-values-grid">
-        {VALUES.map((v, i) => (
-          <div key={i} className="wrcf-value-cell">
-            <span style={{ fontSize: "1.2rem", color: "#2ec4b6" }}>{v.icon}</span>
-            <span style={{ fontFamily: "var(--f-body)", fontWeight: 500, fontSize: "0.95rem" }}>{v.title}</span>
-            <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.9rem", opacity: 0.7 }}>
-              {v.p1}<br />{v.p2}
-            </span>
+      <Eyebrow>Our Values × WRCF Alignment</Eyebrow>
+      <H2>{`Principled Capital Is <em>the Most Powerful</em> Capital`}</H2>
+      <p className="up" style={{
+        fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "clamp(0.9rem, 1.1vw, 1.05rem)",
+        lineHeight: 1.65, opacity: 0.75, maxWidth: "64ch",
+      }}>
+        Our investment philosophy is built on the conviction that the most defensible, high-return climate tech strategy is inherently ethical. Superior financial performance and tangible, positive impact are not in tension — they are two sides of the same coin.
+      </p>
+      <div className="up" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2, width: "100%", maxWidth: 1050, marginTop: "1.5vh" }}>
+        {BTC_VALUES.map((v, i) => (
+          <div key={i} style={{ background: "rgba(0,0,0,0.06)", padding: "1.8rem 1.5rem", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+            <div style={{ width: 40, height: 40, borderRadius: "50%", background: "rgba(46,196,182,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Icon type={v.icon} size={20} color="#2ec4b6" />
+            </div>
+            <span style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: "1.2rem" }}>{v.title}</span>
+            <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.85rem", opacity: 0.75, lineHeight: 1.5 }}>{v.desc}</span>
+            <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.15em", color: "#2ec4b6", opacity: 0.7, marginTop: "auto" }}>{v.wrcf}</span>
           </div>
         ))}
       </div>
