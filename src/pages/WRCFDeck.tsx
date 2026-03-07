@@ -21,13 +21,13 @@ const TEAM = {
   jade: "https://res.cloudinary.com/dialhpycd/image/upload/v1770137638/Jade_Lockard_c0lqyt.jpg",
 };
 
-const TOTAL = 12;
+const TOTAL = 13;
 const THEMES: Array<"dark" | "light" | "teal"> = [
-  "dark", "light", "light", "dark", "dark", "light", "light", "teal", "dark", "light", "dark", "dark",
+  "dark", "dark", "light", "light", "dark", "dark", "light", "light", "teal", "dark", "light", "dark", "dark",
 ];
 
 const SLIDE_IMAGES: Array<string | null> = [
-  bgOcean, null, bgFlamingo, bgRain, bgFlamingo, bgIce, null, null, bgOcean, null, bgRain, bgOcean,
+  bgOcean, bgRain, null, bgFlamingo, bgRain, bgFlamingo, bgIce, null, null, bgOcean, null, bgRain, bgOcean,
 ];
 
 export default function WRCFDeck() {
@@ -63,17 +63,18 @@ export default function WRCFDeck() {
         }}
       >
         <Slide idx={0} cur={cur}><SlideCover /></Slide>
-        <Slide idx={1} cur={cur}><SlideValues /></Slide>
-        <Slide idx={2} cur={cur}><SlideVenn /></Slide>
-        <Slide idx={3} cur={cur}><SlideCaseStudies /></Slide>
-        <Slide idx={4} cur={cur}><SlideMarketAligned /></Slide>
-        <Slide idx={5} cur={cur}><SlideFounderSupport /></Slide>
-        <Slide idx={6} cur={cur}><SlideStats /></Slide>
-        <Slide idx={7} cur={cur}><SlidePledge /></Slide>
-        <Slide idx={8} cur={cur}><SlideFundTerms /></Slide>
-        <Slide idx={9} cur={cur}><SlideTeam /></Slide>
-        <Slide idx={10} cur={cur}><SlideTrackRecord /></Slide>
-        <Slide idx={11} cur={cur}><SlideCTA /></Slide>
+        <Slide idx={1} cur={cur}><SlideThesis /></Slide>
+        <Slide idx={2} cur={cur}><SlideValues /></Slide>
+        <Slide idx={3} cur={cur}><SlideVenn /></Slide>
+        <Slide idx={4} cur={cur}><SlideCaseStudies /></Slide>
+        <Slide idx={5} cur={cur}><SlideMarketAligned /></Slide>
+        <Slide idx={6} cur={cur}><SlideFounderSupport /></Slide>
+        <Slide idx={7} cur={cur}><SlideStats /></Slide>
+        <Slide idx={8} cur={cur}><SlidePledge /></Slide>
+        <Slide idx={9} cur={cur}><SlideFundTerms /></Slide>
+        <Slide idx={10} cur={cur}><SlideTeam /></Slide>
+        <Slide idx={11} cur={cur}><SlideTrackRecord /></Slide>
+        <Slide idx={12} cur={cur}><SlideCTA /></Slide>
 
         <div className="wrcf-nav">
           <div className="wrcf-dots">
@@ -130,7 +131,7 @@ function Slide({ idx, cur, children }: { idx: number; cur: number; children: Rea
           <div className="wrcf-bg-overlay" style={{ background: overlay }} />
         </>
       )}
-      {!bgImage && (idx === 0 || idx === 11) && (
+      {!bgImage && (idx === 0 || idx === 12) && (
         <div className="wrcf-bg-overlay" style={{
           background: idx === 0
             ? "radial-gradient(ellipse 90% 70% at 50% 110%, rgba(46,196,182,0.13) 0%, transparent 60%)"
