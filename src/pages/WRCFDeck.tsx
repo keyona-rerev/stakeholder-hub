@@ -367,13 +367,6 @@ function SlideValues() {
           </div>
         ))}
       </div>
-      <p className="up" style={{
-        fontFamily: "var(--f-serif)", fontWeight: 400, fontSize: "clamp(1rem, 1.3vw, 1.25rem)",
-        lineHeight: 1.65, opacity: 0.85, maxWidth: "52ch", textAlign: "center", marginTop: "2.5vh",
-        fontStyle: "normal", color: "#2ec4b6",
-      }}>
-        This isn't philanthropy. It's performance, powered by purpose.
-      </p>
     </div>
   );
 }
