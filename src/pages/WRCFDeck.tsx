@@ -6,6 +6,7 @@ import bgFlamingo from "@/assets/bg-flamingo.jpg";
 import bgSea from "@/assets/bg-sea.jpg";
 import bgLake from "@/assets/bg-lake.jpg";
 import bgSplash from "@/assets/bg-splash.jpg";
+import bgPuddle from "@/assets/bg-puddle.jpg";
 import marsLogo from "@/assets/mars-materials-logo.webp";
 import serenityLogo from "@/assets/serenity-power-logo.png";
 
@@ -30,7 +31,7 @@ const THEMES: Array<"dark" | "light" | "teal"> = [
 ];
 
 const SLIDE_IMAGES: Array<string | null> = [
-  bgOcean, null, bgRain, bgLake, bgFlamingo, bgSea, bgIce, null, null, bgSplash, null, null, null,
+  bgOcean, null, bgRain, bgLake, bgFlamingo, bgSea, bgIce, null, null, bgSplash, null, bgPuddle, null,
 ];
 
 export default function WRCFDeck() {
@@ -331,25 +332,21 @@ const BTC_VALUES = [
   {
     icon: "shield" as const,
     title: "Integrity",
-    desc: "We believe principled capital is the most powerful capital. Every decision is grounded in transparency and accountability.",
     wrcf: "Aligned with WRCF's commitment to ethical stewardship",
   },
   {
     icon: "network" as const,
     title: "Inclusion",
-    desc: "We champion the equitable advancement of the teams and technologies that will define a sustainable future.",
     wrcf: "Aligned with WRCF's equity-centred grantmaking",
   },
   {
     icon: "handshake" as const,
     title: "Collaboration",
-    desc: "Superior outcomes come from partnership — with founders, LPs, and community stakeholders working together.",
     wrcf: "Aligned with WRCF's collaborative community model",
   },
   {
     icon: "trending" as const,
     title: "Impact",
-    desc: "Financial performance and tangible, positive impact are two sides of the same coin — not in tension.",
     wrcf: "Aligned with WRCF's measurable impact mandate",
   },
 ];
@@ -358,12 +355,6 @@ function SlideValues() {
     <div className="wrcf-left">
       <Eyebrow>Our Values × WRCF Alignment</Eyebrow>
       <H2>{`Principled Capital Is <em>the Most Powerful</em> Capital`}</H2>
-      <p className="up" style={{
-        fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "clamp(0.9rem, 1.1vw, 1.05rem)",
-        lineHeight: 1.65, opacity: 0.75, maxWidth: "64ch",
-      }}>
-        Our investment philosophy is built on the conviction that the most defensible, high-return climate tech strategy is inherently ethical. Superior financial performance and tangible, positive impact are not in tension — they are two sides of the same coin.
-      </p>
       <div className="up" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2, width: "100%", maxWidth: 1050, marginTop: "1.5vh" }}>
         {BTC_VALUES.map((v, i) => (
           <div key={i} style={{ background: "rgba(0,0,0,0.06)", padding: "1.8rem 1.5rem", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
@@ -371,11 +362,17 @@ function SlideValues() {
               <Icon type={v.icon} size={20} color="#2ec4b6" />
             </div>
             <span style={{ fontFamily: "var(--f-serif)", fontWeight: 600, fontSize: "1.2rem" }}>{v.title}</span>
-            <span style={{ fontFamily: "var(--f-body)", fontWeight: 400, fontSize: "0.85rem", opacity: 0.75, lineHeight: 1.5 }}>{v.desc}</span>
             <span style={{ fontFamily: "var(--f-mono)", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.15em", color: "#2ec4b6", opacity: 0.7, marginTop: "auto" }}>{v.wrcf}</span>
           </div>
         ))}
       </div>
+      <p className="up" style={{
+        fontFamily: "var(--f-serif)", fontWeight: 400, fontSize: "clamp(1rem, 1.3vw, 1.25rem)",
+        lineHeight: 1.65, opacity: 0.85, maxWidth: "52ch", textAlign: "center", marginTop: "2.5vh",
+        fontStyle: "normal", color: "#2ec4b6",
+      }}>
+        This isn't philanthropy. It's performance, powered by purpose.
+      </p>
     </div>
   );
 }
@@ -384,8 +381,8 @@ function SlideValues() {
 function SlideThesis() {
   const cols = [
     { title: "ClimateTech Focus", items: ["Clean Energy", "Sustainable Materials", "Carbon Tech", "Climate Adaptation"] },
-    { title: "Pre-Seed Stage", items: ["First institutional check", "$50K–$250K investments", "Highest impact per dollar", "Portfolio of 6 companies"] },
-    { title: "Canada Geography", items: ["Growing cleantech ecosystem", "Government incentive alignment", "Diverse founder talent pool", "Strategic market positioning"] },
+    { title: "Pre-Seed Stage", items: ["First institutional check", "Highest impact per dollar"] },
+    { title: "Canadian Geography", items: ["Growing cleantech ecosystem", "Government incentive alignment", "Diverse founder talent pool", "Strategic market positioning"] },
   ];
   return (
     <div className="wrcf-left">
@@ -429,17 +426,17 @@ function SlideTeam() {
           <div className="wrcf-team-section">
             <span className="wrcf-team-label">INVESTMENT COMMITTEE</span>
             <div className="wrcf-team-wrap">
-              <PersonCard name="Allison Gibson" role="Inv. Readiness" photo={TEAM.allison} />
+              <PersonCard name="Allison Gibson" role="Inv. Readiness" photo={TEAM.allison} flag="CA" />
               <PersonCard name="Bryan Watson" role="CleanTech" photo={TEAM.watson} flag="CA" />
-              <PersonCard name="John Nicholson" role="Environmental" photo={TEAM.john} />
-              <PersonCard name="Melissa Allen" role="Finance" photo={TEAM.melissa} />
+              <PersonCard name="John Nicholson" role="Environmental" photo={TEAM.john} flag="CA" />
+              <PersonCard name="Melissa Allen" role="Finance" photo={TEAM.melissa} flag="CA" />
             </div>
           </div>
           <div className="wrcf-team-section">
             <span className="wrcf-team-label">ADVISORY COMMITTEE</span>
             <div className="wrcf-team-wrap">
               <PersonCard name="Lindsey Motlow" role="Energy Research" photo={TEAM.lindsey} />
-              <PersonCard name="Marlon Thompson" role="Founder/Investor" photo={TEAM.marlon} />
+              <PersonCard name="Marlon Thompson" role="Founder/Investor" photo={TEAM.marlon} flag="CA" />
               <PersonCard name="Nicholas Parker" role="Cleantech Pioneer" photo={TEAM.nicholas} flag="CA" />
               <PersonCard name="Jade Lockard" role="Fundraising" photo={TEAM.jade} />
             </div>

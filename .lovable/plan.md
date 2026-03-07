@@ -1,22 +1,42 @@
 
 
-## Plan: Multiple WRCF Deck Refinements
+# Foundation Pitch Deck — `/foundation-deck`
 
-### Changes in `src/pages/WRCFDeck.tsx`:
+## Core Narrative Arc
 
-**1. Add new background image** — Copy uploaded puddle/ripple image to `src/assets/bg-puddle.jpg`, import it, and assign it to a slide that currently repeats or lacks a unique image. Since user says "no pictures should repeat" and wants to swap one out, replace the Track Record slide's null background with `bgPuddle`.
+The presentation builds a single compelling argument for foundation audiences: **impact that depends on goodwill is fragile; impact built on market alignment is unstoppable.** Then it positions BlackTech Capital as the firm that architects exactly that.
 
-**2. Values slide (Slide 1)** — Remove the `desc` field from `BTC_VALUES` array (the black text under each value title). Keep the icon, title, and WRCF alignment text. Add the line "This isn't philanthropy. It's performance, powered by purpose." — likely as a closing statement below the 4-value grid or replacing the current philosophy paragraph.
+## Slide Structure (12–14 slides)
 
-**3. Thesis slide (Slide 2)** — Remove two bullets from the "Pre-Seed Stage" column: `"$50K–$250K investments"` and `"Portfolio of 6 companies"`. Change `"Canada Geography"` to `"Canadian Geography"`.
+1. **Title** — BlackTech Capital logo (white container), "Investing at the Intersection of Impact & Market", CONFIDENTIAL 2026
+2. **The Landscape** — The state of impact: regulations shift with administrations, corporate pledges are seasonal, boards drop ESG when inconvenient. Three columns with concrete examples.
+3. **The Fragility Problem** — Visual slide: three pillars (Regulation, Corporate Pledges, PR-Driven Impact) shown as unstable/cracking, with quotes or data points about how each has failed
+4. **The Architecture Principle** — The core thesis: "Impact initiatives must be built for market-driven success from the jump." When market incentives and impact outcomes are aligned, even actors without your values are incentivized to sustain the work. This is the "setup" slide.
+5. **What This Means in Practice** — Concrete framing: companies that solve real market problems AND deliver impact create natural momentum that survives political cycles, board turnover, and market pressure
+6. **Why ClimateTech** — The sector where market and impact alignment is strongest. $150B projected market, growth stats, structural tailwinds
+7. **The Gap** — <1% VC to Black founders, Pre-Seed is most underserved stage, Canada's untapped cleantech ecosystem
+8. **Our Approach** — Pre-Seed ClimateTech, underrepresented founders, Canada geography, portfolio of 6 companies
+9. **Fund Strategy** — Strategic pause from Fund I ($15M institutional blueprint) to build momentum and track record via Catalyst Fund ($500K–$2M), deploying fully in 2026
+10. **Catalyst Fund Overview** — Key terms: size, check size, LP minimum, management fee, carry, hurdle rate
+11. **Structural Advantage: Equivesto** — Cost comparison, services comparison highlights
+12. **Team & Advisors** — Same layout as Catalyst deck (clickable LinkedIn), full horizontal width
+13. **Track Record** — Bryan + Keyona highlights, WEF recognition
+14. **Contact / CTA** — Tailored for foundations: "Partner with us", contact info
 
-**4. Team slide (Slide 3)** — Add `flag="CA"` to everyone EXCEPT Keyona, Jade, and Lindsey. Currently Bryan has it, Watson has it, Nicholas has it. Need to ADD it to: Allison, John, Melissa, Marlon. Need to REMOVE it from: nobody extra. So add `flag="CA"` to Allison Gibson, John Nicholson, Melissa Allen, and Marlon Thompson.
+## Technical Implementation
 
-**5. Background uniqueness** — Update `SLIDE_IMAGES` to use the new puddle image on one slide (Track Record at idx 11) so no image repeats.
+- **New file**: `src/pages/FoundationDeck.tsx` — reuses the same `ScaledSlide` pattern and navigation system from `CatalystDeck.tsx`
+- **Route**: `/foundation-deck` added to `App.tsx` alongside `/catalyst-deck` (no Navbar/Footer wrapper)
+- **Shared components**: Extract `ScaledSlide` and the navigation shell into a shared module or duplicate inline (keeping it simple since these are standalone presentation files)
+- **Design**: Same dark theme, same accent colors, same motion transitions. Slides 2–5 are the new narrative content; slides 6+ reuse/adapt existing data from the Catalyst deck
+- **Exit button**: navigates to `/` instead of `/catalyst-fund`
+- **Download button**: links to same one-pager PDF (or can be updated later)
 
-### Files to create:
-- `src/assets/bg-puddle.jpg` (from uploaded image)
+## What's New vs. Reused
 
-### Files to edit:
-- `src/pages/WRCFDeck.tsx`
+| New slides (custom content) | Adapted from Catalyst deck |
+|---|---|
+| Title, Landscape, Fragility Problem, Architecture Principle, What This Means | Market/Gap, Approach, Strategy, Fund Overview, Equivesto, Team, Track Record, Contact |
+
+The first 5 slides are the narrative "setup" — the market-driven impact argument. Then it transitions into the firm and fund specifics that foundations need to see.
 
