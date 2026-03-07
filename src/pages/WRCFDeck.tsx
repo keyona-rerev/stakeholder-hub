@@ -7,6 +7,7 @@ import bgSea from "@/assets/bg-sea.jpg";
 import bgLake from "@/assets/bg-lake.jpg";
 import bgSplash from "@/assets/bg-splash.jpg";
 import bgPuddle from "@/assets/bg-puddle.jpg";
+import bgSharks from "@/assets/bg-sharks.jpg";
 import marsLogo from "@/assets/mars-materials-logo.webp";
 import serenityLogo from "@/assets/serenity-power-logo.png";
 
@@ -31,7 +32,7 @@ const THEMES: Array<"dark" | "light" | "teal"> = [
 ];
 
 const SLIDE_IMAGES: Array<string | null> = [
-  bgOcean, null, bgRain, bgLake, bgFlamingo, bgSea, bgIce, null, null, bgSplash, null, bgPuddle, null,
+  bgOcean, null, bgRain, bgLake, bgFlamingo, bgSea, bgSharks, null, null, bgSplash, null, bgPuddle, null,
 ];
 
 export default function WRCFDeck() {
@@ -354,7 +355,7 @@ function SlideValues() {
   return (
     <div className="wrcf-left">
       <Eyebrow>Our Values × WRCF Alignment</Eyebrow>
-      <H2>{`Principled Capital Is <em>the Most Powerful</em> Capital`}</H2>
+      <H2>{`This isn't philanthropy. It's performance, <em>powered by purpose.</em>`}</H2>
       <div className="up" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2, width: "100%", maxWidth: 1050, marginTop: "1.5vh" }}>
         {BTC_VALUES.map((v, i) => (
           <div key={i} style={{ background: "rgba(0,0,0,0.06)", padding: "1.8rem 1.5rem", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
