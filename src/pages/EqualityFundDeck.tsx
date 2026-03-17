@@ -165,7 +165,7 @@ function ArchitectureSlide() {
           <span className="bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)] bg-clip-text text-transparent">
             market-driven success
           </span>{" "}
-          from the jump.
+          from the start
         </h2>
         <div className="relative z-10 mt-10 h-1 w-32 rounded-full bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)]" />
         <p className="relative z-10 mt-8 max-w-[950px] text-[26px] leading-relaxed text-white/60">
