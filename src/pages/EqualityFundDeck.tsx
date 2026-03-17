@@ -829,7 +829,7 @@ function TrackRecordSlide() {
               <p className="text-[24px] font-semibold text-white">Bryan Duarte</p>
               <p className="mt-1 text-[16px] text-[hsl(195,85%,50%)]">Managing Partner</p>
               <p className="mt-4 text-[18px] leading-relaxed text-white/60">
-                5x Entrepreneur with 3 Exits (8x and 10x EBITDA). 30+ years energy industry. CleanTech EIR, Techstars advisor, Founder of Enliten.
+                5x Entrepreneur with 3 Exits (8x and 10x EBITDA). 30+ years energy industry. 10+ years in CleanTech/Sustainability. CleanTech EIR/Advisor - Altitude Accelerator, Foresight Canada, Black Founders Network, University of Toronto Entrepreneurship, Techstars.
               </p>
             </div>
           </div>
