@@ -869,10 +869,14 @@ function ContactSlide() {
         <p className="relative z-10 mt-6 max-w-[750px] text-[24px] text-white/60">
           Join us in building impact that's architected for permanence — not dependent on the next election, the next board meeting, or the next news cycle.
         </p>
-        <div className="relative z-10 mt-12 flex items-center gap-8">
+        <div className="relative z-10 mt-12 flex flex-col items-start gap-4">
           <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-8 py-5">
             <Mail className="h-6 w-6 text-[hsl(195,85%,50%)]" />
-            <span className="text-[22px] text-white">info@blacktechcapital.com</span>
+            <span className="text-[22px] text-white">Bryan Duarte - bduarte@blacktechcapital.com</span>
+          </div>
+          <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-8 py-5">
+            <Mail className="h-6 w-6 text-[hsl(195,85%,50%)]" />
+            <span className="text-[22px] text-white">Keyona Meeks - kmeeks@blacktechcapital.com</span>
           </div>
         </div>
         <p className="relative z-10 mt-16 text-[16px] tracking-widest text-white/30">CONFIDENTIAL · FOR QUALIFIED INVESTORS ONLY</p>
