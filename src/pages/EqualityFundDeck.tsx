@@ -517,7 +517,7 @@ function ImpactCredibilitySlide() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50 mb-3">Investment Co. 01</p>
             <div className="flex items-center gap-4 mb-6">
               <img src={marsLogo} alt="Mars Materials" className="h-9 object-contain" />
-              <h3 className="text-[32px] font-bold text-white">Mars Materials</h3>
+              <a href="https://www.marsmaterials.tech/" target="_blank" rel="noopener noreferrer" className="text-[32px] font-bold text-white hover:text-[hsl(195,85%,50%)] transition-colors underline">Mars Materials</a>
             </div>
             <ul className="space-y-3 text-[18px] text-white/70 leading-relaxed flex-1">
               {[
