@@ -30,6 +30,7 @@ const App = () => (
           <Route path="/foundation-deck" element={<FoundationDeck />} />
           <Route path="/wrcf-deck" element={<WRCFDeck />} />
           <Route path="/founder-deck" element={<FounderDeck />} />
+          <Route path="/equality-fund-deck" element={<EqualityFundDeck />} />
           <Route
             path="*"
             element={
