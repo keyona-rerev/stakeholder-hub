@@ -899,10 +899,10 @@ const slides = [
   TrackRecordSlide,        // 6  — Track Record
   WhyVCSlide,              // 7  — Why Venture Capital as the asset class
   MarketGapSlide,          // 8  — The Market Opportunity (funding gap)
-  ImpactMetricsSlide,      // 9  — Impact Metrics
-  CriteriaSlide,           // 10 — Investment Criteria + Mars Materials
-  StrategyIntrosSlide,     // 11 — Primary Strategy: Investor Introductions
-  WhyClimateTechSlide,     // 12 — Why ClimateTech (market data)
+  WhyClimateTechSlide,     // 9  — Why ClimateTech (market data)
+  ImpactMetricsSlide,      // 10 — Impact Metrics
+  CriteriaSlide,           // 11 — Investment Criteria + Mars Materials
+  StrategyIntrosSlide,     // 12 — Primary Strategy: Investor Introductions
   FundStrategySlide,       // 13 — Fund Strategy (Fund I pause → Catalyst)
   FundOverviewSlide,       // 14 — Catalyst Fund Key Terms
   EquivestoSlide,          // 15 — Equivesto Partnership
