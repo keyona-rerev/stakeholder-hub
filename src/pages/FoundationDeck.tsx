@@ -601,20 +601,20 @@ function EquivestoSlide() {
    ══════════════════════════════════════════════════════ */
 function TeamSlide() {
   const leadership = [
-    { name: "Bryan Duarte", role: "Managing Partner", img: bryanDuarte, linkedin: "https://www.linkedin.com/in/bryanduarte/" },
-    { name: "Keyona Meeks", role: "General Partner", img: keyonaMeeks, linkedin: "https://www.linkedin.com/in/keyonameeks/" },
+    { name: "Bryan Duarte", role: "Managing Partner", img: bryanDuarte, linkedin: "https://www.linkedin.com/in/duartebryan/" },
+    { name: "Keyona Meeks", role: "General Partner", img: keyonaMeeks, linkedin: "https://www.linkedin.com/in/keyona-meeks/" },
   ];
   const ic = [
-    { name: "Allison Gibson", role: "Investment Readiness", img: allisonGibson, linkedin: "https://www.linkedin.com/in/allisongibson/" },
-    { name: "Bryan Watson", role: "CleanTech / Finance", img: bryanWatson, linkedin: "https://www.linkedin.com/in/bryanwatson/" },
-    { name: "John Nicholson", role: "Environmental Expert", img: johnNicholson, linkedin: "https://www.linkedin.com/in/johnnicholson/" },
-    { name: "Melissa Allen", role: "Finance Leader", img: melissaAllen, linkedin: "https://www.linkedin.com/in/melissaallen/" },
+    { name: "Allison Gibson", role: "Investment Readiness", img: allisonGibson, linkedin: "https://www.linkedin.com/in/alliegco/" },
+    { name: "Bryan Watson", role: "CleanTech / Finance", img: bryanWatson, linkedin: "https://www.linkedin.com/in/cleantechnorth/" },
+    { name: "John Nicholson", role: "Environmental Expert", img: johnNicholson, linkedin: "https://www.linkedin.com/in/johnjnicholsonjr/" },
+    { name: "Melissa Allen", role: "Finance Leader", img: melissaAllen, linkedin: "https://www.linkedin.com/in/melissaaallen/" },
   ];
   const advisory = [
     { name: "Lindsey Motlow", role: "Energy Research", img: lindseyMotlow, linkedin: "https://www.linkedin.com/in/lindseymotlow/" },
-    { name: "Marlon Thompson", role: "Founder / Investor", img: marlonThompson, linkedin: "https://www.linkedin.com/in/marlonthompson/" },
-    { name: "Nicholas Parker", role: "Cleantech Pioneer", img: nicholasParker, linkedin: "https://www.linkedin.com/in/nicholasparker/" },
-    { name: "Jade Lockard", role: "Fundraising Strategy", img: jadeLockard, linkedin: "https://www.linkedin.com/in/jadelockard/" },
+    { name: "Marlon Thompson", role: "Founder / Investor", img: marlonThompson, linkedin: "https://www.linkedin.com/in/thompsonmarlon/" },
+    { name: "Nicholas Parker", role: "Cleantech Pioneer", img: nicholasParker, linkedin: "https://www.linkedin.com/in/nicholasparker3/" },
+    { name: "Jade Lockard", role: "Fundraising Strategy", img: jadeLockard, linkedin: "https://www.linkedin.com/in/jade-lockard/" },
   ];
 
   type Person = { name: string; role: string; img: string; linkedin: string };
