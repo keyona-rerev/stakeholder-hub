@@ -188,6 +188,59 @@ function ArchitectureSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
+   SLIDE 4 — Values × Equality Fund Alignment
+   ══════════════════════════════════════════════════════ */
+function ValuesAlignmentSlide() {
+  const values = [
+    {
+      icon: <Shield className="h-8 w-8" />,
+      title: "Integrity",
+      alignment: "Aligned with Equality Fund's commitment to transparent, accountable stewardship of $100M+ deployed across 100 countries",
+    },
+    {
+      icon: <Users className="h-8 w-8" />,
+      title: "Inclusion",
+      alignment: "Aligned with Equality Fund's intersectional approach — merging investment with policy, advocacy, and philanthropy for gender equity",
+    },
+    {
+      icon: <Handshake className="h-8 w-8" />,
+      title: "Collaboration",
+      alignment: "Aligned with Equality Fund's people-powered movement model — backing 1,800+ organizations for long-term systemic change",
+    },
+    {
+      icon: <TrendingUp className="h-8 w-8" />,
+      title: "Impact",
+      alignment: "Aligned with Equality Fund's measurable mandate — climate resilience, human rights, and gender-based violence prevention at scale",
+    },
+  ];
+
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
+          Our Values × Equality Fund Alignment
+        </p>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          This isn't philanthropy. It's performance,{" "}
+          <span className="text-[hsl(195,85%,50%)]">powered by purpose.</span>
+        </h2>
+        <div className="mt-12 grid max-w-[1500px] grid-cols-4 gap-6">
+          {values.map((v, i) => (
+            <div key={i} className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 flex flex-col gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(195,85%,35%)/10]">
+                <div className="text-[hsl(195,85%,50%)]">{v.icon}</div>
+              </div>
+              <h3 className="text-[24px] font-semibold text-white">{v.title}</h3>
+              <p className="mt-auto text-[15px] leading-relaxed text-[hsl(195,85%,50%)]/70">{v.alignment}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
    SLIDE 4 — Why Venture Capital
    ══════════════════════════════════════════════════════ */
 function WhyVCSlide() {
@@ -728,20 +781,21 @@ function ContactSlide() {
 
 /* ── Main Deck Component ── */
 const slides = [
-  TitleSlide,          // 1  — Title
-  FragilitySlide,      // 2  — The Problem: Impact built on goodwill is fragile
-  ArchitectureSlide,   // 3  — The Architecture Principle (core thesis)
-  WhyVCSlide,          // 4  — Why Venture Capital as the asset class
-  MarketGapSlide,      // 5  — The Market Opportunity (funding gap)
-  CriteriaSlide,       // 6  — Investment Criteria + Mars Materials
-  StrategyIntrosSlide, // 7  — Primary Strategy: Investor Introductions
-  WhyClimateTechSlide, // 8  — Why ClimateTech (market data)
-  FundStrategySlide,   // 9  — Fund Strategy (Fund I pause → Catalyst)
-  FundOverviewSlide,   // 10 — Catalyst Fund Key Terms
-  EquivestoSlide,      // 11 — Equivesto Partnership
-  TeamSlide,           // 12 — Team & Advisors
-  TrackRecordSlide,    // 13 — Track Record
-  ContactSlide,        // 14 — Contact / CTA
+  TitleSlide,              // 1  — Title
+  FragilitySlide,          // 2  — The Problem: Impact built on goodwill is fragile
+  ArchitectureSlide,       // 3  — The Architecture Principle (core thesis)
+  ValuesAlignmentSlide,    // 4  — Values × Equality Fund Alignment
+  WhyVCSlide,              // 5  — Why Venture Capital as the asset class
+  MarketGapSlide,          // 6  — The Market Opportunity (funding gap)
+  CriteriaSlide,           // 7  — Investment Criteria + Mars Materials
+  StrategyIntrosSlide,     // 8  — Primary Strategy: Investor Introductions
+  WhyClimateTechSlide,     // 9  — Why ClimateTech (market data)
+  FundStrategySlide,       // 10 — Fund Strategy (Fund I pause → Catalyst)
+  FundOverviewSlide,       // 11 — Catalyst Fund Key Terms
+  EquivestoSlide,          // 12 — Equivesto Partnership
+  TeamSlide,               // 13 — Team & Advisors
+  TrackRecordSlide,        // 14 — Track Record
+  ContactSlide,            // 15 — Contact / CTA
 ];
 
 export default function EqualityFundDeck() {
