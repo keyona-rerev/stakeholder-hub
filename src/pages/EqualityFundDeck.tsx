@@ -887,16 +887,16 @@ const slides = [
   FragilitySlide,          // 2  — The Problem: Impact built on goodwill is fragile
   ArchitectureSlide,       // 3  — The Architecture Principle (core thesis)
   ValuesAlignmentSlide,    // 4  — Values × Equality Fund Alignment
-  WhyVCSlide,              // 5  — Why Venture Capital as the asset class
-  MarketGapSlide,          // 6  — The Market Opportunity (funding gap)
-  ImpactMetricsSlide,      // 7  — Impact Metrics
-  CriteriaSlide,           // 8  — Investment Criteria + Mars Materials
-  StrategyIntrosSlide,     // 9  — Primary Strategy: Investor Introductions
-  WhyClimateTechSlide,     // 10 — Why ClimateTech (market data)
-  FundStrategySlide,       // 11 — Fund Strategy (Fund I pause → Catalyst)
-  FundOverviewSlide,       // 12 — Catalyst Fund Key Terms
-  EquivestoSlide,          // 13 — Equivesto Partnership
-  TeamSlide,               // 14 — Team & Advisors
+  TeamSlide,               // 5  — Team & Advisors
+  WhyVCSlide,              // 6  — Why Venture Capital as the asset class
+  MarketGapSlide,          // 7  — The Market Opportunity (funding gap)
+  ImpactMetricsSlide,      // 8  — Impact Metrics
+  CriteriaSlide,           // 9  — Investment Criteria + Mars Materials
+  StrategyIntrosSlide,     // 10 — Primary Strategy: Investor Introductions
+  WhyClimateTechSlide,     // 11 — Why ClimateTech (market data)
+  FundStrategySlide,       // 12 — Fund Strategy (Fund I pause → Catalyst)
+  FundOverviewSlide,       // 13 — Catalyst Fund Key Terms
+  EquivestoSlide,          // 14 — Equivesto Partnership
   TrackRecordSlide,        // 15 — Track Record
   ContactSlide,            // 16 — Contact / CTA
 ];
