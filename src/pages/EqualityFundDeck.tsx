@@ -195,7 +195,7 @@ function ValuesAlignmentSlide() {
     {
       icon: <Shield className="h-8 w-8" />,
       title: "Integrity",
-      alignment: "Aligned with Equality Fund's commitment to transparent, accountable stewardship of $100M+ deployed across 100 countries",
+      alignment: "Aligned with Equality Fund's commitment to transparent, accountable stewardship of funds it deploys",
     },
     {
       icon: <Users className="h-8 w-8" />,
