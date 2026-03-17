@@ -104,7 +104,7 @@ function FragilitySlide() {
       stat: "40%+",
       statLabel: "DEI & sustainability cuts (2023–24)",
       body: "Companies make commitments when convenient and abandon them when margins tighten or boards turn over.",
-      example: "Fortune 500 DEI budget cuts, abandoned net-zero timelines, ESG fund closures",
+      example: "2025 - Canadian Securities Administrators pause new mandatory climate and DEI disclosures, Fortune 500 DEI budget cuts, abandoned net-zero timelines",
     },
     {
       icon: <Megaphone className="h-8 w-8" />,
