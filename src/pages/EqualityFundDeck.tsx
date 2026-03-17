@@ -499,62 +499,65 @@ function ImpactMetricsSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 8 — Our Primary Strategy (Investor Introductions)
+   SLIDE 12 — Impact & Credibility (Case Studies)
    ══════════════════════════════════════════════════════ */
-function StrategyIntrosSlide() {
+function ImpactCredibilitySlide() {
   return (
     <ScaledSlide>
       <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
         <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
-          Our Primary Strategy
+          Impact &amp; Credibility
         </p>
-        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
-          We help founders{" "}
-          <span className="text-[hsl(195,85%,50%)]">finish raising their rounds</span>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white mb-12">
+          How We <span className="text-[hsl(195,85%,50%)]">Actually Work</span>
         </h2>
-        <p className="mt-4 max-w-[1000px] text-[22px] text-white/60">
-          Investor introductions are our top priority when working with the most promising founders on the market. We take this seriously because we know the numbers.
-        </p>
-        <div className="mt-12 flex gap-10 max-w-[1500px]">
-          <div className="flex-1 space-y-6">
-            <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-              <Handshake className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
-              <div>
-                <h3 className="text-[22px] font-semibold text-white">Strategic Investor Introductions</h3>
-                <p className="mt-2 text-[18px] leading-relaxed text-white/60">
-                  We actively connect our portfolio founders with aligned investors, accelerators, and strategic partners to help them close their rounds.
-                </p>
-              </div>
+        <div className="flex gap-10 max-w-[1500px]">
+          {/* Case Study 1 */}
+          <div className="flex-1 rounded-2xl border border-white/10 bg-white/[0.03] p-10 flex flex-col">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50 mb-3">Portfolio Co. 01</p>
+            <div className="flex items-center gap-4 mb-6">
+              <img src={marsLogo} alt="Mars Materials" className="h-9 object-contain" />
+              <h3 className="text-[32px] font-bold text-white">Mars Materials</h3>
             </div>
-            <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-              <Users className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
-              <div>
-                <h3 className="text-[22px] font-semibold text-white">Network-First Approach</h3>
-                <p className="mt-2 text-[18px] leading-relaxed text-white/60">
-                  Venture capital itself isn't broken — when you're smart about it, it works. The gap is access. We bridge it.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-              <CheckCircle2 className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
-              <div>
-                <h3 className="text-[22px] font-semibold text-white">Pro-Rata Co-Investment</h3>
-                <p className="mt-2 text-[18px] leading-relaxed text-white/60">
-                  LP co-investment opportunities available for our strongest portfolio companies.
-                </p>
-              </div>
+            <ul className="space-y-3 text-[18px] text-white/70 leading-relaxed flex-1">
+              {[
+                "First cheque in — conviction before consensus",
+                "Strategic intros to close their round",
+                "Cleaner & cheaper acrylonitrile supply chains",
+                "Gigatons of carbon drawdown potential",
+              ].map((b, i) => (
+                <li key={i} className="flex gap-3">
+                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 border-t border-white/10 pt-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/40">Market Innovation, Not ESG Compliance</p>
             </div>
           </div>
-          <div className="w-[480px] flex flex-col justify-center">
-            <div className="rounded-2xl border border-[hsl(195,85%,35%)/20] bg-[hsl(195,85%,35%)/5] p-10">
-              <p className="text-[16px] font-semibold uppercase tracking-widest text-[hsl(195,85%,50%)] mb-6">Why This Matters</p>
-              <p className="text-[20px] leading-relaxed text-white/70">
-                These founders have the ideas, the technical brilliance, and the market opportunity. What they lack is access to private finance networks.
-              </p>
-              <p className="mt-6 text-[20px] leading-relaxed text-white/70">
-                We have a real bias towards action — when we find the right founders, we don't just write a check. We{" "}
-                <span className="font-semibold text-white">open every door we can.</span>
-              </p>
+          {/* Case Study 2 */}
+          <div className="flex-1 rounded-2xl border border-white/10 bg-white/[0.03] p-10 flex flex-col">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50 mb-3">Portfolio Co. 02</p>
+            <div className="flex items-center gap-4 mb-6">
+              <img src={serenityLogo} alt="Serenity Power" className="h-9 object-contain" />
+              <h3 className="text-[32px] font-bold text-white">Serenity Power</h3>
+            </div>
+            <ul className="space-y-3 text-[18px] text-white/70 leading-relaxed flex-1">
+              {[
+                "Got into a deal others couldn't access",
+                "Founders chose us — trust earned, not bought",
+                "Active support: intros, strategy, round completion",
+                "Clean energy access for underserved markets",
+              ].map((b, i) => (
+                <li key={i} className="flex gap-3">
+                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 border-t border-white/10 pt-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/40">Structural Sourcing Advantage</p>
             </div>
           </div>
         </div>
