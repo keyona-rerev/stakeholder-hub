@@ -205,7 +205,7 @@ function ValuesAlignmentSlide() {
     {
       icon: <Handshake className="h-8 w-8" />,
       title: "Collaboration",
-      alignment: "Aligned with Equality Fund's people-powered movement model — backing 1,800+ organizations for long-term systemic change",
+      alignment: "Aligned with Equality Fund's people-powered movement model — backing organizations for long-term systemic change",
     },
     {
       icon: <TrendingUp className="h-8 w-8" />,
