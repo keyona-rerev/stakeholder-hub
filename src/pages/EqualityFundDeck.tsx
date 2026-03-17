@@ -841,6 +841,9 @@ function TrackRecordSlide() {
               <p className="mt-4 text-[18px] leading-relaxed text-white/60">
                 10 deal attributions at Bronze Valley including wildwonder (Inc. 5000 #109), Brevity ($2M AI platform), Grovara ($8.75M marketplace). SXSW Judge.
               </p>
+              <p className="mt-3 text-[18px] leading-relaxed text-white/60">
+                Mentored 100+ startup founders across 3 continents.
+              </p>
             </div>
           </div>
         </div>
