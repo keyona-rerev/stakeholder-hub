@@ -395,7 +395,109 @@ function CriteriaSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 7 — Our Primary Strategy (Investor Introductions)
+   SLIDE 7 — Impact Metrics
+   ══════════════════════════════════════════════════════ */
+function ImpactMetricsSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
+          Impact Metrics
+        </p>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          Measuring What{" "}
+          <span className="italic text-[hsl(195,85%,50%)]">Matters</span>
+        </h2>
+
+        <div className="mt-12 grid max-w-[1400px] grid-cols-3 gap-[2px]">
+          {/* Equity Impact Targets — FIRST */}
+          <div className="rounded-l-2xl bg-white/[0.04] p-10 flex flex-col gap-3">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
+              Equity Impact Targets
+            </p>
+            <div className="mt-2 flex flex-col gap-4">
+              {[
+                { label: "Women Founders", pct: "50%", highlight: true },
+                { label: "BIPOC/Minority Founders", pct: "60%", highlight: false },
+                { label: "Black Founders", pct: "40%", highlight: false },
+                { label: "2SLGBTQ+ Founders", pct: "5%", highlight: false },
+                { label: "Indigenous Founders", pct: "5%", highlight: false },
+              ].map((r) => (
+                <div
+                  key={r.label}
+                  className={`flex items-center justify-between border-b border-white/[0.06] pb-3 ${
+                    r.highlight ? "rounded-lg bg-[hsl(195,85%,35%)/12] px-4 py-3 border-[hsl(195,85%,50%)/30] border" : ""
+                  }`}
+                >
+                  <span className={`text-[15px] ${r.highlight ? "font-semibold text-white" : "text-white/60"}`}>
+                    {r.label}
+                  </span>
+                  <span className={`font-bold text-[hsl(195,85%,50%)] ${r.highlight ? "text-[24px]" : "text-[20px]"}`}>
+                    {r.pct}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* GHG Reduction Targets — SECOND */}
+          <div className="bg-white/[0.04] p-10 flex flex-col gap-3">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
+              GHG Reduction Targets
+            </p>
+            <div className="mt-2 flex flex-col gap-4">
+              {[
+                { year: "Year 3", val: "2 MMT CO₂e" },
+                { year: "Year 5", val: "10 MMT CO₂e" },
+                { year: "Year 7 (2033)", val: "25 MMT CO₂e" },
+                { year: "Year 10 (2036)", val: "50 MMT CO₂e" },
+                { year: "2050 Projection", val: "1,500 MMT (1.5 GT) CO₂e", note: "Cumulative" },
+              ].map((r) => (
+                <div key={r.year} className="flex items-baseline justify-between border-b border-white/[0.06] pb-3">
+                  <span className="text-[15px] text-white/60">{r.year}</span>
+                  <div className="text-right">
+                    <span className={`font-bold text-[hsl(170,60%,45%)] ${r.note ? "text-[17px]" : "text-[20px]"}`}>
+                      {r.val}
+                    </span>
+                    {r.note && (
+                      <span className="block text-[9px] uppercase tracking-widest text-white/40">{r.note}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Other Metrics Tracked */}
+          <div className="rounded-r-2xl bg-white/[0.04] p-10 flex flex-col gap-3">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
+              Other Metrics Tracked
+            </p>
+            <div className="mt-2 flex flex-col gap-5">
+              {[
+                { icon: "💧", label: "Litres of Water Conserved / Saved" },
+                { icon: "♻️", label: "Metric Tonnes of Waste Diverted" },
+                { icon: "🌿", label: "Metric Tonnes of Plastic Removed / Reduced / Replaced" },
+                { icon: "🛡️", label: "Kg of Toxins Eliminated" },
+              ].map((r) => (
+                <div key={r.label} className="flex items-center gap-4">
+                  <span className="text-[18px]">{r.icon}</span>
+                  <span className="text-[15px] leading-snug text-white/70">{r.label}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-auto text-[9px] uppercase tracking-widest text-white/30">
+              No specific targets — tracked as portfolio develops
+            </p>
+          </div>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
+   SLIDE 8 — Our Primary Strategy (Investor Introductions)
    ══════════════════════════════════════════════════════ */
 function StrategyIntrosSlide() {
   return (
@@ -787,15 +889,16 @@ const slides = [
   ValuesAlignmentSlide,    // 4  — Values × Equality Fund Alignment
   WhyVCSlide,              // 5  — Why Venture Capital as the asset class
   MarketGapSlide,          // 6  — The Market Opportunity (funding gap)
-  CriteriaSlide,           // 7  — Investment Criteria + Mars Materials
-  StrategyIntrosSlide,     // 8  — Primary Strategy: Investor Introductions
-  WhyClimateTechSlide,     // 9  — Why ClimateTech (market data)
-  FundStrategySlide,       // 10 — Fund Strategy (Fund I pause → Catalyst)
-  FundOverviewSlide,       // 11 — Catalyst Fund Key Terms
-  EquivestoSlide,          // 12 — Equivesto Partnership
-  TeamSlide,               // 13 — Team & Advisors
-  TrackRecordSlide,        // 14 — Track Record
-  ContactSlide,            // 15 — Contact / CTA
+  ImpactMetricsSlide,      // 7  — Impact Metrics
+  CriteriaSlide,           // 8  — Investment Criteria + Mars Materials
+  StrategyIntrosSlide,     // 9  — Primary Strategy: Investor Introductions
+  WhyClimateTechSlide,     // 10 — Why ClimateTech (market data)
+  FundStrategySlide,       // 11 — Fund Strategy (Fund I pause → Catalyst)
+  FundOverviewSlide,       // 12 — Catalyst Fund Key Terms
+  EquivestoSlide,          // 13 — Equivesto Partnership
+  TeamSlide,               // 14 — Team & Advisors
+  TrackRecordSlide,        // 15 — Track Record
+  ContactSlide,            // 16 — Contact / CTA
 ];
 
 export default function EqualityFundDeck() {
