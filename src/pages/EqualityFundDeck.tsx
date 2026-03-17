@@ -96,7 +96,7 @@ function FragilitySlide() {
       stat: "180°",
       statLabel: "Policy reversals per cycle",
       body: "Impact-driven policies change with every new administration. What's mandated today is rolled back tomorrow.",
-      example: "Paris Agreement withdrawal, ESG disclosure rollbacks, shifting clean energy subsidies",
+      example: "Canada - Consumer carbon price repealed, USA - Paris Agreement withdrawal, ESG disclosure rollbacks",
     },
     {
       icon: <Building2 className="h-8 w-8" />,
