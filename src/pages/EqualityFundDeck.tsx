@@ -888,16 +888,16 @@ const slides = [
   ArchitectureSlide,       // 3  — The Architecture Principle (core thesis)
   ValuesAlignmentSlide,    // 4  — Values × Equality Fund Alignment
   TeamSlide,               // 5  — Team & Advisors
-  WhyVCSlide,              // 6  — Why Venture Capital as the asset class
-  MarketGapSlide,          // 7  — The Market Opportunity (funding gap)
-  ImpactMetricsSlide,      // 8  — Impact Metrics
-  CriteriaSlide,           // 9  — Investment Criteria + Mars Materials
-  StrategyIntrosSlide,     // 10 — Primary Strategy: Investor Introductions
-  WhyClimateTechSlide,     // 11 — Why ClimateTech (market data)
-  FundStrategySlide,       // 12 — Fund Strategy (Fund I pause → Catalyst)
-  FundOverviewSlide,       // 13 — Catalyst Fund Key Terms
-  EquivestoSlide,          // 14 — Equivesto Partnership
-  TrackRecordSlide,        // 15 — Track Record
+  TrackRecordSlide,        // 6  — Track Record
+  WhyVCSlide,              // 7  — Why Venture Capital as the asset class
+  MarketGapSlide,          // 8  — The Market Opportunity (funding gap)
+  ImpactMetricsSlide,      // 9  — Impact Metrics
+  CriteriaSlide,           // 10 — Investment Criteria + Mars Materials
+  StrategyIntrosSlide,     // 11 — Primary Strategy: Investor Introductions
+  WhyClimateTechSlide,     // 12 — Why ClimateTech (market data)
+  FundStrategySlide,       // 13 — Fund Strategy (Fund I pause → Catalyst)
+  FundOverviewSlide,       // 14 — Catalyst Fund Key Terms
+  EquivestoSlide,          // 15 — Equivesto Partnership
   ContactSlide,            // 16 — Contact / CTA
 ];
 
