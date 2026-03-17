@@ -889,15 +889,16 @@ const slides = [
   ValuesAlignmentSlide,    // 4  — Values × Equality Fund Alignment
   WhyVCSlide,              // 5  — Why Venture Capital as the asset class
   MarketGapSlide,          // 6  — The Market Opportunity (funding gap)
-  CriteriaSlide,           // 7  — Investment Criteria + Mars Materials
-  StrategyIntrosSlide,     // 8  — Primary Strategy: Investor Introductions
-  WhyClimateTechSlide,     // 9  — Why ClimateTech (market data)
-  FundStrategySlide,       // 10 — Fund Strategy (Fund I pause → Catalyst)
-  FundOverviewSlide,       // 11 — Catalyst Fund Key Terms
-  EquivestoSlide,          // 12 — Equivesto Partnership
-  TeamSlide,               // 13 — Team & Advisors
-  TrackRecordSlide,        // 14 — Track Record
-  ContactSlide,            // 15 — Contact / CTA
+  ImpactMetricsSlide,      // 7  — Impact Metrics
+  CriteriaSlide,           // 8  — Investment Criteria + Mars Materials
+  StrategyIntrosSlide,     // 9  — Primary Strategy: Investor Introductions
+  WhyClimateTechSlide,     // 10 — Why ClimateTech (market data)
+  FundStrategySlide,       // 11 — Fund Strategy (Fund I pause → Catalyst)
+  FundOverviewSlide,       // 12 — Catalyst Fund Key Terms
+  EquivestoSlide,          // 13 — Equivesto Partnership
+  TeamSlide,               // 14 — Team & Advisors
+  TrackRecordSlide,        // 15 — Track Record
+  ContactSlide,            // 16 — Contact / CTA
 ];
 
 export default function EqualityFundDeck() {
