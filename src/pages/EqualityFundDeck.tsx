@@ -561,6 +561,7 @@ function ImpactCredibilitySlide() {
             </div>
           </div>
         </div>
+        <p className="mt-6 text-[13px] text-white/30 text-center">Click on the hyperlinks above to learn more about these companies</p>
       </div>
     </ScaledSlide>
   );
