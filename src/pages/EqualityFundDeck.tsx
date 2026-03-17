@@ -321,7 +321,7 @@ function MarketGapSlide() {
             <p className="mt-2 text-[22px] leading-relaxed text-white/60">of venture funding goes to Black founders in 2025</p>
           </div>
           <div className="border-l-2 border-[hsl(195,85%,35%)/30] pl-8">
-            <p className="text-[56px] font-bold text-[hsl(195,85%,50%)]">&lt;6%</p>
+            <p className="text-[56px] font-bold text-[hsl(195,85%,50%)]">&lt;2%</p>
             <p className="mt-2 text-[22px] leading-relaxed text-white/60">of VC funding goes to women-led teams</p>
           </div>
           <div className="border-l-2 border-[hsl(195,85%,35%)/30] pl-8">
