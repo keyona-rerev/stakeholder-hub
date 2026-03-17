@@ -188,6 +188,59 @@ function ArchitectureSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
+   SLIDE 4 — Values × Equality Fund Alignment
+   ══════════════════════════════════════════════════════ */
+function ValuesAlignmentSlide() {
+  const values = [
+    {
+      icon: <Shield className="h-8 w-8" />,
+      title: "Integrity",
+      alignment: "Aligned with Equality Fund's commitment to transparent, accountable stewardship of $100M+ deployed across 100 countries",
+    },
+    {
+      icon: <Users className="h-8 w-8" />,
+      title: "Inclusion",
+      alignment: "Aligned with Equality Fund's intersectional approach — merging investment with policy, advocacy, and philanthropy for gender equity",
+    },
+    {
+      icon: <Handshake className="h-8 w-8" />,
+      title: "Collaboration",
+      alignment: "Aligned with Equality Fund's people-powered movement model — backing 1,800+ organizations for long-term systemic change",
+    },
+    {
+      icon: <TrendingUp className="h-8 w-8" />,
+      title: "Impact",
+      alignment: "Aligned with Equality Fund's measurable mandate — climate resilience, human rights, and gender-based violence prevention at scale",
+    },
+  ];
+
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
+          Our Values × Equality Fund Alignment
+        </p>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          This isn't philanthropy. It's performance,{" "}
+          <span className="text-[hsl(195,85%,50%)]">powered by purpose.</span>
+        </h2>
+        <div className="mt-12 grid max-w-[1500px] grid-cols-4 gap-6">
+          {values.map((v, i) => (
+            <div key={i} className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 flex flex-col gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(195,85%,35%)/10]">
+                <div className="text-[hsl(195,85%,50%)]">{v.icon}</div>
+              </div>
+              <h3 className="text-[24px] font-semibold text-white">{v.title}</h3>
+              <p className="mt-auto text-[15px] leading-relaxed text-[hsl(195,85%,50%)]/70">{v.alignment}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+/* ══════════════════════════════════════════════════════
    SLIDE 4 — Why Venture Capital
    ══════════════════════════════════════════════════════ */
 function WhyVCSlide() {
