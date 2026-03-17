@@ -848,7 +848,7 @@ function TrackRecordSlide() {
           </div>
         </div>
         <div className="mt-10 rounded-xl bg-[hsl(195,85%,35%)/10] px-8 py-5 max-w-[1400px]">
-          <p className="text-[20px] text-white/80">🏆 <a href="https://www.youtube.com/watch?v=16lywelqOmg" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors">WEF (UpLink) Top Innovative Fund selection 2022</a> · Pro-rata co-investment opportunities available to LPs</p>
+          <p className="text-[20px] text-white/80">🏆 <a href="https://www.youtube.com/watch?v=16lywelqOmg" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors">WEF (UpLink) Top Innovative Fund selection 2022</a></p>
           <p className="mt-3 text-[14px] text-white/40">Click on hyperlink above to watch the YouTube announcement</p>
         </div>
       </div>
