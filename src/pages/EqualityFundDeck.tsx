@@ -538,7 +538,7 @@ function ImpactCredibilitySlide() {
           </div>
           {/* Case Study 2 */}
           <div className="flex-1 rounded-2xl border border-white/10 bg-white/[0.03] p-10 flex flex-col">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50 mb-3">Portfolio Co. 02</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50 mb-3">Investment Co. 02</p>
             <div className="flex items-center gap-4 mb-6">
               <img src={serenityLogo} alt="Serenity Power" className="h-9 object-contain" />
               <h3 className="text-[32px] font-bold text-white">Serenity Power</h3>
