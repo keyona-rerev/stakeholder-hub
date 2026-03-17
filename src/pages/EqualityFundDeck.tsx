@@ -210,7 +210,7 @@ function ValuesAlignmentSlide() {
     {
       icon: <TrendingUp className="h-8 w-8" />,
       title: "Impact",
-      alignment: "Aligned with Equality Fund's measurable mandate — climate resilience, human rights, and gender-based violence prevention at scale",
+      alignment: "Aligned with Equality Fund's measurable mandate — specifically aligned on climate resilience and gender equality",
     },
   ];
 
