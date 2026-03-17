@@ -829,7 +829,7 @@ function TrackRecordSlide() {
               <p className="text-[24px] font-semibold text-white">Bryan Duarte</p>
               <p className="mt-1 text-[16px] text-[hsl(195,85%,50%)]">Managing Partner</p>
               <p className="mt-4 text-[18px] leading-relaxed text-white/60">
-                5x Entrepreneur with 3 Exits (8x and 10x EBITDA). 30+ years energy industry. 10+ years in CleanTech/Sustainability. CleanTech EIR/Advisor - Altitude Accelerator, Foresight Canada, Black Founders Network, University of Toronto Entrepreneurship, Techstars.
+                5x Entrepreneur with 3 Exits (8x and 10x EBITDA). 30+ years energy industry. 10+ years in CleanTech/Sustainability. CleanTech EIR/Advisor - Altitude Accelerator, Foresight Canada, Black Founders Network, University of Toronto Entrepreneurship.
               </p>
             </div>
           </div>
@@ -840,6 +840,9 @@ function TrackRecordSlide() {
               <p className="mt-1 text-[16px] text-[hsl(195,85%,50%)]">General Partner</p>
               <p className="mt-4 text-[18px] leading-relaxed text-white/60">
                 10 deal attributions at Bronze Valley including wildwonder (Inc. 5000 #109), Brevity ($2M AI platform), Grovara ($8.75M marketplace). SXSW Judge.
+              </p>
+              <p className="mt-3 text-[18px] leading-relaxed text-white/60">
+                Mentored 100+ startup founders across 3 continents.
               </p>
             </div>
           </div>
