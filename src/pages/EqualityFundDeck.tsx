@@ -698,7 +698,7 @@ function FundStrategySlide() {
               {[
                 "Target $2M Fund Size",
                 "6 Pre-Seed investments – first 4 identified",
-                "Next 2 investments WILL be with women led teams",
+                "Next 2 investments WILL be deployed into women led teams",
                 "Accessible LP minimum ($10k) – Opens up opportunities for diverse investors",
                 "Canadian Geographic focus",
                 "Equivesto partnership for LP trust and Capital Efficiency",
