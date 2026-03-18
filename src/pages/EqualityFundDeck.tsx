@@ -1019,8 +1019,8 @@ export default function EqualityFundDeck() {
 
       {/* Logo overlay on slides 2–14 */}
       {current >= 1 && current <= 13 && (
-        <div className="absolute top-6 right-6 z-50 rounded-lg bg-white p-2 shadow-lg">
-          <img src={mainLogo} alt="BTC Logo" className="h-14 w-auto" />
+        <div className="absolute top-10 right-16 z-50 rounded-lg bg-white p-2 shadow-lg">
+          <img src={mainLogo} alt="BTC Logo" className="h-16 w-auto" />
         </div>
       )}
 
