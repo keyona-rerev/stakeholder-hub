@@ -208,7 +208,7 @@ function ValuesAlignmentSlide() {
     {
       icon: <Handshake className="h-8 w-8" />,
       title: "Collaboration",
-      alignment: "Opening every door we can — strategic introductions, co-investment, and hands-on support to help founders close rounds and scale.",
+      alignment: "Partnerships are key: Opening every door we can — strategic introductions, co-investment, and hands-on support to help founders close rounds and scale.",
     },
     {
       icon: <TrendingUp className="h-8 w-8" />,
