@@ -521,10 +521,10 @@ function ImpactCredibilitySlide() {
             </div>
             <ul className="space-y-3 text-[18px] text-white/70 leading-relaxed flex-1">
               {[
-                "First cheque in — conviction before consensus",
-                "Strategic intros to close their round",
-                "Cleaner & cheaper acrylonitrile supply chains",
-                "Gigatons of carbon drawdown potential",
+                "Transforming carbon into products that clean dirty water, and improve transportation and energy",
+                "Impact Mission – Remove or Abate 1-3 GT of CO₂ by 2050",
+                "Backed by Bill Gates' Breakthrough Energy",
+                "Only physically verifiable drop-in alternative for an $11 billion beachhead market with Global Leader SNF",
               ].map((b, i) => (
                 <li key={i} className="flex gap-3">
                   <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
