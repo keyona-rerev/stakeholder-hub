@@ -977,8 +977,7 @@ const slides = [
   ImpactCredibilitySlide,  // 13 — Impact & Credibility (Case Studies)
   FundStrategySlide,       // 13 — Fund Strategy (Fund I pause → Catalyst)
   FundOverviewSlide,       // 14 — Catalyst Fund Key Terms
-  EquivestoSlide,          // 15 — Equivesto Partnership
-  ContactSlide,            // 16 — Contact / CTA
+  ContactSlide,            // 15 — Contact / CTA
 ];
 
 export default function EqualityFundDeck() {
