@@ -523,7 +523,7 @@ function ImpactCredibilitySlide() {
               {[
                 "Transforming carbon into products that clean dirty water, and improve transportation and energy",
                 "Impact Mission – Remove or Abate 1-3 GT of CO₂ by 2050",
-                <>Backed by Bill Gates' <span className="underline hover:text-[hsl(195,85%,50%)] transition-colors cursor-pointer" onClick={(e) => { e.stopPropagation(); window.open("https://www.youtube.com/watch?v=b2Z_6HQa_Ks", "_blank"); }}>Breakthrough Energy</span></>,
+                <>Backed by Bill Gates' <a href="https://www.youtube.com/watch?v=b2Z_6HQa_Ks" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors" onClick={(e) => e.stopPropagation()}>Breakthrough Energy</a></>,
                 <>Only physically verifiable drop-in alternative for an $11 billion beachhead market with Global Leader <a href="https://www.snf.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors">SNF</a></>,
               ].map((b, i) => (
                 <li key={i} className="flex gap-3">
