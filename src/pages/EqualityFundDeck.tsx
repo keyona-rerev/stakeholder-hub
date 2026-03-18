@@ -975,9 +975,9 @@ const slides = [
   CriteriaSlide,           // 11 — Investment Criteria + Mars Materials
   StrategyIntrosSlide,     // 12 — Our Primary Strategy (Investor Introductions)
   ImpactCredibilitySlide,  // 13 — Impact & Credibility (Case Studies)
-  FundStrategySlide,       // 13 — Fund Strategy (Fund I pause → Catalyst)
-  FundOverviewSlide,       // 14 — Catalyst Fund Key Terms
-  ContactSlide,            // 15 — Contact / CTA
+  FundStrategySlide,       // 14 — Fund Strategy (Fund I pause → Catalyst)
+  EquivestoSlide,          // 15 — The Equivesto Partnership
+  ContactSlide,            // 16 — Contact / CTA
 ];
 
 export default function EqualityFundDeck() {
