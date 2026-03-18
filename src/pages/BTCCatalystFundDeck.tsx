@@ -198,12 +198,12 @@ function ValuesAlignmentSlide() {
     {
       icon: <Shield className="h-8 w-8" />,
       title: "Integrity",
-      alignment: "Transparent stewardship of every dollar deployed — honest reporting, fair terms, and accountability to our founders and LPs.",
+      alignment: "Transparent stewardship of every dollar deployed — honest reporting, fair terms, and accountability to our founders and investors.",
     },
     {
       icon: <Users className="h-8 w-8" />,
       title: "Inclusion",
-      alignment: "Backing the brilliance the market overlooks — systematically investing in Black, women, and underrepresented founders building real technology.",
+      alignment: "Backing the brilliance the market overlooks — systematically investing in diversity including women and other underrepresented founders building real technology.",
     },
     {
       icon: <Handshake className="h-8 w-8" />,
