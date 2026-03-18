@@ -588,6 +588,8 @@ function ImpactCredibilitySlide() {
                 "Impact Mission – Remove or Abate 1-3 GT of CO₂ by 2050",
                 <>Backed by Bill Gates' <a href="/breakthrough-energy-redirect.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors" onClick={(e) => e.stopPropagation()}>Breakthrough Energy</a></>,
                 <>Only physically verifiable drop-in alternative for an $11 billion beachhead market with Global Leader <a href="https://www.snf.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors">SNF</a></>,
+                "BTC – One of the first cheques in 2022 – conviction before consensus",
+                "Strategic introductions to close their round",
               ].map((b, i) => (
                 <li key={i} className="flex gap-3">
                   <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
