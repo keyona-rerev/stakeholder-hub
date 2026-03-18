@@ -703,7 +703,7 @@ function FundStrategySlide() {
                 "Accessible LP minimum ($10k) – Opens up opportunities for diverse investors",
                 "Canadian Geographic focus",
                 "Equivesto partnership for LP trust and Capital Efficiency",
-                "10 year fund life with 2% Mgmt Fee and 20% Carry (7% Hurdle Rate)",
+                "10-year fund life with 2% Mgmt Fee and 20% Carry (7% Hurdle Rate)",
               ].map((item) => {
                 const isHighlight = item.includes("WILL be deployed into");
                 return (
