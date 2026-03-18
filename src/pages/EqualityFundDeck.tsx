@@ -1017,6 +1017,13 @@ export default function EqualityFundDeck() {
         </motion.div>
       </AnimatePresence>
 
+      {/* Logo overlay on slides 2–14 */}
+      {current >= 1 && current <= 13 && (
+        <div className="absolute top-6 right-6 z-50 rounded-lg bg-white p-2 shadow-lg">
+          <img src={mainLogo} alt="BTC Logo" className="h-14 w-auto" />
+        </div>
+      )}
+
       {/* Navigation bar */}
       <div className="absolute bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-4 rounded-full border border-white/10 bg-black/60 px-5 py-2.5 backdrop-blur-md">
         <button onClick={() => go(-1)} disabled={current === 0} className="text-white/60 hover:text-white disabled:opacity-30 transition-opacity">
