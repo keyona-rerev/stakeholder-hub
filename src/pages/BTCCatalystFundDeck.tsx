@@ -203,7 +203,7 @@ function ValuesAlignmentSlide() {
     {
       icon: <Users className="h-8 w-8" />,
       title: "Inclusion",
-      alignment: "Backing the brilliance the market overlooks — systematically investing in diversity including women and other underrepresented founders building real technology.",
+      alignment: "Backing the brilliance the market overlooks — systematically investing in diversity; Women and minority founders building real technology.",
     },
     {
       icon: <Handshake className="h-8 w-8" />,
