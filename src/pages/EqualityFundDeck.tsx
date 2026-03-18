@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import logo from "@/assets/logo.png";
+import mainLogo from "@/assets/main-logo.png";
 import marsLogo from "@/assets/mars-materials-logo.webp";
 import serenityLogo from "@/assets/serenity-power-logo.png";
 import bryanDuarte from "@/assets/team/bryan-duarte.jpg";
@@ -1015,6 +1016,13 @@ export default function EqualityFundDeck() {
           <SlideComponent />
         </motion.div>
       </AnimatePresence>
+
+      {/* Logo overlay on slides 2–14 */}
+      {current >= 1 && current <= 13 && (
+        <div className="absolute top-6 right-6 z-50 rounded-lg bg-white p-2 shadow-lg">
+          <img src={mainLogo} alt="BTC Logo" className="h-14 w-auto" />
+        </div>
+      )}
 
       {/* Navigation bar */}
       <div className="absolute bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-4 rounded-full border border-white/10 bg-black/60 px-5 py-2.5 backdrop-blur-md">
