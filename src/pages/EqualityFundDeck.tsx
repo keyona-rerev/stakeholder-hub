@@ -698,13 +698,13 @@ function FundStrategySlide() {
               {[
                 "Target $2M Fund Size",
                 "6 Pre-Seed investments – first 4 identified",
-                "Next 2 investments WILL be with women led teams",
+                "Next 2 investments WILL be deployed into women led teams",
                 "Accessible LP minimum ($10k) – Opens up opportunities for diverse investors",
                 "Canadian Geographic focus",
                 "Equivesto partnership for LP trust and Capital Efficiency",
                 "10 year fund life with 2% Mgmt Fee and 20% Carry (7% Hurdle Rate)",
               ].map((item) => {
-                const isHighlight = item.includes("WILL be with");
+                const isHighlight = item.includes("WILL be deployed into");
                 return (
                   <p key={item} className={`flex items-center gap-3 text-[20px] ${isHighlight ? "font-bold text-[hsl(195,85%,50%)] bg-[hsl(195,85%,50%)/10] -mx-4 px-4 py-2 rounded-lg" : "text-white/80"}`}>
                     <CheckCircle2 className={`h-5 w-5 shrink-0 ${isHighlight ? "text-[hsl(170,60%,45%)]" : "text-[hsl(195,85%,50%)]"}`} />
