@@ -523,8 +523,8 @@ function ImpactCredibilitySlide() {
               {[
                 "Transforming carbon into products that clean dirty water, and improve transportation and energy",
                 "Impact Mission – Remove or Abate 1-3 GT of CO₂ by 2050",
-                "Backed by Bill Gates' Breakthrough Energy",
-                "Only physically verifiable drop-in alternative for an $11 billion beachhead market with Global Leader SNF",
+                <>Backed by Bill Gates' <a href="https://www.youtube.com/watch?v=b2Z_6HQa_Ks" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors">Breakthrough Energy</a></>,
+                <>Only physically verifiable drop-in alternative for an $11 billion beachhead market with Global Leader <a href="https://www.snf.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors">SNF</a></>,
               ].map((b, i) => (
                 <li key={i} className="flex gap-3">
                   <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
