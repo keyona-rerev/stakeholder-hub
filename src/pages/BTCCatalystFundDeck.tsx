@@ -191,29 +191,29 @@ function ArchitectureSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 4 — Values × Equality Fund Alignment
+   SLIDE 4 — Our Values
    ══════════════════════════════════════════════════════ */
 function ValuesAlignmentSlide() {
   const values = [
     {
       icon: <Shield className="h-8 w-8" />,
       title: "Integrity",
-      alignment: "Aligned with Equality Fund's commitment to transparent, accountable stewardship of funds it deploys",
+      alignment: "Transparent stewardship of every dollar deployed — honest reporting, fair terms, and accountability to our founders and LPs.",
     },
     {
       icon: <Users className="h-8 w-8" />,
       title: "Inclusion",
-      alignment: "Aligned with Equality Fund's intersectional approach — merging investment with policy, advocacy, and philanthropy for gender equity",
+      alignment: "Backing the brilliance the market overlooks — systematically investing in Black, women, and underrepresented founders building real technology.",
     },
     {
       icon: <Handshake className="h-8 w-8" />,
       title: "Collaboration",
-      alignment: "Aligned with Equality Fund's people-powered movement model — backing organizations for long-term systemic change",
+      alignment: "Opening every door we can — strategic introductions, co-investment, and hands-on support to help founders close rounds and scale.",
     },
     {
       icon: <TrendingUp className="h-8 w-8" />,
       title: "Impact",
-      alignment: "Aligned with Equality Fund's measurable mandate — specifically aligned on climate resilience and gender equality",
+      alignment: "Targeting gigatons of CO₂ drawdown and measurable founder equity — because market-aligned impact is the only kind that lasts.",
     },
   ];
 
@@ -221,7 +221,7 @@ function ValuesAlignmentSlide() {
     <ScaledSlide>
       <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
         <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
-          Our Values × Equality Fund Alignment
+          Our Values
         </p>
         <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
           This isn't philanthropy. It's performance,{" "}
