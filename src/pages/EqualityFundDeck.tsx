@@ -688,33 +688,21 @@ function FundStrategySlide() {
         <p className="mt-4 max-w-[1400px] text-[22px] text-white/60 whitespace-nowrap">
           Building momentum and a track record via the Catalyst Fund — deploying fully in 2026.
         </p>
-        <div className="mt-14 grid grid-cols-2 gap-10 max-w-[1400px]">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-10 opacity-60">
-            <div className="mb-4 inline-block rounded-full bg-white/10 px-5 py-1.5 text-[14px] font-semibold text-white/60">STRATEGIC PAUSE</div>
-            <h3 className="text-[36px] font-bold text-white">Fund I</h3>
-            <p className="mt-2 text-[20px] text-white/50">The institutional blueprint — $15M target</p>
-            <div className="mt-8 space-y-4">
-              {["$15M target fund size", "Institutional LP base", "Full portfolio construction", "Long-term institutional vehicle"].map((item) => (
-                <p key={item} className="flex items-center gap-3 text-[20px] text-white/40">
-                  <span className="h-2 w-2 rounded-full bg-white/20" />
-                  {item}
-                </p>
-              ))}
-            </div>
-          </div>
+        <div className="mt-14 max-w-[1000px]">
           <div className="relative rounded-2xl border-2 border-[hsl(195,85%,35%)/40] bg-[hsl(195,85%,35%)/5] p-10">
             <div className="absolute -top-px -right-px rounded-bl-xl rounded-tr-2xl bg-gradient-to-r from-[hsl(200,75%,50%)] to-[hsl(170,60%,45%)] px-5 py-1.5 text-[14px] font-bold text-white">
               DEPLOYING 2026
             </div>
             <h3 className="text-[36px] font-bold text-[hsl(195,85%,50%)]">Catalyst Fund</h3>
-            <p className="mt-2 text-[20px] text-white/70">Building the track record</p>
             <div className="mt-8 space-y-4">
               {[
-                "$500K–$2M flexible fund size",
-                "Accessible LP minimums ($10K)",
-                "6 Pre-Seed investments",
-                "Equivesto partnership for efficiency",
-                "Building track record for Fund I",
+                "Target $2M Fund Size",
+                "6 Pre-Seed investments – first 4 identified",
+                "Next 2 investments WILL be from women led teams",
+                "Accessible LP minimum ($10k) – Opens up opportunities for diverse investors",
+                "Canadian Geographic focus",
+                "Equivesto partnership for LP trust and Capital Efficiency",
+                "10 year fund life with 2% Mgmt Fee and 20% Carry (7% Hurdle Rate)",
               ].map((item) => (
                 <p key={item} className="flex items-center gap-3 text-[20px] text-white/80">
                   <CheckCircle2 className="h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
