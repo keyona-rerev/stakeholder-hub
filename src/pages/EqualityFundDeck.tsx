@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import logo from "@/assets/logo.png";
+import mainLogo from "@/assets/main-logo.png";
 import marsLogo from "@/assets/mars-materials-logo.webp";
 import serenityLogo from "@/assets/serenity-power-logo.png";
 import bryanDuarte from "@/assets/team/bryan-duarte.jpg";
