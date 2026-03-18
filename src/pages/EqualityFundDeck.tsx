@@ -971,7 +971,8 @@ const slides = [
   WhyClimateTechSlide,     // 9  — Why ClimateTech (market data)
   ImpactMetricsSlide,      // 10 — Impact Metrics
   CriteriaSlide,           // 11 — Investment Criteria + Mars Materials
-  ImpactCredibilitySlide,  // 12 — Impact & Credibility (Case Studies)
+  StrategyIntrosSlide,     // 12 — Our Primary Strategy (Investor Introductions)
+  ImpactCredibilitySlide,  // 13 — Impact & Credibility (Case Studies)
   FundStrategySlide,       // 13 — Fund Strategy (Fund I pause → Catalyst)
   FundOverviewSlide,       // 14 — Catalyst Fund Key Terms
   EquivestoSlide,          // 15 — Equivesto Partnership
