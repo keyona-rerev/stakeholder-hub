@@ -499,8 +499,71 @@ function ImpactMetricsSlide() {
 }
 
 /* ══════════════════════════════════════════════════════
-   SLIDE 12 — Impact & Credibility (Case Studies)
+   SLIDE 12 — Our Primary Strategy (Investor Introductions)
    ══════════════════════════════════════════════════════ */
+function StrategyIntrosSlide() {
+  return (
+    <ScaledSlide>
+      <div className="flex h-full flex-col justify-center bg-[hsl(210,40%,6%)] px-40">
+        <p className="mb-4 text-[16px] font-semibold uppercase tracking-[0.2em] text-[hsl(195,85%,50%)]">
+          Our Primary Strategy
+        </p>
+        <h2 className="max-w-[1200px] text-[52px] font-bold leading-[1.15] text-white">
+          We help founders{" "}
+          <span className="text-[hsl(195,85%,50%)]">finish raising their rounds</span>
+        </h2>
+        <p className="mt-4 max-w-[1000px] text-[22px] text-white/60">
+          Investor introductions are our top priority when working with the most promising founders on the market. We take this seriously because we know the numbers.
+        </p>
+        <div className="mt-12 flex gap-10 max-w-[1500px]">
+          <div className="flex-1 space-y-6">
+            <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <Handshake className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
+              <div>
+                <h3 className="text-[22px] font-semibold text-white">Strategic Investor Introductions</h3>
+                <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                  We actively connect our portfolio founders with aligned investors, accelerators, and strategic partners to help them close their rounds.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <Users className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
+              <div>
+                <h3 className="text-[22px] font-semibold text-white">Network-First Approach</h3>
+                <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                  Venture capital itself isn't broken — when you're smart about it, it works. The gap is access. We bridge it.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <CheckCircle2 className="mt-1 h-7 w-7 shrink-0 text-[hsl(195,85%,50%)]" />
+              <div>
+                <h3 className="text-[22px] font-semibold text-white">Pro-Rata Co-Investment</h3>
+                <p className="mt-2 text-[18px] leading-relaxed text-white/60">
+                  LP co-investment opportunities available for our strongest portfolio companies.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="w-[480px] flex flex-col justify-center">
+            <div className="rounded-2xl border border-[hsl(195,85%,35%)/20] bg-[hsl(195,85%,35%)/5] p-10">
+              <p className="text-[16px] font-semibold uppercase tracking-widest text-[hsl(195,85%,50%)] mb-6">Why This Matters</p>
+              <p className="text-[20px] leading-relaxed text-white/70">
+                These founders have the ideas, the technical brilliance, and the market opportunity. What they lack is access to private finance networks.
+              </p>
+              <p className="mt-6 text-[20px] leading-relaxed text-white/70">
+                We have a real bias towards action — when we find the right founders, we don't just write a check. We{" "}
+                <span className="font-semibold text-white">open every door we can.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ScaledSlide>
+  );
+}
+
+
 function ImpactCredibilitySlide() {
   return (
     <ScaledSlide>
