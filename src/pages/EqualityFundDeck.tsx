@@ -610,7 +610,7 @@ function ImpactCredibilitySlide() {
             <ul className="space-y-3 text-[18px] text-white/70 leading-relaxed flex-1">
               {[
                 <><a href="https://www.youtube.com/shorts/pWPf4NIzh5w" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors" onClick={(e) => e.stopPropagation()}>Women-led</a> CleanTech startup</>,
-                "Advanced Solid Oxide Fuel Cells delivering zero emissions",
+                <>Advanced <a href="https://upnext.world/why-replacing-diesel-cant-wait/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors" onClick={(e) => e.stopPropagation()}>Solid Oxide Fuel Cells</a> delivering zero emissions</>,
                 "Impact Mission – 8,000+ Tons of CO₂ avoided ANNUALLY",
                 "Holding the last allocation into their pre-seed round just for BTC",
                 "Founders Choose us based on earned trust, not us buying our way in",
