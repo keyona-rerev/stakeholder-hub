@@ -972,7 +972,7 @@ const slides = [
   ContactSlide,            // 16 — Contact / CTA
 ];
 
-export default function EqualityFundDeck() {
+export default function BTCCatalystFundDeck() {
   const [current, setCurrent] = useState(0);
   const navigate = useNavigate();
 

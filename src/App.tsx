@@ -12,6 +12,7 @@ import FoundationDeck from "./pages/FoundationDeck";
 import WRCFDeck from "./pages/WRCFDeck";
 import FounderDeck from "./pages/FounderDeck";
 import EqualityFundDeck from "./pages/EqualityFundDeck";
+import BTCCatalystFundDeck from "./pages/BTCCatalystFundDeck";
 import FundI from "./pages/FundI";
 import Opportunities from "./pages/Opportunities";
 import Contact from "./pages/Contact";
