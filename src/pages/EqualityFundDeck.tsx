@@ -584,7 +584,7 @@ function ImpactCredibilitySlide() {
             </div>
             <ul className="space-y-3 text-[18px] text-white/70 leading-relaxed flex-1">
               {[
-                "Impact Mission – Remove or Abate 1-3 GT of CO₂ by 2050",
+                "Impact Mission – Remove or Abate 1-3 GigaTons of CO₂ by 2050",
                 <>Backed by Bill Gates' <a href="/breakthrough-energy-redirect.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors" onClick={(e) => e.stopPropagation()}>Breakthrough Energy</a></>,
                 <><span>$11 billion beachhead market with Global Leader </span><a href="https://www.snf.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[hsl(195,85%,50%)] transition-colors">SNF</a></>,
                 "BTC – One of the first cheques in 2022 – conviction before consensus",
@@ -609,10 +609,11 @@ function ImpactCredibilitySlide() {
             </div>
             <ul className="space-y-3 text-[18px] text-white/70 leading-relaxed flex-1">
               {[
-                "Got into a deal others couldn't access",
-                "Founders chose us — trust earned, not bought",
-                "Active support: intros, strategy, round completion",
-                "Clean energy access for underserved markets",
+                "Women-led CleanTech startup",
+                "Building Advanced Solid Oxide Fuel Cells delivering 60% efficiency & zero emissions",
+                "Impact Mission – 8,000+ Tons of CO₂ avoided ANNUALLY",
+                "Holding the last allocation into their pre-seed round just for BTC",
+                "Founders Choose us based on earned trust, not us buying our way in",
               ].map((b, i) => (
                 <li key={i} className="flex gap-3">
                   <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-[hsl(195,85%,50%)]" />
