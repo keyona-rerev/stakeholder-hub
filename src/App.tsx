@@ -32,6 +32,7 @@ const App = () => (
           <Route path="/wrcf-deck" element={<WRCFDeck />} />
           <Route path="/founder-deck" element={<FounderDeck />} />
           <Route path="/equality-fund-deck" element={<EqualityFundDeck />} />
+          <Route path="/btc-catalyst-fund-deck" element={<BTCCatalystFundDeck />} />
           <Route
             path="*"
             element={
