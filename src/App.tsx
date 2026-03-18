@@ -12,6 +12,7 @@ import FoundationDeck from "./pages/FoundationDeck";
 import WRCFDeck from "./pages/WRCFDeck";
 import FounderDeck from "./pages/FounderDeck";
 import EqualityFundDeck from "./pages/EqualityFundDeck";
+import BTCCatalystFundDeck from "./pages/BTCCatalystFundDeck";
 import FundI from "./pages/FundI";
 import Opportunities from "./pages/Opportunities";
 import Contact from "./pages/Contact";
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/wrcf-deck" element={<WRCFDeck />} />
           <Route path="/founder-deck" element={<FounderDeck />} />
           <Route path="/equality-fund-deck" element={<EqualityFundDeck />} />
+          <Route path="/btc-catalyst-fund-deck" element={<BTCCatalystFundDeck />} />
           <Route
             path="*"
             element={
