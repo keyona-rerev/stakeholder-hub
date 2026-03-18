@@ -686,7 +686,7 @@ function FundStrategySlide() {
           Strategic Momentum, <span className="text-[hsl(195,85%,50%)]">Deliberate Execution</span>
         </h2>
         <p className="mt-4 max-w-[900px] text-[22px] text-white/60">
-          We took a strategic pause from Fund I to build momentum and a track record via the Catalyst Fund — deploying fully in 2026.
+          Building momentum and a track record via the Catalyst Fund — deploying fully in 2026.
         </p>
         <div className="mt-14 grid grid-cols-2 gap-10 max-w-[1400px]">
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-10 opacity-60">
